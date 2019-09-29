@@ -2,18 +2,32 @@ package modelo;
 
 import java.time.LocalDate;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
+@Entity
 public class Turn 
 {
+	@Id
+	@GeneratedValue
+	private int _id;
 	private LocalDate _reservationDay;
 	private LocalDate _serviceDay;
-	private Service _service;
 	private String _state;
 	
-	public Turn (LocalDate reservationDay, LocalDate serviceDay, Service service, String state)
+	@OneToOne
+	private Service _service;
+
+	@ManyToOne
+	private Customer _customer;
+	
+	public Turn (LocalDate reservationDay, LocalDate serviceDay, String state)
 	{
 		_reservationDay = reservationDay;
 		_serviceDay = serviceDay;
-		_service = service;
 		_state = state;
 	}
 

@@ -2,10 +2,22 @@ package modelo;
 
 import java.time.LocalDate;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+@Entity
 public class Debt 
 {
+	@Id
+	@GeneratedValue
+	private int _id;
 	private int _cost;
 	private LocalDate _expiration;
+
+//	@OneToOne
+//	private Customer _customer;
 	
 	public Debt(int cost, LocalDate expiration) 
 	{	

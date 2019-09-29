@@ -1,18 +1,33 @@
 package modelo;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
+@Entity
 public class Service 
 {
+	@Id
+	@GeneratedValue
+	private int _id;
 	private String _name;
 	private int _duration;
 	private int _cost;
+	
+	@ManyToOne
 	private Employee _employee;
 	
-	public Service(String name, int duration, int cost, Employee employee)
+	@OneToOne
+	private Service _service;
+	
+	public Service(String name, int duration, int cost)
 	{
 		_name = name;
 		_duration = duration;
 		_cost = cost;
-		_employee = employee;
+//		_employee = employee;
 	}
 
 	public String getName()

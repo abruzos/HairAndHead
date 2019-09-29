@@ -1,25 +1,42 @@
 package modelo;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
 public class Employee extends Person
 {
-	private BranchOffice _branchOffice;
+	@Id
+	@GeneratedValue
+	private int _id;
 	private String _type;
-	private Workday _workday;
 	private String _state;
-	private Service _service;
 	private String _user;
 	private String _password;
 	
+	@ManyToOne
+	private BranchOffice _branchOffice;
+	
+	@OneToMany (mappedBy = "_employee", cascade = CascadeType.ALL,orphanRemoval = true)
+	private List<Workday> _workdays = new ArrayList<>();
+	
+	@OneToMany (mappedBy = "_employee", cascade = CascadeType.ALL,orphanRemoval = true)
+	private List<Service> _services = new ArrayList<>();
+	
+		
 	public Employee(String name, String surname, String age, String mail, String numberPhone,
-					BranchOffice branchOffice, String type, Workday workday, String state,
-					Service service, String user, String password) 
+					String type, String state, String user, String password) 
 	{
 		super(name, surname, age, mail, numberPhone);
-		_branchOffice = branchOffice;
 		_type = type;
-		_workday = workday;
 		_state = state;
-		_service = service;
 		_user = user;
 		_password = password;
 	}
@@ -36,19 +53,9 @@ public class Employee extends Person
 		return _type;
 	}
 
-	public Workday getWorkday() 
-	{
-		return _workday;
-	}
-
 	public String getState() 
 	{
 		return _state;
-	}
-
-	public Service getService()
-	{
-		return _service;
 	}
 	
 	public String getUser() 
@@ -71,21 +78,11 @@ public class Employee extends Person
 		_type = type;
 	}
 
-	public void setWorkday(Workday workday)
-	{
-		_workday = workday;
-	}
-
 	public void setState(String state) 
 	{
 		_state = state;
 	}
-
-	public void setService(Service service) 
-	{
-		_service = service;
-	}
-
+	
 	public void setUser(String user) 
 	{
 		_user = user;
@@ -95,4 +92,38 @@ public class Employee extends Person
 	{
 		_password = password;
 	}	
+	
+	public List<Workday> getWorkdays()
+	{
+		return _workdays;
+	}
+	
+	public void addWorkday(Workday d) 
+	{
+		this._workdays.add(d);
+		d.setEmploye(this);
+	}
+	
+	public void removeWorkday(Workday d) 
+	{
+		this._workdays.remove(d);
+		d.setEmploye(this);
+	}
+	
+	public List<Service> getServices()
+	{
+		return _services;
+	}
+	
+	public void addService(Service s) 
+	{
+		this._services.add(s);
+		s.setEmployee(this);
+	}
+	
+	public void removeService(Service s) 
+	{
+		this._services.remove(s);
+		s.setEmployee(this);
+	}
 }

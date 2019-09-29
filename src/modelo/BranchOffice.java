@@ -1,15 +1,29 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
 public class BranchOffice 
 {
+	@Id
+	@GeneratedValue
+	private int _id;
 	private String _name;
 	private String _adress;
 	private String _location;
 	private String _city;
 	private String _country;
-	private ArrayList<Employee> _emplyees;
+	
+	@OneToMany (mappedBy = "_branchOffice", cascade = CascadeType.ALL,orphanRemoval = true)
+	private List<Employee> _employees = new ArrayList<>();
 	
 	public BranchOffice(String name,String adress, String location, String city, String country) 
 	{
@@ -18,7 +32,6 @@ public class BranchOffice
 		_location = location;
 		_location = city;
 		_country = country;
-		_emplyees = new ArrayList<Employee>();
 	}
 	
 	public BranchOffice() {}
@@ -48,11 +61,6 @@ public class BranchOffice
 		return _country;
 	}
 
-	public ArrayList<Employee> get_emplyees() 
-	{
-		return _emplyees;
-	}
-
 	public void setName(String name)
 	{
 		_name = name;
@@ -77,9 +85,21 @@ public class BranchOffice
 	{
 		_country = country;
 	}
-
-	public void setEmplyees(ArrayList<Employee> emplyees)
+	
+	public List<Employee> getEmployees() 
 	{
-		_emplyees = emplyees;
+		return _employees;
+	}
+	
+	public void addEmployee(Employee e)
+	{
+		this._employees.add(e);
+		e.setBranchOffice(this);
+	}
+
+	public void removeEmplyee(Employee e)
+	{
+		this._employees.remove(e);
+		e.setBranchOffice(this);
 	}
 }

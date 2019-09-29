@@ -2,10 +2,22 @@ package modelo;
 
 import java.time.LocalDate;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+@Entity
 public class Bag 
 {
+	@Id
+	@GeneratedValue
+	private int _id;
 	private int _points;
 	private LocalDate _expiration;
+	
+//	@OneToOne
+//	private Customer _customer;
 	
 	public Bag(int points, LocalDate expiration) 
 	{

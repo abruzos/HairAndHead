@@ -1,19 +1,38 @@
 package modelo;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+@Entity
 public class Customer extends Person
 {
+	@Id
+	@GeneratedValue
+	private int _id;
 	private String _state;
+
+	@OneToOne
 	private Debt _debt;
+	@OneToOne
 	private Bag _bag;
-	private Turn _turn;
+
+	@OneToMany (mappedBy = "_customer", cascade = CascadeType.ALL,orphanRemoval = true)
+	private List<Turn> _turns = new ArrayList<>();
+
 	
 	public Customer(String name, String surname, String age, String mail, String numberPhone,
-					String state, Debt debt, Bag bag, Turn turn)
+					String state, Debt debt, Bag bag)
 	{
 		super(name, surname, age, mail, numberPhone);
 		_state = state;
 		_debt = debt;
-		_turn = turn;
 	}
 	
 	public Customer() {}
@@ -33,11 +52,6 @@ public class Customer extends Person
 		return _debt;
 	}
 	
-	public Turn getTurn() 
-	{
-		return _turn;
-	}
-
 	public void setBag(Bag bag)
 	{
 		_bag = bag;
@@ -52,9 +66,4 @@ public class Customer extends Person
 	{
 		_debt = debt;
 	}
-
-	public void setTurn(Turn turn)
-	{
-		_turn = turn;
-	}	
 }
