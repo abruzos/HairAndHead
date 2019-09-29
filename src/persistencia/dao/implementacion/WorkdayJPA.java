@@ -1,9 +1,9 @@
 package persistencia.dao.implementacion;
 
-import modelo.Workday;
+import dto.WorkdayDTO;
 import persistencia.dao.interfaz.WorkdayDAO;
 
-public class WorkdayJPA extends DAOJPA<Workday> implements WorkdayDAO
+public class WorkdayJPA extends DAOJPA<WorkdayDTO> implements WorkdayDAO
 {
 	public long countDays()
 	{

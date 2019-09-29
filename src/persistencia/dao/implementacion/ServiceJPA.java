@@ -1,9 +1,9 @@
 package persistencia.dao.implementacion;
 
-import modelo.Service;
+import dto.ServiceDTO;
 import persistencia.dao.interfaz.ServiceDAO;
 
-public class ServiceJPA extends DAOJPA<Service> implements ServiceDAO
+public class ServiceJPA extends DAOJPA<ServiceDTO> implements ServiceDAO
 {
 
 }

@@ -1,8 +1,8 @@
 package persistencia.dao.interfaz;
 
-import modelo.BranchOffice;
+import dto.BranchOfficeDTO;
 
-public interface BranchOfficeDAO extends DAO<BranchOffice>
+public interface BranchOfficeDAO extends DAO<BranchOfficeDTO>
 {
 
 }

@@ -1,9 +1,9 @@
 package persistencia.dao.implementacion;
 
-import modelo.Employee;
+import dto.EmployeeDTO;
 import persistencia.dao.interfaz.EmployeeDAO;
 
-public class EmployeeJPA extends DAOJPA<Employee> implements EmployeeDAO
+public class EmployeeJPA extends DAOJPA<EmployeeDTO> implements EmployeeDAO
 {
 	
 }

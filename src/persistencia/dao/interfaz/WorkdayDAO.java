@@ -1,8 +1,8 @@
 package persistencia.dao.interfaz;
 
-import modelo.Workday;
+import dto.WorkdayDTO;
 
-public interface WorkdayDAO extends DAO<Workday>
+public interface WorkdayDAO extends DAO<WorkdayDTO>
 {
 
 }

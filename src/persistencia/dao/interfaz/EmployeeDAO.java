@@ -1,8 +1,8 @@
 package persistencia.dao.interfaz;
 
-import modelo.Employee;
+import dto.EmployeeDTO;
 
-public interface EmployeeDAO extends DAO<Employee>
+public interface EmployeeDAO extends DAO<EmployeeDTO>
 {
 
 }

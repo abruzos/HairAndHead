@@ -1,8 +1,8 @@
 package persistencia.dao.interfaz;
 
-import modelo.Service;
+import dto.ServiceDTO;
 
-public interface ServiceDAO extends DAO<Service>
+public interface ServiceDAO extends DAO<ServiceDTO>
 {
 
 }
