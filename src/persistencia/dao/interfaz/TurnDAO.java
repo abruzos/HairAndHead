@@ -4,5 +4,5 @@ import dto.TurnDTO;
 
 public interface TurnDAO extends DAO<TurnDTO>
 {
-
+	
 }
