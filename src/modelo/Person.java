@@ -1,5 +1,6 @@
 package modelo;
 
-public class Person {
+public class Person 
+{
 
 }

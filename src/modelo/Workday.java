@@ -1,5 +1,6 @@
 package modelo;
 
-public class Workday {
+public class Workday 
+{
 
 }

@@ -1,5 +1,6 @@
 package modelo;
 
-public class Debt {
+public class Debt 
+{
 
 }
