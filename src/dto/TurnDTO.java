@@ -1,7 +1,6 @@
 package dto;
 
-import java.time.LocalDate;
-
+import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,8 +13,8 @@ public class TurnDTO
 	@Id
 	@GeneratedValue
 	private int _id;
-	private LocalDate _reservationDay;
-	private LocalDate _serviceDay;
+	private LocalDateTime _reservationDay;
+	private LocalDateTime _serviceDay;
 	private String _state;
 	
 	@OneToOne
@@ -24,19 +23,19 @@ public class TurnDTO
 	@ManyToOne
 	private CustomerDTO _customer;
 	
-	public TurnDTO (LocalDate reservationDay, LocalDate serviceDay, String state)
+	public TurnDTO (LocalDateTime reservationDay, LocalDateTime serviceDay, String state)
 	{
 		_reservationDay = reservationDay;
 		_serviceDay = serviceDay;
 		_state = state;
 	}
 
-	public LocalDate getReservationDay() 
+	public LocalDateTime getReservationDay() 
 	{
 		return _reservationDay;
 	}
 
-	public LocalDate getServiceDay() 
+	public LocalDateTime getServiceDay() 
 	{
 		return _serviceDay;
 	}
@@ -51,12 +50,12 @@ public class TurnDTO
 		return _state;
 	}
 	
-	public void setReservationDay(LocalDate reservationDay) 
+	public void setReservationDay(LocalDateTime reservationDay) 
 	{
 		_reservationDay = reservationDay;
 	}
 
-	public void setServiceDay(LocalDate serviceDay) 
+	public void setServiceDay(LocalDateTime serviceDay) 
 	{
 		_serviceDay = serviceDay;
 	}
