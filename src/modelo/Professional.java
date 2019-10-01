@@ -17,6 +17,24 @@ public class Professional
 		return new ProfessionalJPA();
 	}
 	
+	//Creacion de un profesional.
+	public void createProfessional(ProfessionalDTO newProfessional) throws Exception 
+	{
+		_professional.create(newProfessional);
+	}
+	
+	//Eliminacion de un profesional.
+	public void deleteProfessional(ProfessionalDTO professional_to_delete) throws Exception 
+	{
+		_professional.delete(professional_to_delete);
+	}
+	
+	//Modificacion de un profesional.
+	public void updateProfessional(ProfessionalDTO professional_to_update) throws Exception 
+	{
+		_professional.update(professional_to_update);
+	}
+	
 	//Lista de todos los profesionales.
 	public List<ProfessionalDTO> obtainProfessionals() throws Exception 
 	{
@@ -40,41 +58,41 @@ public class Professional
 	}
 	
 	//Lista de dias de trabajo del profesional seleccionado ----> CALENDARIO.
-	public List<String> daysOfSelectedProfessional(ProfessionalDTO selectedProffesional) 
+	public List<String> daysOfSelectedProfessional(ProfessionalDTO selectedProfessional) throws Exception 
 	{
-		List<String> days_of_selected_proffesional = new ArrayList<>();
-		List<WorkdayDTO> workdays_of_selected_proffesional = selectedProffesional.getWorkdays();
+		List<String> days_of_selected_professional = new ArrayList<>();
+		List<WorkdayDTO> workdays_of_selected_proffesional = selectedProfessional.getWorkdays();
 			
 		for(int i = 0; i<workdays_of_selected_proffesional.size(); i++)
 		{
-			days_of_selected_proffesional.add(workdays_of_selected_proffesional.get(i).getDay());
+			days_of_selected_professional.add(workdays_of_selected_proffesional.get(i).getDay());
 		}
-		return days_of_selected_proffesional;
+		return days_of_selected_professional;
 	}
 	
 	//Lista de los horarios de entrada del profesional seleccionado ----> DESPLEGABLE HORARIOS.
-	public List<String> entryTimesOfSelectedProfessional(ProfessionalDTO selectedProffesional) 
+	public List<String> entryTimesOfSelectedProfessional(ProfessionalDTO selectedProfessional) throws Exception 
 	{
-		List<String> entry_times_of_selected_proffesional = new ArrayList<>();
-		List<WorkdayDTO> workdays_of_selected_proffesional = selectedProffesional.getWorkdays();
+		List<String> entry_times_of_selected_professional = new ArrayList<>();
+		List<WorkdayDTO> workdays_of_selected_professional = selectedProfessional.getWorkdays();
 			
-		for(int i = 0; i<workdays_of_selected_proffesional.size(); i++)
+		for(int i = 0; i<workdays_of_selected_professional.size(); i++)
 		{
-			entry_times_of_selected_proffesional.add(workdays_of_selected_proffesional.get(i).getSince());
+			entry_times_of_selected_professional.add(workdays_of_selected_professional.get(i).getSince());
 		}
-		return entry_times_of_selected_proffesional;
+		return entry_times_of_selected_professional;
 	}
 		
 	//Lista de los horarios de salida del profesional seleccionado ----> DESPLEGABLE HORARIOS.
-	public List<String> departureTimesOfSelectedProfessional(ProfessionalDTO selectedProffesional) 
+	public List<String> departureTimesOfSelectedProfessional(ProfessionalDTO selectedProfessional) throws Exception 
 	{
-		List<String> departure_times_of_selected_proffesional = new ArrayList<>();
-		List<WorkdayDTO> workdays_of_selected_proffesional = selectedProffesional.getWorkdays();
+		List<String> departure_times_of_selected_professional = new ArrayList<>();
+		List<WorkdayDTO> workdays_of_selected_professional = selectedProfessional.getWorkdays();
 			
-		for(int i = 0; i<workdays_of_selected_proffesional.size(); i++)
+		for(int i = 0; i<workdays_of_selected_professional.size(); i++)
 		{
-			departure_times_of_selected_proffesional.add(workdays_of_selected_proffesional.get(i).getUntil());
+			departure_times_of_selected_professional.add(workdays_of_selected_professional.get(i).getUntil());
 		}
-		return departure_times_of_selected_proffesional;
+		return departure_times_of_selected_professional;
 	}
 }
