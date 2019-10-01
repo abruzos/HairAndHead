@@ -26,6 +26,9 @@ public class BranchOfficeDTO
 	@OneToMany (mappedBy = "_branchOffice", cascade = CascadeType.ALL,orphanRemoval = true)
 	private List<EmployeeDTO> _employees = new ArrayList<>();
 	
+	@OneToMany (mappedBy = "_branchOfficep", cascade = CascadeType.ALL,orphanRemoval = true)
+	private List<ProfessionalDTO> _professionals = new ArrayList<>();
+	
 	public BranchOfficeDTO(String name,String adress, String location, String city, String country) 
 	{
 		_name = name;
@@ -102,5 +105,22 @@ public class BranchOfficeDTO
 	{
 		this._employees.remove(e);
 		e.setBranchOffice(this);
+	}
+	
+	public List<ProfessionalDTO> getProfessionals() 
+	{
+		return _professionals;
+	}
+	
+	public void addProfessional(ProfessionalDTO p)
+	{
+		this._professionals.add(p);
+		p.setBranchOffice(this);
+	}
+
+	public void removeProfessional(ProfessionalDTO p)
+	{
+		this._professionals.remove(p);
+		p.setBranchOffice(this);
 	}
 }
