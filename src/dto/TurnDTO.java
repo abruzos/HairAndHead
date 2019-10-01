@@ -21,10 +21,13 @@ public class TurnDTO
 	private ServiceDTO _service;
 
 	@ManyToOne
-	private CustomerDTO _customer;
+	private CustomerDTO _customerTurn;
 	
 	@ManyToOne
 	private ProfessionalDTO _professionalt;
+	
+	@ManyToOne
+	private PaymentDTO _turnsPayment;
 	
 	public TurnDTO (LocalDateTime reservationDay, LocalDateTime serviceDay, String state)
 	{
@@ -57,12 +60,17 @@ public class TurnDTO
 	
 	public CustomerDTO getCustomer()
 	{
-		return _customer;
+		return _customerTurn;
 	}
 	
 	public ProfessionalDTO getProfessional()
 	{
 		return _professionalt;
+	}
+	
+	public PaymentDTO getTurnsPayment(PaymentDTO turnsPayment)
+	{
+		return _turnsPayment;
 	}
 	
 	public void setReservationDay(LocalDateTime reservationDay) 
@@ -85,13 +93,18 @@ public class TurnDTO
 		_service = service;
 	}
 	
-	public void setCustomer(CustomerDTO customer) 
+	public void setCustomerTurn(CustomerDTO customer) 
 	{
-		_customer = customer;
+		_customerTurn = customer;
 	}
 
 	public void setProfessional(ProfessionalDTO professional) 
 	{
 		_professionalt = professional;
+	}
+	
+	public void setTurnsPayment(PaymentDTO turnsPayment)
+	{
+		_turnsPayment = turnsPayment;
 	}
 }

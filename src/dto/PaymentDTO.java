@@ -1,11 +1,17 @@
 package dto;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class PaymentDTO 
@@ -16,19 +22,19 @@ public class PaymentDTO
 	private String _state;
 	private LocalDateTime _dateTimePay;
 	
-	// @OneToOne
-	private CustomerDTO _client; // tiene lista de turnos para el pago.
+	@ManyToOne
+	private CustomerDTO _customerPayment;
 	
-	// @ManyToMany
-	private PromotionDTO _promotion;
+	@OneToMany (mappedBy = "_turnsPayment", cascade = CascadeType.ALL,orphanRemoval = true)
+	private List<TurnDTO> _turns = new ArrayList<>();
 
-	
-	public PaymentDTO(String state, LocalDateTime dateTimePay, CustomerDTO client, PromotionDTO promotion) 
+	@ManyToMany
+	private List<PromotionDTO> _promotions = new ArrayList<>();
+
+	public PaymentDTO(String state, LocalDateTime dateTimePay) 
 	{
 		_state = state;
 		_dateTimePay = dateTimePay;
-		_client = client;
-		_promotion = promotion;
 	}
 
 	public PaymentDTO(){}
@@ -42,15 +48,10 @@ public class PaymentDTO
 	{
 		return _dateTimePay;
 	}
-
-	public CustomerDTO getClient() 
+		
+	public CustomerDTO getCustomerPayment() 
 	{
-		return _client;
-	}
-	
-	public PromotionDTO getPromotion() 
-	{
-		return _promotion;
+		return _customerPayment;
 	}
 
 	public void setState(String state) 
@@ -63,14 +64,8 @@ public class PaymentDTO
 		_dateTimePay = dateTimePay;
 	}
 	
-	public void setClient(CustomerDTO client) 
+	public void setCustomerPayment(CustomerDTO customerPayment) 
 	{
-		_client = client;
+		_customerPayment = customerPayment;
 	}
-	
-	public void setPromotion(PromotionDTO promotion) 
-	{
-		_promotion = promotion;
-	}
-
 }
