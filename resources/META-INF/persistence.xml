@@ -15,8 +15,18 @@
         </description>
 
       
-        <class>org.hibernate.tutorial.em.Cliente</class>        
-        <class>org.hibernate.tutorial.em.Direccion</class>
+        <class>dto.EmployeeDTO</class>        
+        <class>dto.WorkdayDTO</class>
+		<class>dto.BranchOfficeDTO</class>        
+        <class>dto.CustomerDTO</class>
+        <class>dto.DebtDTO</class>
+		<class>dto.BagDTO</class>
+		<class>dto.TurnDTO</class>
+        <class>dto.ProfessionalDTO</class>
+        <class>dto.PaymentDTO</class>
+        <class>dto.PromotionDTO</class>
+		<class>dto.ServiceDTO</class>
+
         
 
         <properties>
