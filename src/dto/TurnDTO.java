@@ -3,6 +3,7 @@ package dto;
 import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -11,7 +12,7 @@ import javax.persistence.OneToOne;
 public class TurnDTO 
 {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int _id;
 	private LocalDateTime _reservationDay;
 	private LocalDateTime _serviceDay;

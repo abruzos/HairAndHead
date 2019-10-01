@@ -2,10 +2,16 @@ package dto;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
 public class PaymentDTO 
 {
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int _id;
 	private String _state;
 	private LocalDateTime _dateTimePay;

@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
@@ -11,14 +12,11 @@ import javax.persistence.OneToOne;
 public class BagDTO 
 {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int _id;
 	private int _points;
 	private LocalDate _expiration;
-	
-//	@OneToOne
-//	private Customer _customer;
-	
+		
 	public BagDTO(int points, LocalDate expiration) 
 	{
 		_points = points;
