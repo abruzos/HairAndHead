@@ -24,7 +24,7 @@ public class Professional
 	}
 	
 	//Lista de profesionales que realizan el servicio seleccionado ----> DESPLEGABLE PROFESIONALES.
-	public List<ProfessionalDTO> professionalsWithSelectService(ServiceDTO selectedService) throws Exception
+	public List<ProfessionalDTO> professionalsWithSelectedService(ServiceDTO selectedService) throws Exception
 	{
 		List<ProfessionalDTO> professionals_with_selected_service = new ArrayList<>();
 		List<ProfessionalDTO> professionals = obtainProfessionals();
@@ -42,8 +42,8 @@ public class Professional
 	//Lista de dias de trabajo del profesional seleccionado ----> CALENDARIO.
 	public List<String> daysOfSelectedProfessional(ProfessionalDTO selectedProffesional) 
 	{
-		List<WorkdayDTO> workdays_of_selected_proffesional = selectedProffesional.getWorkdays();
 		List<String> days_of_selected_proffesional = new ArrayList<>();
+		List<WorkdayDTO> workdays_of_selected_proffesional = selectedProffesional.getWorkdays();
 			
 		for(int i = 0; i<workdays_of_selected_proffesional.size(); i++)
 		{
@@ -55,8 +55,8 @@ public class Professional
 	//Lista de los horarios de entrada del profesional seleccionado ----> DESPLEGABLE HORARIOS.
 	public List<String> entryTimesOfSelectedProfessional(ProfessionalDTO selectedProffesional) 
 	{
-		List<WorkdayDTO> workdays_of_selected_proffesional = selectedProffesional.getWorkdays();
 		List<String> entry_times_of_selected_proffesional = new ArrayList<>();
+		List<WorkdayDTO> workdays_of_selected_proffesional = selectedProffesional.getWorkdays();
 			
 		for(int i = 0; i<workdays_of_selected_proffesional.size(); i++)
 		{
@@ -68,8 +68,8 @@ public class Professional
 	//Lista de los horarios de salida del profesional seleccionado ----> DESPLEGABLE HORARIOS.
 	public List<String> departureTimesOfSelectedProfessional(ProfessionalDTO selectedProffesional) 
 	{
-		List<WorkdayDTO> workdays_of_selected_proffesional = selectedProffesional.getWorkdays();
 		List<String> departure_times_of_selected_proffesional = new ArrayList<>();
+		List<WorkdayDTO> workdays_of_selected_proffesional = selectedProffesional.getWorkdays();
 			
 		for(int i = 0; i<workdays_of_selected_proffesional.size(); i++)
 		{
