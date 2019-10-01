@@ -51,4 +51,30 @@ public class Employee
 		}
 		return days_of_selected_proffesional;
 	}
+	
+	//Lista de los horarios de entrada del profesional seleccionado ----> DESPLEGABLE HORARIOS.
+	public List<String> entryTimesOfSelectedProfessional(EmployeeDTO selectedProffesional) 
+	{
+		List<WorkdayDTO> workdays_of_selected_proffesional = selectedProffesional.getWorkdays();
+		List<String> entry_times_of_selected_proffesional = new ArrayList<>();
+			
+		for(int i = 0; i<workdays_of_selected_proffesional.size(); i++)
+		{
+			entry_times_of_selected_proffesional.add(workdays_of_selected_proffesional.get(i).getSince());
+		}
+		return entry_times_of_selected_proffesional;
+	}
+		
+	//Lista de los horarios de salida del profesional seleccionado ----> DESPLEGABLE HORARIOS.
+	public List<String> departureTimesOfSelectedProfessional(EmployeeDTO selectedProffesional) 
+	{
+		List<WorkdayDTO> workdays_of_selected_proffesional = selectedProffesional.getWorkdays();
+		List<String> departure_times_of_selected_proffesional = new ArrayList<>();
+			
+		for(int i = 0; i<workdays_of_selected_proffesional.size(); i++)
+		{
+			departure_times_of_selected_proffesional.add(workdays_of_selected_proffesional.get(i).getUntil());
+		}
+		return departure_times_of_selected_proffesional;
+	}
 }
