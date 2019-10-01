@@ -6,7 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 @Entity
 public class TurnDTO 
@@ -18,11 +17,14 @@ public class TurnDTO
 	private LocalDateTime _serviceDay;
 	private String _state;
 	
-	@OneToOne
+	@ManyToOne
 	private ServiceDTO _service;
 
 	@ManyToOne
 	private CustomerDTO _customer;
+	
+	@ManyToOne
+	private ProfessionalDTO _professionalt;
 	
 	public TurnDTO (LocalDateTime reservationDay, LocalDateTime serviceDay, String state)
 	{
@@ -30,6 +32,8 @@ public class TurnDTO
 		_serviceDay = serviceDay;
 		_state = state;
 	}
+	
+	public TurnDTO() {}
 
 	public LocalDateTime getReservationDay() 
 	{
@@ -40,15 +44,25 @@ public class TurnDTO
 	{
 		return _serviceDay;
 	}
+		
+	public String getState()
+	{
+		return _state;
+	}
 	
 	public ServiceDTO getService() 
 	{
 		return _service;
 	}
 	
-	public String getState()
+	public CustomerDTO getCustomer()
 	{
-		return _state;
+		return _customer;
+	}
+	
+	public ProfessionalDTO getProfessional()
+	{
+		return _professionalt;
 	}
 	
 	public void setReservationDay(LocalDateTime reservationDay) 
@@ -61,13 +75,23 @@ public class TurnDTO
 		_serviceDay = serviceDay;
 	}
 
+	public void setState(String state) 
+	{
+		_state = state;
+	}
+	
 	public void setService(ServiceDTO service)
 	{
 		_service = service;
 	}
-
-	public void setState(String state) 
+	
+	public void setCustomer(CustomerDTO customer) 
 	{
-		_state = state;
+		_customer = customer;
+	}
+
+	public void setProfessional(ProfessionalDTO professional) 
+	{
+		_professionalt = professional;
 	}
 }
