@@ -1,4 +1,4 @@
-package TestModelo;
+package testModelo;
 
 public class TestTurn {
 
