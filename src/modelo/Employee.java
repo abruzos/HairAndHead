@@ -23,21 +23,21 @@ public class Employee
 		return _employee.all();
 	}
 	
-	//Lista de profesionales que realizan el servicio seleccionado ----> DESPLEGABLE PROFESIONALES.
-	public List<EmployeeDTO> professionalsWithSelectService(ServiceDTO selectedService) throws Exception
-	{
-		List<EmployeeDTO> professionals_with_selected_service = new ArrayList<>();
-		List<EmployeeDTO> employees = obtainEmployees();
-			
-		for(int i = 0; i<employees.size(); i++)
-		{
-			if(employees.get(i).getServices().contains(selectedService)) 
-		{
-				professionals_with_selected_service.add(employees.get(i));
-		}
-		}
-		return professionals_with_selected_service;
-	}
+//	//Lista de profesionales que realizan el servicio seleccionado ----> DESPLEGABLE PROFESIONALES.
+//	public List<EmployeeDTO> professionalsWithSelectService(ServiceDTO selectedService) throws Exception
+//	{
+//		List<EmployeeDTO> professionals_with_selected_service = new ArrayList<>();
+//		List<EmployeeDTO> employees = obtainEmployees();
+//			
+//		for(int i = 0; i<employees.size(); i++)
+//		{
+//			if(employees.get(i).getServices().contains(selectedService)) 
+//		{
+//				professionals_with_selected_service.add(employees.get(i));
+//		}
+//		}
+//		return professionals_with_selected_service;
+//	}
 	
 	//Lista de dias del profesional seleccionado ----> CALENDARIO.
 	public List<String> daysOfSelectedProfessional(EmployeeDTO selectedProffesional) 
