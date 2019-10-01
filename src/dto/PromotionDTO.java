@@ -21,8 +21,8 @@ public class PromotionDTO
 	private String _state;
 	private boolean _accumulate;
 	private int _porcentageDiscount;
-	private List<String> _days;
-	private List<String> _paymentMethods;
+//	private List<String> _days;
+//	private List<String> _paymentMethods;
 	private String _description;
 	
 	@ManyToMany
@@ -37,8 +37,8 @@ public class PromotionDTO
 		_state = state;
 		_accumulate = accumulate;
 		_porcentageDiscount = porcentageDiscount;
-		_days = days;
-		_paymentMethods = paymentMethods;
+//		_days = days;
+//		_paymentMethods = paymentMethods;
 		_description = description;
 	}
 
@@ -69,15 +69,15 @@ public class PromotionDTO
 		return _porcentageDiscount;
 	}
 	
-	public List<String> getDays() 
-	{
-		return _days;
-	}
-	
-	public List<String> getPaymentMethods() 
-	{
-		return _paymentMethods;
-	}
+//	public List<String> getDays() 
+//	{
+//		return _days;
+//	}
+//	
+//	public List<String> getPaymentMethods() 
+//	{
+//		return _paymentMethods;
+//	}
 	
 	public String geDescription() 
 	{
@@ -104,15 +104,15 @@ public class PromotionDTO
 		_porcentageDiscount = porcentageDiscount;
 	}
 
-	public void setDays(List<String> days)
-	{
-		_days = days;
-	}
-
-	public void setPaymentMethods(List<String> paymentMethods) 
-	{
-		_paymentMethods = paymentMethods;
-	}
+//	public void setDays(List<String> days)
+//	{
+//		_days = days;
+//	}
+//
+//	public void setPaymentMethods(List<String> paymentMethods) 
+//	{
+//		_paymentMethods = paymentMethods;
+//	}
 
 	public void setDescription(String description)
 	{
