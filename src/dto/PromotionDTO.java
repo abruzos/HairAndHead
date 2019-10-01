@@ -1,12 +1,14 @@
 package dto;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class PromotionDTO 
@@ -16,24 +18,28 @@ public class PromotionDTO
 	private int _id;
 	private LocalDateTime _dateStart;
 	private LocalDateTime _dateFinish;
+	private String _state;
 	private boolean _accumulate;
-	private int _discount;
+	private int _porcentageDiscount;
 	private List<String> _days;
 	private List<String> _paymentMethods;
+	private String _description;
 	
-	// @ManyToMany
-	private PaymentDTO _payment;
+	@ManyToMany
+	private List<PaymentDTO> _payments = new ArrayList<>();
 
 	
-	public PromotionDTO(LocalDateTime dateStart,LocalDateTime dateFinish,boolean accumulate,int discount, List<String> days,List<String> paymentMethods,PaymentDTO payment) 
+	public PromotionDTO(LocalDateTime dateStart,LocalDateTime dateFinish, String state, boolean accumulate,int porcentageDiscount,
+						List<String> days,List<String> paymentMethods, String description) 
 	{
 		_dateStart = dateStart;
 		_dateFinish = dateFinish;
+		_state = state;
 		_accumulate = accumulate;
-		_discount = discount;
+		_porcentageDiscount = porcentageDiscount;
 		_days = days;
 		_paymentMethods = paymentMethods;
-		_payment = payment;
+		_description = description;
 	}
 
 	public PromotionDTO(){}
@@ -48,14 +54,19 @@ public class PromotionDTO
 		return _dateFinish;
 	}
 	
+	public String getState() 
+	{
+		return _state;
+	}
+	
 	public boolean isAccumulate() 
 	{
 		return _accumulate;
 	}
 	
-	public int getDiscount() 
+	public int getPorcentageDiscount() 
 	{
-		return _discount;
+		return _porcentageDiscount;
 	}
 	
 	public List<String> getDays() 
@@ -68,12 +79,11 @@ public class PromotionDTO
 		return _paymentMethods;
 	}
 	
-	public PaymentDTO getPayment() 
+	public String geDescription() 
 	{
-		return _payment;
+		return _description;
 	}
-	
-	
+
 	public void setDateStart(LocalDateTime dateStart)
 	{
 		_dateStart = dateStart;
@@ -89,9 +99,9 @@ public class PromotionDTO
 		_accumulate = accumulate;
 	}
 
-	public void setDiscount(int discount) 
+	public void setDiscount(int porcentageDiscount) 
 	{
-		_discount = discount;
+		_porcentageDiscount = porcentageDiscount;
 	}
 
 	public void setDays(List<String> days)
@@ -104,9 +114,13 @@ public class PromotionDTO
 		_paymentMethods = paymentMethods;
 	}
 
-	public void setPayment(PaymentDTO payment) 
+	public void setDescription(String description)
 	{
-		_payment = payment;
+		_description = description;
 	}
 
+	public void setState(String state) 
+	{
+		_state = state;
+	}
 }
