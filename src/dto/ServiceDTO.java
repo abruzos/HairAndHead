@@ -1,11 +1,14 @@
 package dto;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class ServiceDTO 
@@ -17,18 +20,17 @@ public class ServiceDTO
 	private int _duration;
 	private int _cost;
 	
-	@ManyToOne
-	private EmployeeDTO _employee;
-	
-	@OneToOne
-	private ServiceDTO _service;
+	@OneToMany (mappedBy = "_service", cascade = CascadeType.ALL,orphanRemoval = true)
+	private List<TurnDTO> _turns = new ArrayList<>();
+
+	@ManyToMany
+	private List<ProfessionalDTO> _professionals = new ArrayList<>();
 	
 	public ServiceDTO(String name, int duration, int cost)
 	{
 		_name = name;
 		_duration = duration;
 		_cost = cost;
-//		_employee = employee;
 	}
 
 	public String getName()
@@ -44,11 +46,6 @@ public class ServiceDTO
 	public int getCost() 
 	{
 		return _cost;
-	}
-	
-	public EmployeeDTO getEmployee() 
-	{
-		return _employee;
 	}
 
 	public void setName(String name)
@@ -66,8 +63,37 @@ public class ServiceDTO
 		_cost = cost;
 	}
 
-	public void setEmployee(EmployeeDTO employee) 
+	public List<TurnDTO> getTurns() 
 	{
-		_employee = employee;
-	}	
+		return _turns;
+	}
+	
+	public void addTurn(TurnDTO t)
+	{
+		this._turns.add(t);
+		t.setService(this);
+	}
+
+	public void removeTurn(TurnDTO t)
+	{
+		this._turns.remove(t);
+		t.setService(this);
+	}
+
+	public List<ProfessionalDTO> getProfessionals() 
+	{
+		return _professionals;
+	}
+	
+//	public void addProfessional(ProfessionalDTO p)
+//	{
+//		this._professionals.add(p);
+//		p.setService(this);
+//	}
+//
+//	public void removeProfessional(ProfessionalDTO p)
+//	{
+//		this._professionals.remove(p);
+//		p.setService(this);
+//	}
 }
