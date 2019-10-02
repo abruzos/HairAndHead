@@ -15,9 +15,9 @@ public class Service
 	}
 	
 	//Creacion de un servicio.
-	public void createService(ServiceDTO newService) throws Exception 
+	public void createService(ServiceDTO new_service) throws Exception 
 	{
-		_service.create(newService);
+		_service.create(new_service);
 	}
 	
 	//Eliminacion de un servicio.
@@ -30,6 +30,12 @@ public class Service
 	public void updateService(ServiceDTO service_to_update) throws Exception 
 	{
 		_service.update(service_to_update);
+	}
+	
+	//Retorno de un servicio por ID
+	public void getServiceID(long service_id) throws Exception 
+	{
+		_service.byId(service_id);
 	}
 	
 	//Lista de todos los servicios ----> DESPLEGABLE SERVICIOS.

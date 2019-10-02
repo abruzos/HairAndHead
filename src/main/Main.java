@@ -16,7 +16,6 @@ import persistencia.dao.implementacion.WorkdayJPA;
 
 public class Main 
 {
-
 	public static void main(String[] args) 
 	{
 		BranchOfficeDTO b1 = new BranchOfficeDTO("Breikin", "Mitre 123", "San miguel", "Bs As", "Argentina");
@@ -47,8 +46,6 @@ public class Main
 		pDAO.create(pay);
 		proDAO.create(promotion);
 		
-		bDAO.close();	
-		
-	}
-	
+		bDAO.close();			
+	}	
 }
