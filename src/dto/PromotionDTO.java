@@ -29,17 +29,17 @@ public class PromotionDTO
 	private List<PaymentDTO> _payments = new ArrayList<>();
 
 	
-	public PromotionDTO(LocalDateTime dateStart,LocalDateTime dateFinish, String state, boolean accumulate,int porcentageDiscount,
-						List<String> days,List<String> paymentMethods, String description) 
+	public PromotionDTO(LocalDateTime dateStart,LocalDateTime dateFinish, 
+						String state, boolean accumulate,int porcentageDiscount,String description) 
 	{
 		_dateStart = dateStart;
 		_dateFinish = dateFinish;
 		_state = state;
 		_accumulate = accumulate;
 		_porcentageDiscount = porcentageDiscount;
+		_description = description;
 //		_days = days;
 //		_paymentMethods = paymentMethods;
-		_description = description;
 	}
 
 	public PromotionDTO(){}
