@@ -1,11 +1,15 @@
 package main;
 
+import java.time.LocalDateTime;
+
 import dto.BranchOfficeDTO;
 import dto.EmployeeDTO;
+import dto.PaymentDTO;
 import dto.ServiceDTO;
 import dto.WorkdayDTO;
 import persistencia.dao.implementacion.BranchOfficeJPA;
 import persistencia.dao.implementacion.EmployeeJPA;
+import persistencia.dao.implementacion.PaymentJPA;
 import persistencia.dao.implementacion.ServiceJPA;
 import persistencia.dao.implementacion.WorkdayJPA;
 
@@ -27,11 +31,16 @@ public class Main
 									"alta", "lmartin", "123456s");
 		EmployeeJPA eDAO = new EmployeeJPA();
 		
+		PaymentDTO pay = new PaymentDTO("Efectivo",LocalDateTime.now());
+		PaymentJPA pDAO = new PaymentJPA();
+		
 		bDAO.create(b1);
 		bDAO.update(b1);	
 		dDAO.create(d1);
 		sDAO.create(s1);
 		eDAO.create(e1);
+		pDAO.create(pay);
+		
 		bDAO.close();	
 		
 	}
