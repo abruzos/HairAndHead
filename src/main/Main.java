@@ -1,15 +1,16 @@
 package main;
 
 import java.time.LocalDateTime;
-
 import dto.BranchOfficeDTO;
 import dto.EmployeeDTO;
 import dto.PaymentDTO;
+import dto.PromotionDTO;
 import dto.ServiceDTO;
 import dto.WorkdayDTO;
 import persistencia.dao.implementacion.BranchOfficeJPA;
 import persistencia.dao.implementacion.EmployeeJPA;
 import persistencia.dao.implementacion.PaymentJPA;
+import persistencia.dao.implementacion.PromotionJPA;
 import persistencia.dao.implementacion.ServiceJPA;
 import persistencia.dao.implementacion.WorkdayJPA;
 
@@ -34,12 +35,17 @@ public class Main
 		PaymentDTO pay = new PaymentDTO("Efectivo",LocalDateTime.now());
 		PaymentJPA pDAO = new PaymentJPA();
 		
+		PromotionDTO promotion = new PromotionDTO(LocalDateTime.now(), LocalDateTime.of(2019, 12, 10, 12, 30), 
+												"Vigente", true, 20, "Solo valida los dias Martes");
+		PromotionJPA proDAO = new PromotionJPA();
+		
 		bDAO.create(b1);
 		bDAO.update(b1);	
 		dDAO.create(d1);
 		sDAO.create(s1);
 		eDAO.create(e1);
 		pDAO.create(pay);
+		proDAO.create(promotion);
 		
 		bDAO.close();	
 		

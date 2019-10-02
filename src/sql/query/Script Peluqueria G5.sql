@@ -5,4 +5,5 @@ select * from employeedto;
 select * from workdaydto;
 select * from branchofficedto;
 select * from paymentdto;
+select * from promotiondto;
 
