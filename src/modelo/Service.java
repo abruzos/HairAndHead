@@ -32,7 +32,7 @@ public class Service
 		_service.update(service_to_update);
 	}
 	
-	//Retorno de un servicio por ID
+	//Retorno de un servicio por ID.
 	public void getServiceID(long service_id) throws Exception 
 	{
 		_service.byId(service_id);
