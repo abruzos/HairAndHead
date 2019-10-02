@@ -1,5 +1,6 @@
 package testModelo;
 
-public class TestProfessional {
+public class TestProfessional 
+{
 
 }
