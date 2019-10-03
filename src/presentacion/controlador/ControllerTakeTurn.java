@@ -13,9 +13,9 @@ import modelo.Service;
 import modelo.Turn;
 import modelo.Workday;
 
-public class ControllerTakeTurn implements ActionListener // VERSION SIN VENTANAS
+public class ControllerTakeTurn implements ActionListener // VERSION SIN VENTANAS.
 {	
-	private turnWindow _view;                 // FALTA CREAR turnWindow
+	private turnWindow _view;                 // FALTA CREAR turnWindow.
 	private Professional _professional_model;
 	private Service _service_model;
 	private Workday _workday_model;
@@ -46,11 +46,11 @@ public class ControllerTakeTurn implements ActionListener // VERSION SIN VENTANA
 	
 	private void createListeners() 
 	{
-		this.view.getBtnTakeTurn().addActionListener(this); // FALTA CREAR BtnTakeTurn
+		this.view.getBtnTakeTurn().addActionListener(this); // FALTA CREAR BtnTakeTurn.
 	}
 	
 	//Se rellena el desplegable con los servicios.
-	public void fillServices(turnWindow window) throws Exception
+	public void fillServices(turnWindow window) throws Exception // SE ACCIONA EN LA VENTANA PRINCIPAL.
 	{
 		_services = _service_model.obtainServices();
 		for (ServiceDTO service : _services) 
@@ -60,7 +60,7 @@ public class ControllerTakeTurn implements ActionListener // VERSION SIN VENTANA
 	}
 	
 	//Se rellena el desplegable con los profesionales que realizan el servicio seleccionado.
-	public void fillProfessionals(turnWindow window, ServiceDTO selected_service) throws Exception
+	public void fillProfessionals(turnWindow window, ServiceDTO selected_service) throws Exception // FALTA DEFINIR COMO SE ACCIONA.
 	{
 		_professionals_with_selected_service = _professional_model.professionalsWithSelectedService(selected_service);
 		for (ProfessionalDTO professional : _professionals_with_selected_service) 
@@ -69,12 +69,12 @@ public class ControllerTakeTurn implements ActionListener // VERSION SIN VENTANA
 		}	
 	}
 	
-	public void fillDays() // FALTA CALENDARIO
+	public void fillDays() // FALTA CALENDARIO.
 	{
 		
 	}
 	
-	public void fillSchedules() 
+	public void fillSchedules(turnWindow window, WorkdayDTO selected_day) throws Exception  // FALTA DEFINIR FUNCIONAMIENTO.
 	{
 		
 	}
