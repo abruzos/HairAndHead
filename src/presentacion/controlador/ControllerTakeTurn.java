@@ -15,7 +15,7 @@ import modelo.Workday;
 
 public class ControllerTakeTurn implements ActionListener // VERSION SIN VENTANAS
 {	
-	private turnWindow _view;
+	private turnWindow _view;                 // FALTA CREAR turnWindow
 	private Professional _professional_model;
 	private Service _service_model;
 	private Workday _workday_model;
@@ -25,7 +25,7 @@ public class ControllerTakeTurn implements ActionListener // VERSION SIN VENTANA
 	private List<WorkdayDTO> _workdays_of_selected_proffesional;
 	private LocalDateTime _service_day;
 	
-	public ControllerTakeTurn(turnWindow view, Professional professional, Service service, Workday workday, Turn turn) // FALTA CREAR turnWindow
+	public ControllerTakeTurn(turnWindow view, Professional professional, Service service, Workday workday, Turn turn)
 	{	
 		_view = view;
 		
@@ -46,11 +46,11 @@ public class ControllerTakeTurn implements ActionListener // VERSION SIN VENTANA
 	
 	private void createListeners() 
 	{
-		this.view.getBtnTakeTurn().addActionListener(this);
+		this.view.getBtnTakeTurn().addActionListener(this); // FALTA CREAR BtnTakeTurn
 	}
 	
 	//Se rellena el desplegable con los servicios.
-	public void fillServices(turnWindow window) throws Exception // FALTA turnWindow
+	public void fillServices(turnWindow window) throws Exception
 	{
 		_services = _service_model.obtainServices();
 		for (ServiceDTO service : _services) 
@@ -60,7 +60,7 @@ public class ControllerTakeTurn implements ActionListener // VERSION SIN VENTANA
 	}
 	
 	//Se rellena el desplegable con los profesionales que realizan el servicio seleccionado.
-	public void fillProfessionals(turnWindow window, ServiceDTO selected_service) throws Exception // FALTA turnWindow
+	public void fillProfessionals(turnWindow window, ServiceDTO selected_service) throws Exception
 	{
 		_professionals_with_selected_service = _professional_model.professionalsWithSelectedService(selected_service);
 		for (ProfessionalDTO professional : _professionals_with_selected_service) 
@@ -81,7 +81,7 @@ public class ControllerTakeTurn implements ActionListener // VERSION SIN VENTANA
 
 	public void actionPerformed(ActionEvent e) 
 	{		
-		if(e.getSource() == this.view.getBtnTakeTurn() || _service_day.getHour() != 0) // FALTA BtnTakeTurn
+		if(e.getSource() == this.view.getBtnTakeTurn() || _service_day.getHour() != 0)
 		{
 			_turnl_model.creationOfTurn(_service_day);
 		}
