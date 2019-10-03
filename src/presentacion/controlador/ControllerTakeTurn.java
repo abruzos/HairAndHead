@@ -4,10 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 import java.util.List;
-
 import javax.swing.JOptionPane;
-
-import dto.LocalidadDTO;
 import dto.ProfessionalDTO;
 import dto.ServiceDTO;
 import dto.WorkdayDTO;
@@ -15,7 +12,6 @@ import modelo.Professional;
 import modelo.Service;
 import modelo.Turn;
 import modelo.Workday;
-import presentacion.vista.VentanaAgregar;
 
 public class ControllerTakeTurn implements ActionListener // VERSION SIN VENTANAS
 {	
@@ -54,7 +50,7 @@ public class ControllerTakeTurn implements ActionListener // VERSION SIN VENTANA
 	}
 	
 	//Se rellena el desplegable con los servicios.
-	public void fillServices(turnWindow window) throws Exception // FALTA CREAR turnWindow
+	public void fillServices(turnWindow window) throws Exception // FALTA turnWindow
 	{
 		_services = _service_model.obtainServices();
 		for (ServiceDTO service : _services) 
@@ -64,7 +60,7 @@ public class ControllerTakeTurn implements ActionListener // VERSION SIN VENTANA
 	}
 	
 	//Se rellena el desplegable con los profesionales que realizan el servicio seleccionado.
-	public void fillProfessionals(turnWindow window, ServiceDTO selected_service) throws Exception // FALTA CREAR turnWindow
+	public void fillProfessionals(turnWindow window, ServiceDTO selected_service) throws Exception // FALTA turnWindow
 	{
 		_professionals_with_selected_service = _professional_model.professionalsWithSelectedService(selected_service);
 		for (ProfessionalDTO professional : _professionals_with_selected_service) 
@@ -73,7 +69,7 @@ public class ControllerTakeTurn implements ActionListener // VERSION SIN VENTANA
 		}	
 	}
 	
-	public void fillDays() 
+	public void fillDays() // FALTA CALENDARIO
 	{
 		
 	}
@@ -85,7 +81,7 @@ public class ControllerTakeTurn implements ActionListener // VERSION SIN VENTANA
 
 	public void actionPerformed(ActionEvent e) 
 	{		
-		if(e.getSource() == this.view.getBtnTakeTurn() || _service_day.getHour() != 0) 
+		if(e.getSource() == this.view.getBtnTakeTurn() || _service_day.getHour() != 0) // FALTA BtnTakeTurn
 		{
 			_turnl_model.creationOfTurn(_service_day);
 		}
