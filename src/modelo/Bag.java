@@ -59,7 +59,7 @@ public class Bag
 		}
 	}
 
-	// Convertidor de puntos en pesos Argentinos $
+	// Convertidor de puntos en pesos Argentinos $ (usa todos los puntos)
 	public int convetPointsMoney(CustomerDTO customerBag)
 	{
 		/** RELACION --->  1 PUNTO = 2 PESOS */ // Prodria ser otra intancia de Bag
@@ -80,4 +80,22 @@ public class Bag
 		return true;
 	}
 	
+	// Actualiza Fecha de expiracion de puntos por pago.
+	/** SE EXTIENDE A 6 MESES MAS DESDE EL ULTIMO PAGO*/
+	public void updateExpirationDate (CustomerDTO customerBag)
+	{
+		int monthsExpiration = 6;
+		LocalDate currentDate = LocalDate.now();
+		customerBag.getBag().setExpiration(currentDate.plusMonths(monthsExpiration));
+	}
+	
+	// Actualiza puntos de cartera (recibe los puntos usados)
+	public void updateOfPoints (CustomerDTO customerBag, int usedPoints)
+	{
+		if(customerBag.getBag().getPoints() >= usedPoints)
+		{
+			int points = customerBag.getBag().getPoints() - usedPoints;
+			customerBag.getBag().setPoints(points);
+		}
+	}
 }
