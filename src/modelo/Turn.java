@@ -45,8 +45,8 @@ public class Turn
 		return _turn.all();
 	}
 	
-	//Creacion de un nuevo turno en base a los datos proporcionados.
-	public void creationOfTurn(LocalDateTime reservation_day, LocalDateTime service_day) throws Exception 
+	//Creacion de un nuevo turno en base a la hora del servicio.
+	public void creationOfTurn(LocalDateTime service_day) throws Exception 
 	{
 		TurnDTO new_turn = new TurnDTO(LocalDateTime.now(), service_day, "Vigente");
 		createTurn(new_turn);
