@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.9.0.final using JasperReports Library version 6.9.0-cb8f9004be492ccc537180b49c026951f4220bf3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReservationReceipt" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0056606d-451b-42af-90d9-493c7b222069">
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="service" class="dto.ServiceDTO">
+		<fieldDescription><![CDATA[service]]></fieldDescription>
+	</field>
+	<field name="serviceDay" class="java.time.LocalDate">
+		<fieldDescription><![CDATA[serviceDay]]></fieldDescription>
+	</field>
+	<field name="state" class="java.lang.String">
+		<fieldDescription><![CDATA[state]]></fieldDescription>
+	</field>
+	<field name="reservationDay" class="java.time.LocalDate">
+		<fieldDescription><![CDATA[reservationDay]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="100" splitType="Stretch">
+			<staticText>
+				<reportElement x="154" y="20" width="253" height="34" uuid="45e9309c-7b17-490b-9122-0e8430d7a116"/>
+				<textElement textAlignment="Center">
+					<font size="26"/>
+				</textElement>
+				<text><![CDATA[Hair&Head]]></text>
+			</staticText>
+			<image>
+				<reportElement x="60" y="10" width="70" height="60" uuid="ee7c6df3-ef20-491d-aa9c-34165f7f17bf"/>
+				<imageExpression><![CDATA["kisspng-comb-scissors-hairdresser-clip-art-comb-5ac117f92c0a38.4335972615226040251804.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="44" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="9" width="200" height="26" uuid="37a5d5f6-4271-4224-a2ed-d747949993a0"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Recibo de reserva de turno]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="123" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="10" width="180" height="20" uuid="ee232f1d-1bfd-43dd-940f-870f3b80c773"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Fecha de reserva de turno:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="40" width="180" height="20" uuid="45a23a41-faa9-47c4-8391-31185b019ae4"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Fecha de ejecucion del turno:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="70" width="180" height="20" uuid="930d7299-6984-4d8d-9f7d-c7eb7ede6978"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Servicio brindado:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="340" y="10" width="204" height="20" uuid="9e4ef500-29c8-45a4-9fbe-39063b63b0c0"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{reservationDay}.toString()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="340" y="40" width="204" height="20" uuid="d85cb6ab-7c84-4dee-bcf5-6f6b99c4a3ee"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{serviceDay}.toString()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="340" y="70" width="204" height="20" uuid="da0684dd-b645-4720-b01e-281e7cbc2fc8"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{service}.getName()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="0" width="560" height="1" uuid="c643c342-7238-458e-8989-6b7863effb94"/>
+			</line>
+			<line>
+				<reportElement x="0" y="100" width="560" height="1" uuid="ecd75c1f-3133-40c4-9a94-21e00a58bbff"/>
+			</line>
+			<line>
+				<reportElement x="559" y="1" width="1" height="100" uuid="23eff17d-e3e2-405c-9087-4b82f38f5c8a"/>
+			</line>
+			<line>
+				<reportElement x="0" y="1" width="1" height="99" uuid="c21b7c7e-3d39-46ff-acc9-d6e15d845fd0"/>
+			</line>
+		</band>
+	</detail>
+	<summary>
+		<band height="63" splitType="Stretch">
+			<textField>
+				<reportElement x="470" y="13" width="74" height="16" uuid="8b0ccfa5-12f4-48b8-955c-a7aabafbc5a6"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{service}.getCost()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="13" width="180" height="16" uuid="d690dd76-316d-4e23-afbe-421ae7221ca5"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Total:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="450" y="13" width="20" height="16" uuid="5430fbe9-4401-4d7e-95e3-049d2696f946"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
