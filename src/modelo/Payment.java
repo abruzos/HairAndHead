@@ -56,6 +56,6 @@ public class Payment
 	{
 		
 		return 0;
-	}	
+	}
 	
 }
