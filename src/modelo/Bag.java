@@ -68,6 +68,17 @@ public class Bag
 		return moneyForPoints;
 	}
 	
+	// Convertidor de puntos en pesos Argentinos $ (usa los puntos solicitados)
+	public int convetPointsMoney(CustomerDTO customerBag, int usedPoint)
+	{
+		int costPoint = 2;
+		if(customerBag.getBag().getPoints() >= usedPoint)
+		{
+			return costPoint * usedPoint;
+		}
+		return 0;
+	}
+	
 	// Devuelve TRUE si los puntos expiraron.
 	/** DURACION TOTAL DE LOS PUNTOS = 6 MESES DESPUES DEL ULTIMO PAGO */
 	public boolean espiredPoints (CustomerDTO customerBag)
