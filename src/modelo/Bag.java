@@ -1,5 +1,6 @@
 package modelo;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import dto.BagDTO;
@@ -65,6 +66,18 @@ public class Bag
 		int costPoint = 2; 
 		int moneyForPoints = costPoint * customerBag.getBag().getPoints();
 		return moneyForPoints;
+	}
+	
+	// Devuelve TRUE si los puntos expiraron.
+	/** DURACION TOTAL DE LOS PUNTOS = 6 MESES DESPUES DEL ULTIMO PAGO */
+	public boolean espiredPoints (CustomerDTO customerBag)
+	{
+		if(customerBag.getBag().getExpiration().isBefore(LocalDate.now()) || 
+				customerBag.getBag().getExpiration().equals(LocalDate.now()))
+		{
+			return false;
+		}
+		return true;
 	}
 	
 }
