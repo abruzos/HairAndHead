@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -14,25 +15,27 @@ import javax.persistence.OneToOne;
 public class CustomerDTO extends PersonDTO
 {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int _id;
 	private String _state;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private DebtDTO _debt;
-	@OneToOne
+	
+	@OneToOne(cascade = CascadeType.ALL)
 	private BagDTO _bag;
 
-	@OneToMany (mappedBy = "_customer", cascade = CascadeType.ALL,orphanRemoval = true)
+	@OneToMany (mappedBy = "_customerTurn", cascade = CascadeType.ALL,orphanRemoval = true)
 	private List<TurnDTO> _turns = new ArrayList<>();
 
+	@OneToMany (mappedBy = "_customerPayment", cascade = CascadeType.ALL,orphanRemoval = true)
+	private List<PaymentDTO> _payments = new ArrayList<>();
 	
 	public CustomerDTO(String name, String surname, String age, String mail, String numberPhone,
-					String state, DebtDTO debt, BagDTO bag)
+					String state)
 	{
 		super(name, surname, age, mail, numberPhone);
 		_state = state;
-		_debt = debt;
 	}
 	
 	public CustomerDTO() {}
@@ -65,5 +68,39 @@ public class CustomerDTO extends PersonDTO
 	public void setDebt(DebtDTO debt) 
 	{
 		_debt = debt;
+	}
+	
+	public List<TurnDTO> getTurns() 
+	{
+		return _turns;
+	}
+	
+	public void addTurn(TurnDTO t)
+	{
+		this._turns.add(t);
+		t.setCustomerTurn(this);
+	}
+
+	public void removeTurn(TurnDTO t)
+	{
+		this._turns.remove(t);
+		t.setCustomerTurn(this);
+	}
+	
+	public List<PaymentDTO> getPayments() 
+	{
+		return _payments;
+	}
+	
+	public void addPayment(PaymentDTO p)
+	{
+		this._payments.add(p);
+		p.setCustomerPayment(this);
+	}
+
+	public void removePayment(PaymentDTO p)
+	{
+		this._payments.remove(p);
+		p.setCustomerPayment(this);
 	}
 }

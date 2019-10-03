@@ -5,16 +5,16 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 @Entity
 public class EmployeeDTO extends PersonDTO
 {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int _id;
 	private String _type;
 	private String _state;
@@ -26,10 +26,6 @@ public class EmployeeDTO extends PersonDTO
 	
 	@OneToMany (mappedBy = "_employee", cascade = CascadeType.ALL,orphanRemoval = true)
 	private List<WorkdayDTO> _workdays = new ArrayList<>();
-	
-	@OneToMany (mappedBy = "_employee", cascade = CascadeType.ALL,orphanRemoval = true)
-	private List<ServiceDTO> _services = new ArrayList<>();
-	
 		
 	public EmployeeDTO(String name, String surname, String age, String mail, String numberPhone,
 					String type, String state, String user, String password) 
@@ -42,11 +38,6 @@ public class EmployeeDTO extends PersonDTO
 	}
 	
 	public EmployeeDTO() {}
-
-	public BranchOfficeDTO getBranchOffice() 
-	{
-		return _branchOffice;
-	}
 
 	public String getType() 
 	{
@@ -68,11 +59,11 @@ public class EmployeeDTO extends PersonDTO
 		return _password;
 	}
 	
-	public void setBranchOffice(BranchOfficeDTO branchOffice) 
+	public BranchOfficeDTO getBranchOffice() 
 	{
-		_branchOffice = branchOffice;
+		return _branchOffice;
 	}
-
+	
 	public void setType(String type) 
 	{
 		_type = type;
@@ -91,8 +82,13 @@ public class EmployeeDTO extends PersonDTO
 	public void setPassword(String password)
 	{
 		_password = password;
-	}	
+	}
 	
+	public void setBranchOffice(BranchOfficeDTO branchOffice) 
+	{
+		_branchOffice = branchOffice;
+	}
+
 	public List<WorkdayDTO> getWorkdays()
 	{
 		return _workdays;
@@ -108,22 +104,5 @@ public class EmployeeDTO extends PersonDTO
 	{
 		this._workdays.remove(d);
 		d.setEmploye(this);
-	}
-	
-	public List<ServiceDTO> getServices()
-	{
-		return _services;
-	}
-	
-	public void addService(ServiceDTO s) 
-	{
-		this._services.add(s);
-		s.setEmployee(this);
-	}
-	
-	public void removeService(ServiceDTO s) 
-	{
-		this._services.remove(s);
-		s.setEmployee(this);
 	}
 }

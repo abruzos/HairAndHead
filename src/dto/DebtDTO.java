@@ -1,29 +1,27 @@
 package dto;
 
 import java.time.LocalDate;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 
 @Entity
 public class DebtDTO 
 {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int _id;
 	private int _cost;
 	private LocalDate _expiration;
 
-//	@OneToOne
-//	private Customer _customer;
-	
 	public DebtDTO(int cost, LocalDate expiration) 
 	{	
 		_cost = cost;
 		_expiration = expiration;
 	}
+	
+	public DebtDTO() {}
 
 	public int getCost() 
 	{

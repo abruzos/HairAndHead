@@ -2,15 +2,15 @@ package dto;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 @Entity
 public class WorkdayDTO 
 {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int _id;
 	private String _day;
 	private String _since;
@@ -18,6 +18,9 @@ public class WorkdayDTO
 	
 	@ManyToOne
 	private EmployeeDTO _employee;
+	
+	@ManyToOne
+	private ProfessionalDTO _professional;
 	
 	public WorkdayDTO(String day, String since, String until) 
 	{
@@ -63,8 +66,18 @@ public class WorkdayDTO
 		return _employee;
 	}
 	
+	public ProfessionalDTO getProfessional()
+	{
+		return _professional;
+	}
+	
 	public void setEmploye(EmployeeDTO e)
 	{
-		this._employee = e;
+		_employee = e;
+	}
+	
+	public void setProfessional(ProfessionalDTO professional)
+	{
+		_professional = professional;
 	}
 }

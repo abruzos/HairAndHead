@@ -1,5 +1,6 @@
 package modelo;
 
-public class Customer {
-
+public class Customer 
+{
+	
 }
