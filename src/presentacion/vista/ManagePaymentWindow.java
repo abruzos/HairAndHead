@@ -29,4 +29,10 @@ public class ManagePaymentWindow
 		return null; // btnSelecPayment
 	}
 	
+	// BOTON QUE SELECCIONA EL REPORTE (retorna el nombre de la instancia).
+	public JButton getBtnReport() 
+	{
+		return null; // btnReport
+	}
+	
 }
