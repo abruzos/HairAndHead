@@ -21,9 +21,14 @@
 		    <artifactId>jasperreports</artifactId>
 		    <version>6.0.0</version>
 		</dependency>
-   
 
-    </dependencies>
+
+		<dependency>
+			<groupId>com.calendarfx</groupId>
+			<artifactId>view</artifactId>
+			<version>8.5.0</version>
+		</dependency>
+  </dependencies>
   
   
   
