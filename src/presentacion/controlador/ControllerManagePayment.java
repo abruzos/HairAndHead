@@ -2,10 +2,8 @@ package presentacion.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JOptionPane;
-
-import modelo.Customer;
+import dto.CustomerDTO;
 import presentacion.vista.ManagePaymentWindow;
 import presentacion.vista.PaymentCashWindow;
 import presentacion.vista.PaymentDebtWindow;
@@ -15,16 +13,33 @@ import presentacion.vista.PaymentPointsWindow;
 public class ControllerManagePayment implements ActionListener{
 	
 	private ManagePaymentWindow _viewManagePay;
-	@SuppressWarnings("unused")
-	private Customer _customer;
+	private CustomerDTO _customer;
 	
-	public ControllerManagePayment(ManagePaymentWindow view, Customer customer)
+	public ControllerManagePayment(ManagePaymentWindow view, CustomerDTO customer)
 	{
 		_viewManagePay = view;
-		_customer = customer;
-		loadCBMwayToPay();
+		_customer = customer;		
+		loadInformationClient();
+		loadInformationService();
+		loadCBMwayToPay();	
 		_viewManagePay.selectPayment().addActionListener(select -> choosePaymentWindow(select));
 		_viewManagePay.getBtnReport().addActionListener(report -> showReport(report));
+	}
+
+	private void loadInformationClient() {
+		_viewManagePay.getTextName().setText(_customer.getName());
+		_viewManagePay.getTextSurname().setText(_customer.getSurname());
+		_viewManagePay.getTextAge().setText(_customer.getAge());
+		_viewManagePay.getTextMail().setText(_customer.getMail());
+		_viewManagePay.getTextNumberPhone().setText(_customer.getNumberPhone());
+		_viewManagePay.getTextState().setText(_customer.getState());
+	}
+	
+	private void loadInformationService() {
+		_viewManagePay.getTextServiceCost().setText("funcion CostService");
+		_viewManagePay.getTextAcculatePoints().setText("funcion Accumulated points");
+		_viewManagePay.getTextPesosValue().setText("funcion Accumulated points");
+		_viewManagePay.getTextCurrentDebt().setText("funcion current debt");
 	}
 
 	// Carga el comboBox con las formas de pago.
