@@ -19,19 +19,27 @@ public class ControllerManagePayment implements ActionListener{
 	{
 		_viewManagePay = view;
 		_customer = customer;		
-		loadInformation();
+		loadInformationClient();
+		loadInformationService();
 		loadCBMwayToPay();	
 		_viewManagePay.selectPayment().addActionListener(select -> choosePaymentWindow(select));
 		_viewManagePay.getBtnReport().addActionListener(report -> showReport(report));
 	}
 
-	private void loadInformation() {
+	private void loadInformationClient() {
 		_viewManagePay.getTextName().setText(_customer.getName());
 		_viewManagePay.getTextSurname().setText(_customer.getSurname());
 		_viewManagePay.getTextAge().setText(_customer.getAge());
 		_viewManagePay.getTextMail().setText(_customer.getMail());
 		_viewManagePay.getTextNumberPhone().setText(_customer.getNumberPhone());
 		_viewManagePay.getTextState().setText(_customer.getState());
+	}
+	
+	private void loadInformationService() {
+		_viewManagePay.getTextServiceCost().setText("funcion CostService");
+		_viewManagePay.getTextAcculatePoints().setText("funcion Accumulated points");
+		_viewManagePay.getTextPesosValue().setText("funcion Accumulated points");
+		_viewManagePay.getTextCurrentDebt().setText("funcion current debt");
 	}
 
 	// Carga el comboBox con las formas de pago.

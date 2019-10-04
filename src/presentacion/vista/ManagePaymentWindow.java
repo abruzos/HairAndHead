@@ -69,4 +69,24 @@ public class ManagePaymentWindow
 		return null; // textState 
 	}
 	
+	public JTextField getTextServiceCost()
+	{
+		return null; // textServiceCost
+	}
+
+	public JTextField getTextAcculatePoints()
+	{
+		return null; // textAcculatePoints 
+	}
+
+	public JTextField getTextPesosValue()
+	{
+		return null; // textPesosValue
+	}
+	
+	public JTextField getTextCurrentDebt()
+	{
+		return null; // textCurrentDebt 
+	}
+	
 }
