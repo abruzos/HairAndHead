@@ -2,10 +2,8 @@ package presentacion.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JOptionPane;
-
-import modelo.Customer;
+import dto.CustomerDTO;
 import presentacion.vista.ManagePaymentWindow;
 import presentacion.vista.PaymentCashWindow;
 import presentacion.vista.PaymentDebtWindow;
@@ -15,16 +13,25 @@ import presentacion.vista.PaymentPointsWindow;
 public class ControllerManagePayment implements ActionListener{
 	
 	private ManagePaymentWindow _viewManagePay;
-	@SuppressWarnings("unused")
-	private Customer _customer;
+	private CustomerDTO _customer;
 	
-	public ControllerManagePayment(ManagePaymentWindow view, Customer customer)
+	public ControllerManagePayment(ManagePaymentWindow view, CustomerDTO customer)
 	{
 		_viewManagePay = view;
-		_customer = customer;
-		loadCBMwayToPay();
+		_customer = customer;		
+		loadInformation();
+		loadCBMwayToPay();	
 		_viewManagePay.selectPayment().addActionListener(select -> choosePaymentWindow(select));
 		_viewManagePay.getBtnReport().addActionListener(report -> showReport(report));
+	}
+
+	private void loadInformation() {
+		_viewManagePay.getTextName().setText(_customer.getName());
+		_viewManagePay.getTextSurname().setText(_customer.getSurname());
+		_viewManagePay.getTextAge().setText(_customer.getAge());
+		_viewManagePay.getTextMail().setText(_customer.getMail());
+		_viewManagePay.getTextNumberPhone().setText(_customer.getNumberPhone());
+		_viewManagePay.getTextState().setText(_customer.getState());
 	}
 
 	// Carga el comboBox con las formas de pago.
