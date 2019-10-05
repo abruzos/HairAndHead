@@ -33,7 +33,7 @@ public class Service
 	}
 	
 	//Retorno de un servicio por ID.
-	public void getServiceID(long service_id) throws Exception 
+	public void getServiceID(int service_id) throws Exception 
 	{
 		_service.byId(service_id);
 	}

@@ -31,7 +31,7 @@ public class Promotion
 	}
 	
 	//Retorno de un pago por ID
-		public void getPromotionID(long PromotionID) throws Exception 
+		public void getPromotionID(int PromotionID) throws Exception 
 		{
 			_promotion.byId(PromotionID);
 		}

@@ -8,4 +8,6 @@ select * from turndto;
 select * from professionaldto;
 select * from paymentdto;
 select * from promotiondto;
+select * from customerdto;
+
 

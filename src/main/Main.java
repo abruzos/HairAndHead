@@ -1,7 +1,10 @@
 package main;
 
 import java.time.LocalDateTime;
+
+import modelo.Customer;
 import dto.BranchOfficeDTO;
+import dto.CustomerDTO;
 import dto.EmployeeDTO;
 import dto.PaymentDTO;
 import dto.ProfessionalDTO;
@@ -44,9 +47,15 @@ public class Main
 		PaymentDTO pay = new PaymentDTO("Efectivo", LocalDateTime.now());
 		PaymentJPA pDAO = new PaymentJPA();
 		
+		PaymentDTO pay2 = new PaymentDTO("Efectivo", LocalDateTime.now());
+		PaymentJPA pDAO2 = new PaymentJPA();
+		
 		PromotionDTO promotion = new PromotionDTO(LocalDateTime.now(), LocalDateTime.of(2019, 12, 10, 12, 30), 
 												"Vigente", true, 20, "Solo valida los dias Martes");
 		PromotionJPA proDAO = new PromotionJPA();
+		
+		CustomerDTO client = new CustomerDTO("Jon","Snow","25 años","gameOfThrones@mail.com","1301215","Vip");
+		Customer.getCustomerDAO().create(client);
 		
 		bDAO.create(b1);
 		bDAO.update(b1);	
@@ -56,8 +65,12 @@ public class Main
 		professional_DAO.create(professional);
 		turn_DAO.create(turn);
 		pDAO.create(pay);
+		pDAO2.create(pay2);
 		proDAO.create(promotion);
 		
-		bDAO.close();			
+		bDAO.close();
+		
+		int A = 1;
+		System.out.println(Customer.getCustomerDAO().byId(A).getState());
 	}	
 }
