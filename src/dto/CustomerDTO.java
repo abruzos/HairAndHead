@@ -39,6 +39,11 @@ public class CustomerDTO extends PersonDTO
 	}
 	
 	public CustomerDTO() {}
+	
+	public int getID()
+	{
+		return _id;
+	}
 
 	public BagDTO getBag()
 	{

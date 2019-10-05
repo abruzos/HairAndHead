@@ -44,9 +44,14 @@ public class Main
 		PaymentDTO pay = new PaymentDTO("Efectivo", LocalDateTime.now());
 		PaymentJPA pDAO = new PaymentJPA();
 		
+		PaymentDTO pay2 = new PaymentDTO("Efectivo", LocalDateTime.now());
+		PaymentJPA pDAO2 = new PaymentJPA();
+		
 		PromotionDTO promotion = new PromotionDTO(LocalDateTime.now(), LocalDateTime.of(2019, 12, 10, 12, 30), 
 												"Vigente", true, 20, "Solo valida los dias Martes");
 		PromotionJPA proDAO = new PromotionJPA();
+		
+		
 		
 		bDAO.create(b1);
 		bDAO.update(b1);	
@@ -56,6 +61,7 @@ public class Main
 		professional_DAO.create(professional);
 		turn_DAO.create(turn);
 		pDAO.create(pay);
+		pDAO2.create(pay2);
 		proDAO.create(promotion);
 		
 		bDAO.close();			
