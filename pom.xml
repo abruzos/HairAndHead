@@ -8,12 +8,6 @@
         <!-- Everyone needs a logger, this is my preference -->
         
         <!-- Unit testing is mandatory -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
         
         <!-- Jasperreports -->
 		<dependency>
@@ -21,12 +15,33 @@
 		    <artifactId>jasperreports</artifactId>
 		    <version>6.0.0</version>
 		</dependency>
-   
 
-    </dependencies>
-  
-  
-  
+	    <dependency>
+	      <groupId>junit</groupId>
+	      <artifactId>junit</artifactId>
+	      <version>3.8.1</version>
+	      <scope>test</scope>
+	    </dependency>
+	<!--hibernate-core-->
+		<dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-core</artifactId>
+		    <version>5.2.10.Final</version>
+		</dependency>
+	<!--mysql-connector-java-->
+	<dependency>
+	    <groupId>mysql</groupId>
+	    <artifactId>mysql-connector-java</artifactId>
+	    <version>5.1.43</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+	<dependency>
+	    <groupId>org.apache.poi</groupId>
+	    <artifactId>poi</artifactId>
+	    <version>3.9</version>
+	</dependency>
+   
+</dependencies>
   
   <build>
     <sourceDirectory>src</sourceDirectory>
