@@ -1,4 +1,4 @@
-package presentacion.controlador;
+/*package presentacion.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -92,4 +92,4 @@ public class ControllerTakeTurn implements ActionListener // VERSION SIN VENTANA
 		             "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
-}
+}*/
