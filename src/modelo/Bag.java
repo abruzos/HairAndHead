@@ -35,7 +35,7 @@ public class Bag
 	}
 	
 	//Retorno de una cartera por ID
-	public void getPaymentID(long bagID) throws Exception 
+	public void getPaymentID(int bagID) throws Exception 
 	{
 		_bag.byId(bagID);
 	}

@@ -32,7 +32,7 @@ public class Customer
 		_customer.update(CustomerUpdate);
 	}
 	
-	public CustomerDTO getCustomerID(long CustomerId) 
+	public CustomerDTO getCustomerID(int CustomerId) 
 	{
 		return _customer.byId(CustomerId);
 	}
@@ -42,6 +42,8 @@ public class Customer
 		return _customer.all();
 	}
 	
-	
+	public static void algo(){
+		
+	}
 }
 

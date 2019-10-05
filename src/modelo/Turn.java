@@ -34,7 +34,7 @@ public class Turn
 	}
 	
 	//Retorno de un turno por ID.
-	public void getTurnID(long turn_id) throws Exception 
+	public void getTurnID(int turn_id) throws Exception 
 	{
 		_turn.byId(turn_id);
 	}

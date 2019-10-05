@@ -35,7 +35,7 @@ public class Professional
 	}
 	
 	//Retorno de un profesional por ID.
-	public void getProfessionalID(long professional_id) throws Exception 
+	public void getProfessionalID(int professional_id) throws Exception 
 	{
 		_professional.byId(professional_id);
 	}
