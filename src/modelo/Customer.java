@@ -3,6 +3,7 @@ package modelo;
 import java.util.List;
 
 import dto.CustomerDTO;
+import dto.TurnDTO;
 import persistencia.dao.implementacion.CustomerJPA;
 import persistencia.dao.interfaz.CustomerDAO;
 
@@ -42,8 +43,40 @@ public class Customer
 		return _customer.all();
 	}
 	
-	public static void algo(){
-		
+	// RETORNA LA LISTA DE TURNOS DE UN CLIENTE.
+	public static List<TurnDTO> getListTurns(CustomerDTO client)
+	{
+		return client.getTurns();
 	}
+	
+	// RETORNA CLIENTE POR MAIL (Login).
+	public static CustomerDTO getClientLogin(String mail)
+	{
+		if(validateMail(mail))
+		{
+			for (CustomerDTO client : Customer.getCustomerDAO().all())
+			{
+				if(client.getMail().equals(mail))
+				{
+					return client;
+				}
+			}
+		}
+		return null;
+	}
+	
+	// VALIDA SI EL MAIL ESTA EN LA BDD.
+	public static boolean validateMail(String mail)
+	{
+		for (CustomerDTO client : Customer.getCustomerDAO().all())
+		{
+			if(client.getMail().equals(mail))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	
 }
 
