@@ -1,8 +1,10 @@
 package main;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import modelo.Customer;
+import dto.BagDTO;
 import dto.BranchOfficeDTO;
 import dto.CustomerDTO;
 import dto.EmployeeDTO;
@@ -12,6 +14,7 @@ import dto.PromotionDTO;
 import dto.ServiceDTO;
 import dto.TurnDTO;
 import dto.WorkdayDTO;
+import persistencia.dao.implementacion.BagJPA;
 import persistencia.dao.implementacion.BranchOfficeJPA;
 import persistencia.dao.implementacion.EmployeeJPA;
 import persistencia.dao.implementacion.PaymentJPA;
@@ -59,6 +62,9 @@ public class Main
 		CustomerDTO client2 = new CustomerDTO("Diego","Maradona","60 años","mundial86@mail.com","10101010","Moroso");
 		Customer.getCustomerDAO().create(client2);
 		
+		BagDTO bag = new BagDTO(40,LocalDate.of(2019, 10, 13));
+		BagJPA bagDAO = new BagJPA();
+		
 		bDAO.create(b1);
 		bDAO.update(b1);	
 		dDAO.create(d1);
@@ -69,10 +75,12 @@ public class Main
 		pDAO.create(pay);
 		pDAO2.create(pay2);
 		proDAO.create(promotion);
+		bagDAO.create(bag);
+		client.setBag(bag);
 				
 		System.out.println(Customer.getCustomerDAO().byId(1).getMail());
 		System.out.println(Customer.getCustomerDAO().byId(2).getName());
-		System.out.println("Existe el mail mundial86@mail.com en BDD = "+Customer.validateMail("mundial86@mail.com"));
+		System.out.println("Existe el mail mundial86@mail.com en BDD = "+Customer.foundMail("mundial86@mail.com"));
 		
 		bDAO.close();
 	}	

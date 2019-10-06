@@ -1,7 +1,7 @@
 package modelo;
 
 import java.util.List;
-
+import javax.swing.JOptionPane;
 import dto.CustomerDTO;
 import dto.TurnDTO;
 import persistencia.dao.implementacion.CustomerJPA;
@@ -17,7 +17,6 @@ public class Customer
 		return new CustomerJPA();
 	}
 	
-	//Creacion de un Cliente.
 	public void createCustomer(CustomerDTO newCustomer) throws Exception 
 	{
 		_customer.create(newCustomer);
@@ -43,6 +42,35 @@ public class Customer
 		return _customer.all();
 	}
 	
+	
+	/******************METODOS ESTATICOS *************/
+	
+	// DEVUELVE EL COSTO DE SERVICIO EN BASE A LISTA DE TURNOS DEL CLIENTE.
+	public static String CostService(CustomerDTO client)
+	{
+		int cost = 0;
+		for (TurnDTO turn : getListTurns(client))
+		{
+			/** FalTa ValidaR FecHa DE TuRnos */
+			cost = cost + turn.getService().getCost();
+		}
+		return Integer.toString(cost);
+	}
+	
+	// RETORNA LOS PUNTOS TOTALES DE UN CLIENTE.
+	public static String AccumulatedPoints(CustomerDTO client)
+	{
+		int points = client.getBag().getPoints();
+		return Integer.toString(points);
+	}
+				
+	// RETORNA LA DEUDA ACTUAL DE UN CLIENTE.
+	public static String CurrentDebt(CustomerDTO client)
+	{
+		int debt = client.getDebt().getCost();
+		return Integer.toString(debt);
+	}
+	
 	// RETORNA LA LISTA DE TURNOS DE UN CLIENTE.
 	public static List<TurnDTO> getListTurns(CustomerDTO client)
 	{
@@ -50,9 +78,9 @@ public class Customer
 	}
 	
 	// RETORNA CLIENTE POR MAIL (Login).
-	public static CustomerDTO getClientLogin(String mail)
+	public static CustomerDTO getClientForMail(String mail)
 	{
-		if(validateMail(mail))
+		if(foundMail(mail))
 		{
 			for (CustomerDTO client : Customer.getCustomerDAO().all())
 			{
@@ -62,11 +90,12 @@ public class Customer
 				}
 			}
 		}
+		JOptionPane.showMessageDialog(null, "ERROR! El usuario no esta registrado.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
 		return null;
 	}
 	
-	// VALIDA SI EL MAIL ESTA EN LA BDD.
-	public static boolean validateMail(String mail)
+	// VALIDA SI EL MAIL ESTA EN LA BDD. (eliminar static Cambiar a private
+	public static boolean foundMail(String mail)
 	{
 		for (CustomerDTO client : Customer.getCustomerDAO().all())
 		{
@@ -77,6 +106,6 @@ public class Customer
 		}
 		return false;
 	}
-	
+
 }
 
