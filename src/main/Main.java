@@ -2,7 +2,6 @@ package main;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-
 import modelo.Customer;
 import dto.BagDTO;
 import dto.BranchOfficeDTO;
@@ -57,9 +56,9 @@ public class Main
 												"Vigente", true, 20, "Solo valida los dias Martes");
 		PromotionJPA proDAO = new PromotionJPA();
 		
-		CustomerDTO client = new CustomerDTO("Jon","Snow","25 años","gameOfThrones@mail.com","1301215","Vip");
+		CustomerDTO client = new CustomerDTO("Jon","Snow","25 aï¿½os","gameOfThrones@mail.com","1301215","Vip");
 		Customer.getCustomerDAO().create(client);
-		CustomerDTO client2 = new CustomerDTO("Diego","Maradona","60 años","mundial86@mail.com","10101010","Moroso");
+		CustomerDTO client2 = new CustomerDTO("Diego","Maradona","60 aï¿½os","mundial86@mail.com","10101010","Moroso");
 		Customer.getCustomerDAO().create(client2);
 		
 		BagDTO bag = new BagDTO(40,LocalDate.of(2019, 10, 13));

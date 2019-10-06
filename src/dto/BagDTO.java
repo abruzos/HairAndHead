@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 
 @Entity
 public class BagDTO 
@@ -22,7 +21,10 @@ public class BagDTO
 		_expiration = expiration;
 	}
 
-	public int getPoints() {
+	public BagDTO(){}
+	
+	public int getPoints()
+	{
 		return _points;
 	}
 	
