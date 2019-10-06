@@ -3,18 +3,19 @@ package dto;
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
+
 @MappedSuperclass
 public class PersonDTO 
 {
-	@Column
+	@Column(nullable = false)
 	private String _name;
-	@Column
+	@Column(nullable = false)
 	private String _surname;
-	@Column
+	@Column(nullable = false)
 	private String _age;
-	@Column
+	@Column(nullable = false)
 	private String _mail;
-	@Column
+	@Column(nullable = false)
 	private String _numberPhone;
 	
 	public PersonDTO(String name, String surname, String age,String mail, String numberPhone) 
