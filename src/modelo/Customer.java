@@ -106,6 +106,10 @@ public class Customer
 		}
 		return false;
 	}
-
+	
+	//Agrega un turno a un cliente.
+	public void addTurnCustomer(CustomerDTO customer, TurnDTO new_turn) throws Exception
+	{
+		customer.addTurn(new_turn);
+	}
 }
-

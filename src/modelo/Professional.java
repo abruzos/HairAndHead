@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import dto.ProfessionalDTO;
 import dto.ServiceDTO;
+import dto.TurnDTO;
 import persistencia.dao.implementacion.ProfessionalJPA;
 import persistencia.dao.interfaz.ProfessionalDAO;
 
@@ -60,5 +61,11 @@ public class Professional
 		}
 		}
 		return professionals_with_selected_service;
+	}
+	
+	//Agrega un turno a un profesional.
+	public void addTurnProfessional(ProfessionalDTO professional, TurnDTO new_turn) throws Exception
+	{
+		professional.addTurn(new_turn);
 	}
 }
