@@ -1,4 +1,4 @@
-/*package presentacion.controlador;
+package presentacion.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,10 +13,11 @@ import modelo.Professional;
 import modelo.Service;
 import modelo.Turn;
 import modelo.Workday;
+import presentacion.vista.TakeTurnWindow;
 
 public class ControllerTakeTurn implements ActionListener // VERSION SIN VENTANAS.
 {	
-	private turnWindow _view;                 // FALTA CREAR turnWindow.
+	private TakeTurnWindow _view;                
 	private Professional _professional_model;
 	private Service _service_model;
 	private Workday _workday_model;
@@ -26,7 +27,7 @@ public class ControllerTakeTurn implements ActionListener // VERSION SIN VENTANA
 	private List<WorkdayDTO> _workdays_of_selected_proffesional;
 	private LocalDateTime _service_day;
 	
-	public ControllerTakeTurn(turnWindow view, Professional professional, Service service, Workday workday, Turn turn)
+	public ControllerTakeTurn(TakeTurnWindow view, Professional professional, Service service, Workday workday, Turn turn)
 	{	
 		_view = view;
 		
@@ -51,7 +52,7 @@ public class ControllerTakeTurn implements ActionListener // VERSION SIN VENTANA
 	}
 	
 	//Se rellena el desplegable con los servicios.
-	public void fillServices(turnWindow window) throws Exception
+	public void fillServices(TakeTurnWindow window) throws Exception
 	{
 		_services = _service_model.obtainServices();
 		for (ServiceDTO service : _services) 
@@ -61,7 +62,7 @@ public class ControllerTakeTurn implements ActionListener // VERSION SIN VENTANA
 	}
 	
 	//Se rellena el desplegable con los profesionales que realizan el servicio seleccionado.
-	public void fillProfessionals(turnWindow window, ServiceDTO selected_service) throws Exception
+	public void fillProfessionals(TakeTurnWindow window, ServiceDTO selected_service) throws Exception
 	{
 		_professionals_with_selected_service = _professional_model.professionalsWithSelectedService(selected_service);
 		for (ProfessionalDTO professional : _professionals_with_selected_service) 
@@ -70,7 +71,7 @@ public class ControllerTakeTurn implements ActionListener // VERSION SIN VENTANA
 		}	
 	}
 	
-	public void showDays(ProfessionalDTO selected_professional) // FALTA QUITAR DUPLICADOS
+	public void showDays(ProfessionalDTO selected_professional) throws Exception // FALTA QUITAR DUPLICADOS // USAR SET
 	{
 		_workdays_of_selected_proffesional = _workday_model.workdaysOfSelectedProfessional(selected_professional);
 		String message =  selected_professional.getName().toString() + "trabaja los dias:";
@@ -83,7 +84,7 @@ public class ControllerTakeTurn implements ActionListener // VERSION SIN VENTANA
 	             "Dias", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
-	public void fillSchedules(turnWindow window, WorkdayDTO selected_day) throws Exception  // FALTA DEFINIR FUNCIONAMIENTO.
+	public void fillSchedules(TakeTurnWindow window, WorkdayDTO selected_day) throws Exception  // FALTA DEFINIR FUNCIONAMIENTO.
 	{
 		
 	}
@@ -101,4 +102,4 @@ public class ControllerTakeTurn implements ActionListener // VERSION SIN VENTANA
 		             "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
-}*/
+}
