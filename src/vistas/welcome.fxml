@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="470.0" prefWidth="452.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentacion.controlador.ControllerWelcome">
+   <children>
+      <Pane layoutX="8.0" layoutY="7.0" prefHeight="463.0" prefWidth="443.0">
+         <children>
+            <Button fx:id="comprobante" layoutX="43.0" layoutY="141.0" mnemonicParsing="false" onAction="#viewComprobante" text="Comprobante" />
+            <Label layoutX="163.0" layoutY="56.0" text="Bienvenido" />
+            <Label layoutX="43.0" layoutY="117.0" text="Generar Comprobante" />
+            <Label layoutX="43.0" layoutY="180.0" text="Generar Pago" />
+            <Label layoutX="49.0" layoutY="255.0" text="Generar Turno" />
+            <Button fx:id="pago" layoutX="43.0" layoutY="207.0" mnemonicParsing="false" onAction="#viewPayment" text="Pagar" />
+            <Button fx:id="turno" layoutX="43.0" layoutY="280.0" mnemonicParsing="false" onAction="#viewTurn" text="Turno" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

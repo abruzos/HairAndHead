@@ -21,7 +21,7 @@ public class Calendario2 extends Application {
 
             CalendarView calendarView = new CalendarView();
             DayPage daypage = new DayPage();
-            /*
+      
                 Calendar birthdays = new Calendar("Birthdays");
 
                 birthdays.setStyle(Style.STYLE1);
@@ -34,7 +34,7 @@ public class Calendario2 extends Application {
                 calendarView.setShowToolBar(false);
                 calendarView.setShowSourceTrayButton(true);
 
-*/
+
 
                 CalendarSource myCalendarSource = new CalendarSource("My Calendars");
                 myCalendarSource.getCalendars().addAll(birthdays);
