@@ -19,7 +19,6 @@ public class ControllerTurn {
 		
 	}
 	
-	
 	public void turnGenerate() {
 
 	}
