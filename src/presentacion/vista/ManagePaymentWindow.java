@@ -4,7 +4,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
-// VENTANA DE DESTION DE PAGO.
+// VENTANA DE GESTION DE PAGO.
 public class ManagePaymentWindow
 {
 
@@ -26,13 +26,13 @@ public class ManagePaymentWindow
 		return null;
 	}
 	
-	// BOTON QUE SELECCIONA EL PAGO (retorna el nombre de la instancia).
+	// BOTON QUE SELECCIONA EL PAGO
 	public JButton selectPayment()
 	{
 		return null; // btnSelecPayment
 	}
 	
-	// BOTON QUE SELECCIONA EL REPORTE (retorna el nombre de la instancia).
+	// BOTON QUE SELECCIONA EL REPORTE 
 	public JButton getBtnReport() 
 	{
 		return null; // btnReport

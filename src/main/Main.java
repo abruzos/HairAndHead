@@ -56,9 +56,9 @@ public class Main
 												"Vigente", true, 20, "Solo valida los dias Martes");
 		PromotionJPA proDAO = new PromotionJPA();
 		
-		CustomerDTO client = new CustomerDTO("Jon","Snow","25 a�os","gameOfThrones@mail.com","1301215","Vip");
+		CustomerDTO client = new CustomerDTO("Jon","Snow","25","gameOfThrones@mail.com","1301215","Vip");
 		Customer.getCustomerDAO().create(client);
-		CustomerDTO client2 = new CustomerDTO("Diego","Maradona","60 a�os","mundial86@mail.com","10101010","Moroso");
+		CustomerDTO client2 = new CustomerDTO("Diego","Maradona","60","mundial86@mail.com","10101010","Moroso");
 		Customer.getCustomerDAO().create(client2);
 		
 		BagDTO bag = new BagDTO(40,LocalDate.of(2019, 10, 13));
@@ -76,11 +76,15 @@ public class Main
 		proDAO.create(promotion);
 		bagDAO.create(bag);
 		client.setBag(bag);
+		Customer.getCustomerDAO().update(client);//realiza/actializa la persistencia.
 				
 		System.out.println(Customer.getCustomerDAO().byId(1).getMail());
 		System.out.println(Customer.getCustomerDAO().byId(2).getName());
 		System.out.println("Existe el mail mundial86@mail.com en BDD = "+Customer.foundMail("mundial86@mail.com"));
 		
 		bDAO.close();
+		
+		// Sale un carte con excepcion porque no encuentra el mail en BDD.
+		// CustomerDTO a = Customer.getClientForMail("algo");
 	}	
 }
