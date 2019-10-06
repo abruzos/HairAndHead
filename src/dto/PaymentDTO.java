@@ -46,16 +46,6 @@ public class PaymentDTO
 		return _state;
 	}
 	
-	public int get_id() 
-	{
-		return _id;
-	}
-
-	public List<TurnDTO> get_turns() 
-	{
-		return _turns;
-	}
-
 	public LocalDateTime getDateTimePay() 
 	{
 		return _dateTimePay;
@@ -80,10 +70,4 @@ public class PaymentDTO
 	{
 		_customerPayment = customerPayment;
 	}
-
-	public void set_turns(List<TurnDTO> _turns) 
-	{
-		this._turns = _turns;
-	}
-	
 }
