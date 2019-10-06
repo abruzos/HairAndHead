@@ -55,7 +55,7 @@ public class PaymentDTO
 	{
 		return _customerPayment;
 	}
-
+		
 	public void setState(String state) 
 	{
 		_state = state;
@@ -69,5 +69,22 @@ public class PaymentDTO
 	public void setCustomerPayment(CustomerDTO customerPayment) 
 	{
 		_customerPayment = customerPayment;
+	}
+	
+	public List<TurnDTO> getTurns()
+	{
+		return _turns;
+	}
+	
+	public void addTurn(TurnDTO t) 
+	{
+		this._turns.add(t);
+		t.setTurnsPayment(this);
+	}
+	
+	public void removeTurn(TurnDTO t) 
+	{
+		this._turns.remove(t);
+		t.setTurnsPayment(this);
 	}
 }
