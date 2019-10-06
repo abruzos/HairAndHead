@@ -2,7 +2,11 @@ package presentacion.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JOptionPane;
+
+import modelo.Customer;
+import modelo.Bag;
 import dto.CustomerDTO;
 import presentacion.vista.ManagePaymentWindow;
 import presentacion.vista.PaymentCashWindow;
@@ -35,11 +39,12 @@ public class ControllerManagePayment implements ActionListener{
 		_viewManagePay.getTextState().setText(_customer.getState());
 	}
 	
-	private void loadInformationService() {
-		_viewManagePay.getTextServiceCost().setText("funcion CostService");
-		_viewManagePay.getTextAcculatePoints().setText("funcion Accumulated points");
-		_viewManagePay.getTextPesosValue().setText("funcion Accumulated points");
-		_viewManagePay.getTextCurrentDebt().setText("funcion current debt");
+	private void loadInformationService()
+	{
+		_viewManagePay.getTextServiceCost().setText(Customer.CostService(_customer));
+		_viewManagePay.getTextAcculatePoints().setText(Customer.AccumulatedPoints(_customer));
+		_viewManagePay.getTextPesosValue().setText(Integer.toString(Bag.convetPointsMoney(_customer)));
+		_viewManagePay.getTextCurrentDebt().setText(Customer.CurrentDebt(_customer));
 	}
 
 	// Carga el comboBox con las formas de pago.

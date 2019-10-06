@@ -11,7 +11,7 @@ import persistencia.dao.interfaz.BagDAO;
 public class Bag 
 {
 	
-	private BagDAO _bag;
+	private static BagDAO _bag;
 	
 	public BagDAO createBagDAO() 
 	{
@@ -60,7 +60,7 @@ public class Bag
 	}
 
 	// Convertidor de puntos en pesos Argentinos $ (usa todos los puntos)
-	public int convetPointsMoney(CustomerDTO customerBag)
+	public static int convetPointsMoney(CustomerDTO customerBag)
 	{
 		/** RELACION --->  1 PUNTO = 2 PESOS */ // Prodria ser otra intancia de Bag
 		int costPoint = 2; 
