@@ -1,11 +1,20 @@
 package dto;
 
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public class PersonDTO 
 {
+	@Column
 	private String _name;
+	@Column
 	private String _surname;
+	@Column
 	private String _age;
+	@Column
 	private String _mail;
+	@Column
 	private String _numberPhone;
 	
 	public PersonDTO(String name, String surname, String age,String mail, String numberPhone) 

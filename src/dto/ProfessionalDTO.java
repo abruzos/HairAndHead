@@ -3,6 +3,7 @@ package dto;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -41,6 +42,32 @@ public class ProfessionalDTO extends PersonDTO
 	
 	public ProfessionalDTO() {}
 	
+
+	public String getName()
+	{
+		return super.getName();
+	}
+
+	public String getSurname()
+	{
+		return super.getSurname();
+	}
+
+	public String getAge()
+	{
+		return super.getAge();
+	}
+
+	public String getMail() 
+	{
+		return super.getMail();
+	}
+	
+	public String getNumberPhone()
+	{
+		return super.getNumberPhone();
+	}
+
 	public String getType() 
 	{
 		return _type;
@@ -56,6 +83,31 @@ public class ProfessionalDTO extends PersonDTO
 		return _branchOfficep;
 	}
 	
+	public void setName(String name)
+	{
+		super.setName(name);
+	}
+
+	public void setSurname(String surname)
+	{
+		super.setSurname(surname);
+	}
+
+	public void setAge(String age) 
+	{
+		super.setAge(age);
+	}
+	
+	public void setMail(String mail)
+	{
+		super.setMail(mail);
+	}
+	
+	public void setNumberPhone(String numberPhone)
+	{
+		super.set_numberPhone(numberPhone);
+	}
+
 	public void setType(String type) 
 	{
 		_type = type;

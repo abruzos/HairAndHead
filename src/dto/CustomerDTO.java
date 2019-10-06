@@ -1,10 +1,9 @@
 package dto;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,18 +12,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
-public class CustomerDTO
+public class CustomerDTO extends PersonDTO
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int _id;
-	private String _name;
-	private String _surname;
-	private String _age;
-	private String _mail;
-	private String _numberPhone;
 	private String _state;
-
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private DebtDTO _debt;
@@ -40,11 +33,7 @@ public class CustomerDTO
 	
 	public CustomerDTO(String name, String surname, String age, String mail, String numberPhone, String state)
 	{
-		_name = name;
-		_surname = surname;
-		_age = age;
-		_mail = mail;
-		_numberPhone = numberPhone;
+		super(name, surname, age, mail, numberPhone);
 		_state = state;
 	}
 	
@@ -54,32 +43,32 @@ public class CustomerDTO
 	{
 		return _id;
 	}
-	
+
 	public String getName()
 	{
-		return _name;
+		return super.getName();
 	}
 
 	public String getSurname()
 	{
-		return _surname;
+		return super.getSurname();
 	}
 
 	public String getAge()
 	{
-		return _age;
+		return super.getAge();
 	}
 
 	public String getMail() 
 	{
-		return _mail;
+		return super.getMail();
 	}
 
 	public String getNumberPhone()
 	{
-		return _numberPhone;
+		return super.getNumberPhone();
 	}
-	
+
 	public String getState() 
 	{
 		return _state;
@@ -97,27 +86,27 @@ public class CustomerDTO
 	
 	public void setName(String name)
 	{
-		_name = name;
+		super.setName(name);
 	}
 
 	public void setSurname(String surname)
 	{
-		_surname = surname;
+		super.setSurname(surname);
 	}
 
 	public void setAge(String age) 
 	{
-		_age = age;
+		super.setAge(age);
 	}
 	
 	public void setMail(String mail)
 	{
-		_mail = mail;
+		super.setMail(mail);
 	}
 	
 	public void setNumberPhone(String numberPhone)
 	{
-		_numberPhone = numberPhone;
+		super.set_numberPhone(numberPhone);
 	}
 	
 	public void setState(String state) 
