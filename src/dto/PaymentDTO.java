@@ -31,6 +31,8 @@ public class PaymentDTO
 	@ManyToMany
 	private List<PromotionDTO> _promotions = new ArrayList<>();
 
+	
+
 	public PaymentDTO(String state, LocalDateTime dateTimePay) 
 	{
 		_state = state;
@@ -43,7 +45,7 @@ public class PaymentDTO
 	{
 		return _state;
 	}
-
+	
 	public LocalDateTime getDateTimePay() 
 	{
 		return _dateTimePay;

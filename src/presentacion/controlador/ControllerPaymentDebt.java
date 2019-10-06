@@ -3,16 +3,18 @@ package presentacion.controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import dto.CustomerDTO;
 import presentacion.vista.PaymentDebtWindow;
 
 public class ControllerPaymentDebt implements ActionListener{
 	
-	@SuppressWarnings("unused")
 	private PaymentDebtWindow _view;
+	private CustomerDTO _customer;
 	
-	public ControllerPaymentDebt(PaymentDebtWindow view )
+	public ControllerPaymentDebt(PaymentDebtWindow view, CustomerDTO customer)
 	{
 		_view = view;
+		_customer = customer;
 	}
 
 	@Override

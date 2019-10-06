@@ -65,19 +65,19 @@ public class ControllerManagePayment implements ActionListener{
 		{
 			PaymentCashWindow view = new PaymentCashWindow();
 			@SuppressWarnings("unused")
-			ControllerPaymentCash controller = new ControllerPaymentCash(view);
+			ControllerPaymentCash controller = new ControllerPaymentCash(view, _customer);
 		}
 		if(_viewManagePay.getCmbSelectionPay().getSelectedItem().equals("Con Puntos"))
 		{
 			PaymentPointsWindow view = new PaymentPointsWindow();
 			@SuppressWarnings("unused")
-			ControllerPaymentPoints controller = new ControllerPaymentPoints(view);
+			ControllerPaymentPoints controller = new ControllerPaymentPoints(view, _customer);
 		}
 		if (_viewManagePay.getCmbSelectionPay().getSelectedItem().equals("Con Deuda"))
 		{
 			PaymentDebtWindow view = new PaymentDebtWindow();
 			@SuppressWarnings("unused")
-			ControllerPaymentDebt controller = new ControllerPaymentDebt(view);
+			ControllerPaymentDebt controller = new ControllerPaymentDebt(view, _customer);
 		}
 		else
 		{
