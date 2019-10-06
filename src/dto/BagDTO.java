@@ -1,7 +1,6 @@
 package dto;
 
 import java.time.LocalDate;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,7 +21,10 @@ public class BagDTO
 		_expiration = expiration;
 	}
 
-	public int getPoints() {
+	public BagDTO(){}
+	
+	public int getPoints()
+	{
 		return _points;
 	}
 	
