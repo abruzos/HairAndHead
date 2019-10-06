@@ -33,7 +33,7 @@ public class Payment
 	}
 	
 	//Retorno de un pago por ID
-		public void getPaymentID(long paymentID) throws Exception 
+		public void getPaymentID(int paymentID) throws Exception 
 		{
 			_payment.byId(paymentID);
 		}

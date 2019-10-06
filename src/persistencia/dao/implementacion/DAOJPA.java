@@ -46,7 +46,7 @@ public class DAOJPA<T> implements DAO<T>
 	}
 	
 	@Override
-	public T byId(long id)
+	public T byId(int id)
 	{
 		_entityManager.getTransaction().begin();
 		 T resultado = (T) this._entityManager.find(_entityClass, id);

@@ -34,7 +34,7 @@ public class Workday
 	}
 	
 	//Retorno de una jornada de trabajo por ID.
-	public void getWorkdayID(long workday_id) throws Exception 
+	public void getWorkdayID(int workday_id) throws Exception 
 	{
 		_workday.byId(workday_id);
 	}
