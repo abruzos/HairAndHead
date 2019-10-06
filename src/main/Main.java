@@ -22,11 +22,15 @@ import persistencia.dao.implementacion.PromotionJPA;
 import persistencia.dao.implementacion.ServiceJPA;
 import persistencia.dao.implementacion.TurnJPA;
 import persistencia.dao.implementacion.WorkdayJPA;
+import receipts.PaymentReceipt;
+import receipts.ReservationReceipt;
 
 public class Main 
 {
 	public static void main(String[] args) 
 	{
+		
+		
 		BranchOfficeDTO b1 = new BranchOfficeDTO("Breikin", "Mitre 123", "San miguel", "Bs As", "Argentina");
 		BranchOfficeJPA bDAO= new BranchOfficeJPA();
 		
