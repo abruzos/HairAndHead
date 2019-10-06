@@ -21,7 +21,7 @@ public class TurnDTO
 	private ServiceDTO _service;
 
 	@ManyToOne
-	private CustomerDTO _customerTurn;
+	private CustomerDTO _customer;
 	
 	@ManyToOne
 	private ProfessionalDTO _professionalt;
@@ -60,7 +60,7 @@ public class TurnDTO
 	
 	public CustomerDTO getCustomer()
 	{
-		return _customerTurn;
+		return _customer;
 	}
 	
 	public ProfessionalDTO getProfessional()
@@ -95,7 +95,7 @@ public class TurnDTO
 	
 	public void setCustomerTurn(CustomerDTO customer) 
 	{
-		_customerTurn = customer;
+		_customer = customer;
 	}
 
 	public void setProfessional(ProfessionalDTO professional) 

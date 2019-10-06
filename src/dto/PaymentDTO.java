@@ -31,6 +31,8 @@ public class PaymentDTO
 	@ManyToMany
 	private List<PromotionDTO> _promotions = new ArrayList<>();
 
+	
+
 	public PaymentDTO(String state, LocalDateTime dateTimePay) 
 	{
 		_state = state;
@@ -42,6 +44,16 @@ public class PaymentDTO
 	public String getState() 
 	{
 		return _state;
+	}
+	
+	public int get_id() 
+	{
+		return _id;
+	}
+
+	public List<TurnDTO> get_turns() 
+	{
+		return _turns;
 	}
 
 	public LocalDateTime getDateTimePay() 
@@ -68,4 +80,10 @@ public class PaymentDTO
 	{
 		_customerPayment = customerPayment;
 	}
+
+	public void set_turns(List<TurnDTO> _turns) 
+	{
+		this._turns = _turns;
+	}
+	
 }

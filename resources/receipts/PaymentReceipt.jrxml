@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.9.0.final using JasperReports Library version 6.9.0-cb8f9004be492ccc537180b49c026951f4220bf3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PaymentReceipt" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c75d3ac3-80f2-4478-b733-9363910faff2">
+	<subDataset name="Dataset1" uuid="5095905d-a76c-4c07-ba69-428b80437e88">
+		<parameter name="parameterMapName" class="java.util.Map"/>
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="service" class="dto.ServiceDTO"/>
+		<field name="serviceDay" class="java.time.LocalDateTime"/>
+		<variable name="CostSum" class="java.lang.Integer" calculation="Sum">
+			<variableExpression><![CDATA[$F{service}.getCost()]]></variableExpression>
+			<initialValueExpression><![CDATA[0]]></initialValueExpression>
+		</variable>
+	</subDataset>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="_turns" class="java.util.List">
+		<fieldDescription><![CDATA[_turns]]></fieldDescription>
+	</field>
+	<field name="customerPayment" class="dto.CustomerDTO">
+		<fieldDescription><![CDATA[customerPayment]]></fieldDescription>
+	</field>
+	<field name="dateTimePay" class="java.time.LocalDateTime">
+		<fieldDescription><![CDATA[dateTimePay]]></fieldDescription>
+	</field>
+	<field name="_id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[_id]]></fieldDescription>
+	</field>
+	<field name="state" class="java.lang.String">
+		<fieldDescription><![CDATA[state]]></fieldDescription>
+	</field>
+	<variable name="variableMapName" class="java.util.Map">
+		<variableExpression><![CDATA[new java.util.HashMap()]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="101" splitType="Stretch">
+			<staticText>
+				<reportElement x="100" y="10" width="253" height="34" uuid="298f4193-f0a9-4497-b178-60e6dc564add"/>
+				<textElement textAlignment="Left">
+					<font size="26"/>
+				</textElement>
+				<text><![CDATA[Hair&Head]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="44" width="253" height="40" uuid="d061e436-d6a0-44b9-afed-e7c4e59be1c9"/>
+				<text><![CDATA[Peluqueria y estética unisex
+5555-3333
+Dirección 123]]></text>
+			</staticText>
+			<image>
+				<reportElement x="10" y="10" width="90" height="80" uuid="be1ef470-ce50-4a89-bb13-1f868eec32f5"/>
+				<imageExpression><![CDATA["kisspng-comb-scissors-hairdresser-clip-art-comb-5ac117f92c0a38.4335972615226040251804.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="161" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="280" height="24" uuid="b5eb1f60-e5ea-45eb-9ec5-d15f1b9e96d8"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Recibo de pago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="30" width="130" height="20" uuid="4556a5df-d491-49f5-8ceb-862e6634089e"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Nombre del cliente:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="60" width="130" height="20" uuid="5b7bea75-9bf1-4ff2-9ae8-f1aadde4371d"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Sucursal:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="280" y="24" width="270" height="95" backcolor="#D2DFF7" uuid="e7695bce-a6a0-4fb1-bb74-f61a7bf8554c"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="290" y="31" width="100" height="19" uuid="4e32a395-0b98-4021-8f2c-9da0759a1cea"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Numero de pago:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="61" width="100" height="19" uuid="4ba7f4bd-aed2-4635-b8aa-16f33f10b8db"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Forma de pago:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="90" width="100" height="19" uuid="69b34ec0-c95c-44c3-89be-197c7eaab9e7"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Fecha de pago:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="140" y="30" width="140" height="20" uuid="8563d705-2bd2-417c-b573-0287000bb052"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{customerPayment}.getName()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="60" width="140" height="20" uuid="a2df5d9a-8eda-46c1-b591-897cec154283"/>
+			</textField>
+			<textField>
+				<reportElement x="405" y="30" width="139" height="20" uuid="af0cdcef-3a36-4da7-ae32-e05f238030dc"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+			</textField>
+			<textField>
+				<reportElement x="405" y="60" width="139" height="20" uuid="d07a29b4-3d11-4a1c-9055-63e82ce16226"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{state}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="405" y="90" width="139" height="20" uuid="87e091b1-02d1-4750-a823-7c53d12db368"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dateTimePay}.toLocalDate()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="16" y="141" width="110" height="18" uuid="86a6466d-a163-4e8e-bc18-294cc1d410b8"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Servico brindado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="155" y="141" width="110" height="18" uuid="54b47919-3348-4b33-a222-7c8669cc34b0"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[duración]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="285" y="140" width="110" height="18" uuid="97fdfba4-63a4-4a5e-9f1c-164eac6c70f0"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Fecha de Servicio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="140" width="110" height="18" uuid="19d79a5a-3927-4a7a-8ef9-55b537040122"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Costo]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="47" splitType="Stretch">
+			<frame>
+				<reportElement x="10" y="7" width="540" height="32" uuid="ca75dcc7-5eb9-4dfb-90b6-fb6cf33b891e"/>
+				<componentElement>
+					<reportElement x="10" y="0" width="519" height="29" uuid="46cb807c-3216-4f11-8ccb-dd031023f428">
+						<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
+					</reportElement>
+					<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+						<datasetRun subDataset="Dataset1" uuid="c4de8a07-0c80-45eb-99f8-a3ac89366a1f">
+							<datasetParameter name="REPORT_DATA_SOURCE">
+								<datasetParameterExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{_turns})]]></datasetParameterExpression>
+							</datasetParameter>
+							<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{_turns})]]></dataSourceExpression>
+						</datasetRun>
+						<jr:listContents height="29" width="519">
+							<textField>
+								<reportElement x="10" y="0" width="130" height="30" uuid="15ef2d5f-53d4-4005-9043-32938e131d2e"/>
+								<textFieldExpression><![CDATA[$F{service}.getName()]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="140" y="0" width="120" height="30" uuid="50c50b45-9a06-4b03-b775-9edcbe14b571"/>
+								<textFieldExpression><![CDATA[$F{service}.getDuration()]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="260" y="0" width="126" height="30" uuid="f9fcaa5b-e531-48c3-abf5-eb3b1fa8f895"/>
+								<textFieldExpression><![CDATA[$F{serviceDay}.toLocalDate().toString()]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="390" y="0" width="128" height="30" uuid="ab261aba-fb4e-4750-a5ac-62e09f09e5cb"/>
+								<textFieldExpression><![CDATA[$F{service}.getCost()]]></textFieldExpression>
+							</textField>
+						</jr:listContents>
+					</jr:list>
+				</componentElement>
+			</frame>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
