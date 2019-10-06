@@ -3,6 +3,7 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import dto.ProfessionalDTO;
@@ -50,7 +51,7 @@ public class ControllerTakeTurn implements ActionListener // VERSION SIN VENTANA
 	}
 	
 	//Se rellena el desplegable con los servicios.
-	public void fillServices(turnWindow window) throws Exception // SE ACCIONA EN LA VENTANA PRINCIPAL.
+	public void fillServices(turnWindow window) throws Exception
 	{
 		_services = _service_model.obtainServices();
 		for (ServiceDTO service : _services) 
@@ -60,7 +61,7 @@ public class ControllerTakeTurn implements ActionListener // VERSION SIN VENTANA
 	}
 	
 	//Se rellena el desplegable con los profesionales que realizan el servicio seleccionado.
-	public void fillProfessionals(turnWindow window, ServiceDTO selected_service) throws Exception // FALTA DEFINIR COMO SE ACCIONA.
+	public void fillProfessionals(turnWindow window, ServiceDTO selected_service) throws Exception
 	{
 		_professionals_with_selected_service = _professional_model.professionalsWithSelectedService(selected_service);
 		for (ProfessionalDTO professional : _professionals_with_selected_service) 
@@ -69,9 +70,17 @@ public class ControllerTakeTurn implements ActionListener // VERSION SIN VENTANA
 		}	
 	}
 	
-	public void fillDays() // FALTA CALENDARIO.
+	public void showDays(ProfessionalDTO selected_professional) // FALTA QUITAR DUPLICADOS
 	{
-		
+		_workdays_of_selected_proffesional = _workday_model.workdaysOfSelectedProfessional(selected_professional);
+		String message =  selected_professional.getName().toString() + "trabaja los dias:";
+		for(int i=0; i<_workdays_of_selected_proffesional.size(); i++)
+		{
+			message += "," + _workdays_of_selected_proffesional.get(i).getDay().toString();
+		}
+		JOptionPane.showMessageDialog(                               
+			  	null, message, 
+	             "Dias", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
 	public void fillSchedules(turnWindow window, WorkdayDTO selected_day) throws Exception  // FALTA DEFINIR FUNCIONAMIENTO.
