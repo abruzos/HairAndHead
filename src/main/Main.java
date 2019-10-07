@@ -2,6 +2,8 @@ package main;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+
+import modelo.Customer;
 import modelo.Professional;
 import modelo.Service;
 import modelo.Turn;
@@ -145,7 +147,8 @@ public class Main
 		Service serviceDAO = new Service();
 		Workday workdayDAO = new Workday();
 		Turn turnDAO = new Turn();
-		ControllerTakeTurn controller = new ControllerTakeTurn(view, professionalDAO, serviceDAO, workdayDAO, turnDAO);
+		Customer customerDAO = new Customer();
+		ControllerTakeTurn controller = new ControllerTakeTurn(view, professionalDAO, serviceDAO, workdayDAO, turnDAO, customerDAO);
 		controller.initialize();
 	}	
 }

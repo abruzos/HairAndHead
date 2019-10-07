@@ -2,6 +2,9 @@ package modelo;
 
 import java.time.LocalDateTime;
 import java.util.List;
+
+import org.apache.poi.ss.formula.functions.T;
+
 import dto.TurnDTO;
 import persistencia.dao.implementacion.TurnJPA;
 import persistencia.dao.interfaz.TurnDAO;
@@ -46,12 +49,14 @@ public class Turn
 	}
 	
 	//Creacion de un nuevo turno en base a la hora del servicio.
-	public void creationOfTurn(LocalDateTime service_day) throws Exception 
+	public TurnDTO creationOfTurn(LocalDateTime service_day) throws Exception 
 	{
 		TurnDTO new_turn = new TurnDTO(LocalDateTime.now(), service_day, "Vigente");
 		createTurn(new_turn);
+		
+		return new_turn;
 	}
-	
+
 	//Cancelacion de un turno
 	public void cancelATurn(TurnDTO turno_to_cancel) throws Exception 
 	{

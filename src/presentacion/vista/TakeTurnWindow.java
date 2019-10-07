@@ -14,16 +14,17 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import com.github.lgooddatepicker.components.DatePicker;
 
-
 public class TakeTurnWindow {
 	private JFrame frmTakeTurn;
 	private JButton btnAcceptService;
 	private JButton btnAcceptProfessional;
 	private JButton btnAcceptSchedule;
 	private JButton btnTakeTurn;
+	private JButton btnAcceptDay;
 	private JComboBox<ServiceDTO> services;
 	private JComboBox<ProfessionalDTO> professionals;
 	private JComboBox<ArrayList<String>> schedules;
+	protected DatePicker calendar;
 	
 	public TakeTurnWindow(){
 		super();
@@ -35,7 +36,7 @@ public class TakeTurnWindow {
 		frmTakeTurn = new JFrame();
 		frmTakeTurn.setTitle("Hair & Head");
 		
-		frmTakeTurn.setBounds(100, 100, 548, 347);
+		frmTakeTurn.setBounds(100, 100, 559, 347);
 		frmTakeTurn.setAutoRequestFocus(true);
 		frmTakeTurn.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -48,57 +49,68 @@ public class TakeTurnWindow {
 		btnAcceptService.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
-			{
-				
+			{				
 			}
 		});
-		btnAcceptService.setBounds(432, 121, 80, 38);
+		btnAcceptService.setBounds(444, 112, 80, 38);
 		panel.add(btnAcceptService);
 		
 		btnAcceptProfessional = new JButton("Aceptar");
 		btnAcceptProfessional.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
-			{
-				
+			{			
 			}
 		});
-		btnAcceptProfessional.setBounds(432, 59, 80, 38);
+		btnAcceptProfessional.setBounds(444, 59, 80, 38);
 		panel.add(btnAcceptProfessional);
+		
+		btnAcceptDay = new JButton("Aceptar");
+		btnAcceptDay.setBounds(90, 142, 80, 38);
+		panel.add(btnAcceptDay);
 		
 		btnAcceptSchedule = new JButton("Aceptar");
 		btnAcceptSchedule.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
-			{
-				
+			{				
 			}
 		});
-		btnAcceptSchedule.setBounds(432, 178, 80, 38);
+		btnAcceptSchedule.setBounds(444, 169, 80, 38);
 		panel.add(btnAcceptSchedule);
 			
-		btnTakeTurn = new JButton("Aceptar");
+		btnTakeTurn = new JButton("Sacar Turno");
 		btnTakeTurn.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
-			{
-				
+			{	
 			}
 		});
-		btnTakeTurn.setBounds(277, 247, 80, 38);
+		btnTakeTurn.setBounds(291, 229, 114, 38);
 		panel.add(btnTakeTurn);
 		
 		services = new JComboBox<ServiceDTO>();
-		services.setBounds(229, 121, 164, 20);
+		services.setBounds(258, 121, 164, 20);
 		panel.add(services);
 		
 		professionals = new JComboBox<ProfessionalDTO>();
-		professionals.setBounds(229, 175, 164, 20);
+		professionals.setBounds(258, 178, 164, 20);
 		panel.add(professionals);
 		
 		schedules = new JComboBox<ArrayList<String>>();
-		schedules.setBounds(229, 68, 164, 20);
+		schedules.setBounds(258, 68, 164, 20);
 		panel.add(schedules);
+		
+		calendar = new DatePicker();
+		calendar.getComponentToggleCalendarButton().addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+			}
+		});
+		calendar.setBounds(30, 68, 200, 20);
+		calendar.getComponentDateTextField().setEditable(false);
+		panel.add(calendar);
 	}
 	
 	public void show() 
@@ -130,6 +142,11 @@ public class TakeTurnWindow {
 	public JButton getBtnAcceptProfessional() 
 	{
 		return btnAcceptProfessional;
+	}
+	
+	public JButton getBtnAcceptDay() 
+	{
+		return btnAcceptDay;
 	}
 	
 	public JButton getBtnAcceptSchedule() 
