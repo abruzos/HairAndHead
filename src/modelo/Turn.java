@@ -51,4 +51,10 @@ public class Turn
 		TurnDTO new_turn = new TurnDTO(LocalDateTime.now(), service_day, "Vigente");
 		createTurn(new_turn);
 	}
+	
+	//Cancelacion de un turno
+	public void cancelATurn(TurnDTO turno_to_cancel) throws Exception 
+	{
+		turno_to_cancel.setState("Cancelado");
+	}	
 }
