@@ -135,6 +135,15 @@ public class Main
 		br_DAO.update(br1);
 		prof_DAO.update(prof1);
 		emp_DAO.update(emp1);
+		
+		
+		serv_DAO.create(serv1);
+		serv_DAO.create(serv2);
+		
+		serv_DAO.update(serv1);
+		serv_DAO.update(serv2);
+		
+		System.out.println("SERVICIOOS  "+ serv_DAO.AllServices());
 //		System.out.println(Customer.getCustomerDAO().byId(1).getMail());
 //		System.out.println(Customer.getCustomerDAO().byId(2).getName());
 //		System.out.println("Existe el mail mundial86@mail.com en BDD = "+Customer.foundMail("mundial86@mail.com"));
