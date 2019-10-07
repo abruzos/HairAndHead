@@ -44,7 +44,7 @@ public class ControllerTakeTurn implements ActionListener
 		_professionals_with_selected_service = null;
 		_workdays_of_selected_proffesional = null;
 		
-		_service_day = LocalDateTime.of(1, 1, 1, 1, 1);
+		_service_day = LocalDateTime.of(1, 1, 1, 0, 0);
 		
 	}
 	
@@ -73,12 +73,12 @@ public class ControllerTakeTurn implements ActionListener
 	}
 	
 	//Se rellena el desplegable con los profesionales que realizan el servicio seleccionado.
-	public void fillProfessionals(TakeTurnWindow window, ServiceDTO selected_service) throws Exception
+	public void fillProfessionals(ServiceDTO selected_service) throws Exception
 	{
 		_professionals_with_selected_service = _professional_model.professionalsWithSelectedService(selected_service);
 		for (ProfessionalDTO professional : _professionals_with_selected_service) 
 		{
-			window.getProfessional().addItem(professional);
+			_view.getProfessional().addItem(professional);
 		}	
 	}
 	
@@ -101,7 +101,7 @@ public class ControllerTakeTurn implements ActionListener
 	             "Dias", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
-	public void fillSchedules(TakeTurnWindow window, WorkdayDTO selected_day) throws Exception
+	public void fillSchedules(WorkdayDTO selected_day) throws Exception
 	{
 		LocalTime start_time = LocalTime.of(Integer.parseInt(selected_day.getSince().substring(0, 2)), Integer.parseInt(selected_day.getSince().substring(2, 4)));
 		LocalTime finish_time = LocalTime.of(Integer.parseInt(selected_day.getUntil().substring(0,2)),Integer.parseInt(selected_day.getUntil().substring(2,4)));
@@ -115,12 +115,32 @@ public class ControllerTakeTurn implements ActionListener
 			
 			Schedule.add(start_time.toString());
 			
-			window.getSchedule().addItem(Schedule);
+			_view.getSchedule().addItem(Schedule);
 		}	
 	}
 
 	public void actionPerformed(ActionEvent e) 
-	{		
+	{	
+		if(e.getSource() == _view.getBtnAcceptService()) 
+		{
+			ServiceDTO selected_service = (ServiceDTO)_view.getService().getSelectedItem();
+			try {
+				fillProfessionals(selected_service);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+		if(e.getSource() == _view.getBtnAcceptProfessional())
+		{
+			ProfessionalDTO selected_professional = (ProfessionalDTO)_view.getService().getSelectedItem();
+			try {
+				showDays(selected_professional);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
 		if(e.getSource() == _view.getBtnTakeTurn() || _service_day.getHour() != 0)
 		{
 			try {
