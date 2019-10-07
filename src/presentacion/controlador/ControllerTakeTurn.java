@@ -33,7 +33,7 @@ public class ControllerTakeTurn implements ActionListener
 	private List<ProfessionalDTO> _professionals_with_selected_service;
 	private List<WorkdayDTO> _workdays_of_selected_proffesional;
 	private LocalDateTime _service_day;
-	private ProfessionalDTO professional;
+	private ProfessionalDTO selected_professional;
 	private CustomerDTO customer;
 	
 	public ControllerTakeTurn(TakeTurnWindow view, Professional professional, Service service, Workday workday, Turn turn, Customer customer)
@@ -142,7 +142,7 @@ public class ControllerTakeTurn implements ActionListener
 		if(e.getSource() == _view.getBtnAcceptProfessional())
 		{
 			try {
-				ProfessionalDTO selected_professional = (ProfessionalDTO)_view.getService().getSelectedItem();
+				selected_professional = (ProfessionalDTO)_view.getService().getSelectedItem();
 				showDays(selected_professional);
 			} catch (Exception e1) 
 			{
@@ -162,7 +162,7 @@ public class ControllerTakeTurn implements ActionListener
 		{
 			try {	
 				TurnDTO new_turn = _turn_model.creationOfTurn(_service_day);
-				_professional_model.addTurnProfessional(professional, new_turn);
+				_professional_model.addTurnProfessional(selected_professional, new_turn);
 				_customer_model.addTurnCustomer(customer, new_turn);
 			} catch (Exception e1) 
 			{
