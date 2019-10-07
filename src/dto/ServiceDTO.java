@@ -24,7 +24,7 @@ public class ServiceDTO
 	private List<TurnDTO> _turns = new ArrayList<>();
 
 	@ManyToOne
-	private ProfessionalDTO _professionalService;
+	private ProfessionalDTO _professionalservice;
 	
 	public ServiceDTO(String name, int duration, int cost)
 	{
@@ -82,11 +82,18 @@ public class ServiceDTO
 
 	public ProfessionalDTO getProfessional() 
 	{
-		return _professionalService;
+		return _professionalservice;
 	}
 	
 	public void setProfessional(ProfessionalDTO p) 
 	{
-		_professionalService = p;
+		_professionalservice = p;
 	}
+
+	@Override
+	public String toString() {
+		return "ServiceDTO [_id=" + _id + ", _name=" + _name + ", _duration=" + _duration + ", _cost=" + _cost
+				+ ", _turns=" + _turns + ", _professionalservice=" + _professionalservice + "]";
+	}
+	
 }

@@ -2,7 +2,6 @@ package main;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-
 import modelo.Professional;
 import modelo.Service;
 import modelo.Turn;
@@ -75,70 +74,70 @@ public class Main
 		TurnDTO turn4 = new TurnDTO(LocalDateTime.now(), LocalDateTime.of(2019, 12, 10, 9, 00), "Vigente");
 		
 		
-		BranchOfficeDTO b1 = new BranchOfficeDTO("Breikin", "Mitre 123", "San miguel", "Bs As", "Argentina");
-		BranchOfficeJPA bDAO= new BranchOfficeJPA();
-		
-		WorkdayDTO d1 = new WorkdayDTO("Lunes", "0800hs", "1200hs"); //lista de dias
-		WorkdayJPA dDAO = new WorkdayJPA();
-		
-		ServiceDTO s1 = new ServiceDTO("Corte de pelo", 45, 300); //lista de servicios
-		ServiceJPA sDAO = new ServiceJPA();
-		
-		EmployeeDTO e1 = new EmployeeDTO("Lucas", "Martin", "20", "mail@gmail.com", "46678393", "Recepcionista",
-									"alta", "lmartin", "123456s");
-		EmployeeJPA eDAO = new EmployeeJPA();
-		
-		ProfessionalDTO professional = new ProfessionalDTO("Adrian", "Lopez", "34", "adrian_lopez@gmail.com", "1145989324", "Peluquero", "Activo");
-		ProfessionalJPA professional_DAO= new ProfessionalJPA();
-		
-		TurnDTO turn = new TurnDTO(LocalDateTime.now(), LocalDateTime.of(2019, 2, 10, 14, 00), "Vigente");
-
-		TurnJPA turn_DAO= new TurnJPA();
-		/*PAYMENTS*/
-		PaymentDTO pay1 = new PaymentDTO("Efectivo", LocalDateTime.now());
-		PaymentJPA pay_DAO = new PaymentJPA();		
-		PaymentDTO pay2 = new PaymentDTO("Efectivo", LocalDateTime.now());
-		PaymentJPA pDAO2 = new PaymentJPA();
-		/*PROMOTIONS*/
-		PromotionDTO prom1 = new PromotionDTO(LocalDateTime.now(), LocalDateTime.of(2019, 12, 10, 12, 30), "Vigente", true, 20, "Solo valida los dias Martes");
-		PromotionJPA prom_DAO = new PromotionJPA();
-		
-		BagDTO bag1 = new BagDTO(20, LocalDate.now());
-		DebtDTO debt1 = new DebtDTO(100, LocalDate.now());	
+//		BranchOfficeDTO b1 = new BranchOfficeDTO("Breikin", "Mitre 123", "San miguel", "Bs As", "Argentina");
+//		BranchOfficeJPA bDAO= new BranchOfficeJPA();
+//		
+//		WorkdayDTO d1 = new WorkdayDTO("Lunes", "0800hs", "1200hs"); //lista de dias
+//		WorkdayJPA dDAO = new WorkdayJPA();
+//		
+//		ServiceDTO s1 = new ServiceDTO("Corte de pelo", 45, 300); //lista de servicios
+//		ServiceJPA sDAO = new ServiceJPA();
+//		
+//		EmployeeDTO e1 = new EmployeeDTO("Lucas", "Martin", "20", "mail@gmail.com", "46678393", "Recepcionista",
+//									"alta", "lmartin", "123456s");
+//		EmployeeJPA eDAO = new EmployeeJPA();
+//		
+//		ProfessionalDTO professional = new ProfessionalDTO("Adrian", "Lopez", "34", "adrian_lopez@gmail.com", "1145989324", "Peluquero", "Activo");
+//		ProfessionalJPA professional_DAO= new ProfessionalJPA();
+//		
+//		TurnDTO turn = new TurnDTO(LocalDateTime.now(), LocalDateTime.of(2019, 2, 10, 14, 00), "Vigente");
+//
+//		TurnJPA turn_DAO= new TurnJPA();
+//		/*PAYMENTS*/
+//		PaymentDTO pay1 = new PaymentDTO("Efectivo", LocalDateTime.now());
+//		PaymentJPA pay_DAO = new PaymentJPA();		
+//		PaymentDTO pay2 = new PaymentDTO("Efectivo", LocalDateTime.now());
+//		PaymentJPA pDAO2 = new PaymentJPA();
+//		/*PROMOTIONS*/
+//		PromotionDTO prom1 = new PromotionDTO(LocalDateTime.now(), LocalDateTime.of(2019, 12, 10, 12, 30), "Vigente", true, 20, "Solo valida los dias Martes");
+//		PromotionJPA prom_DAO = new PromotionJPA();
+//		
+//		BagDTO bag1 = new BagDTO(20, LocalDate.now());
+//		DebtDTO debt1 = new DebtDTO(100, LocalDate.now());	
 
 		/* 
 		 * CREATES
 		 * */
-		br_DAO.create(br1);
-		emp_DAO.create(emp1);
-		prof_DAO.create(prof1);
-		cust_DAO.create(cust1);		
-		turn_DAO.create(turn1);
-		pay_DAO.create(pay1);
-		day_DAO.create(day1);
-		/* 
-		 * SETTERS 
-		 * */
-		cust1.setBag(bag1);
-		cust1.setDebt(debt1);
-		
-		/* 
-		 * ADD
-		 * */
-		br1.addEmployee(emp1);
-		br1.addProfessional(prof1);
-		cust1.addTurn(turn1);
-		cust1.addPayment(pay1);
-		emp1.addWorkday(day1);
-		prof1.addTurn(turn1);
-		prof1.addWorkday(day1);
-		/* 
-		 * UPDATES
-		 * */
-		cust_DAO.update(cust1);
-		br_DAO.update(br1);
-		prof_DAO.update(prof1);
-		emp_DAO.update(emp1);
+//		br_DAO.create(br1);
+//		emp_DAO.create(emp1);
+//		prof_DAO.create(prof1);
+//		cust_DAO.create(cust1);		
+//		turn_DAO.create(turn1);
+//		pay_DAO.create(pay1);
+//		day_DAO.create(day1);
+//		/* 
+//		 * SETTERS 
+//		 * */
+//		cust1.setBag(bag1);
+//		cust1.setDebt(debt1);
+//		
+//		/* 
+//		 * ADD
+//		 * */
+//		br1.addEmployee(emp1);
+//		br1.addProfessional(prof1);
+//		cust1.addTurn(turn1);
+//		cust1.addPayment(pay1);
+//		emp1.addWorkday(day1);
+//		prof1.addTurn(turn1);
+//		prof1.addWorkday(day1);
+//		/* 
+//		 * UPDATES
+//		 * */
+//		cust_DAO.update(cust1);
+//		br_DAO.update(br1);
+//		prof_DAO.update(prof1);
+//		emp_DAO.update(emp1);
 		
 		
 		serv_DAO.create(serv1);
@@ -162,14 +161,14 @@ public class Main
 //		controller.initialize();
 		
 		// VISTA DE GENTION DE PAGO.
-		ManagePaymentWindow viewPay = new ManagePaymentWindow();
-		serv_DAO.create(serv1);
-		serv_DAO.update(serv1);
-		turn1.setService(serv1);
-		turn_DAO.update(turn1);
-		cust1.addTurn(turn1);
-		//cust_DAO.update(cust1);
-		@SuppressWarnings("unused")
-		ControllerManagePayment ControllerPay = new ControllerManagePayment(viewPay,cust1);
+//		ManagePaymentWindow viewPay = new ManagePaymentWindow();
+//		serv_DAO.create(serv1);
+//		serv_DAO.update(serv1);
+//		turn1.setService(serv1);
+//		turn_DAO.update(turn1);
+//		cust1.addTurn(turn1);
+//		//cust_DAO.update(cust1);
+//		@SuppressWarnings("unused")
+//		ControllerManagePayment ControllerPay = new ControllerManagePayment(viewPay,cust1);
 	}	
 }

@@ -25,7 +25,7 @@ public class ProfessionalDTO extends PersonDTO
 	@OneToMany (mappedBy = "_professional", cascade = CascadeType.ALL,orphanRemoval = true)
 	private List<WorkdayDTO> _workdays = new ArrayList<>();
 	
-	@OneToMany (mappedBy = "_professionalService", cascade = CascadeType.ALL,orphanRemoval = true)
+	@OneToMany (mappedBy = "_professionalservice", cascade = CascadeType.ALL,orphanRemoval = true)
 	private List<ServiceDTO> _services = new ArrayList<>();
 	
 	@OneToMany (mappedBy = "_professionalt", cascade = CascadeType.ALL,orphanRemoval = true)
