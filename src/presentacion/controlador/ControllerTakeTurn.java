@@ -1,9 +1,10 @@
-/*package presentacion.controlador;
+package presentacion.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import javax.swing.JOptionPane;
 import dto.ProfessionalDTO;
@@ -74,9 +75,15 @@ public class ControllerTakeTurn implements ActionListener // VERSION SIN VENTANA
 	{
 		_workdays_of_selected_proffesional = _workday_model.workdaysOfSelectedProfessional(selected_professional);
 		String message =  selected_professional.getName().toString() + "trabaja los dias:";
+		HashSet<String> workdays_of_selected_proffesional_set = new HashSet<String>();
 		for(int i=0; i<_workdays_of_selected_proffesional.size(); i++)
-		{
-			message += "," + _workdays_of_selected_proffesional.get(i).getDay().toString();
+		{	
+			if(!workdays_of_selected_proffesional_set.contains( _workdays_of_selected_proffesional.get(i).getDay())) 
+			{
+				message += "," + _workdays_of_selected_proffesional.get(i).getDay().toString();
+				workdays_of_selected_proffesional_set.add(_workdays_of_selected_proffesional.get(i).getDay());
+			}
+			
 		}
 		JOptionPane.showMessageDialog(                               
 			  	null, message, 
@@ -101,4 +108,4 @@ public class ControllerTakeTurn implements ActionListener // VERSION SIN VENTANA
 		             "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
-}*/
+}
