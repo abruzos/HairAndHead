@@ -19,6 +19,7 @@ import modelo.Professional;
 import modelo.Service;
 import modelo.Turn;
 import modelo.Workday;
+import persistencia.dao.implementacion.ServiceJPA;
 import presentacion.vista.TakeTurnWindow;
 
 public class ControllerTakeTurn implements ActionListener
@@ -72,8 +73,9 @@ public class ControllerTakeTurn implements ActionListener
 	
 	//Se rellena el desplegable con los servicios.
 	public void fillServices(TakeTurnWindow window) throws Exception
-	{
-		_services = _service_model.obtainServices();
+	{	
+		ServiceJPA s = new ServiceJPA();
+		_services = s.all();
 		for (ServiceDTO service : _services) 
 		{
 			window.getService().addItem(service);

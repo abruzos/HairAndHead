@@ -3,8 +3,6 @@ package presentacion.controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JOptionPane;
-
 import modelo.Customer;
 import modelo.Bag;
 import dto.CustomerDTO;
@@ -79,10 +77,6 @@ public class ControllerManagePayment implements ActionListener{
 			PaymentDebtWindow view = new PaymentDebtWindow();
 			@SuppressWarnings("unused")
 			ControllerPaymentDebt controller = new ControllerPaymentDebt(view, _customer);
-		}
-		else
-		{
-			JOptionPane.showMessageDialog(null,"ADVERTENCIA!! No hay seleccion de ninguna Forma de Pago","Mensaje", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 	

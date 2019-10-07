@@ -23,6 +23,7 @@ public class ControllerPaymentCash implements ActionListener{
 		_viewPaymentCash.getBtnAccept().addActionListener(Pay -> makePayment(Pay));
 		_viewPaymentCash.getBtnCancel().addActionListener(Cancel -> close(Cancel));
 //		_viewPaymentCash.getBtnReport().addActionListener(report -> showReport(report));
+		_viewPaymentCash.mostrarVentana();
 	}
 
 	private void loadInformationClient()
