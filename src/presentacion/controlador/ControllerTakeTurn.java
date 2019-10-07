@@ -97,13 +97,13 @@ public class ControllerTakeTurn implements ActionListener
 	public void showDays(ProfessionalDTO selected_professional) throws Exception
 	{
 		_workdays_of_selected_proffesional = selected_professional.getWorkdays();
-		String message =  selected_professional.getName().toString() + "trabaja los dias: ";
+		String message =  selected_professional.getName().toString() + " trabaja los dias: ";
 		HashSet<String> workdays_of_selected_proffesional_set = new HashSet<String>();
 		for(int i=0; i<_workdays_of_selected_proffesional.size(); i++)
 		{	
 			if(!workdays_of_selected_proffesional_set.contains( _workdays_of_selected_proffesional.get(i).getDay())) 
 			{
-				message += "," + _workdays_of_selected_proffesional.get(i).getDay().toString();
+				message += _workdays_of_selected_proffesional.get(i).getDay().toString() + ",";
 				workdays_of_selected_proffesional_set.add(_workdays_of_selected_proffesional.get(i).getDay());
 			}
 			
@@ -173,6 +173,7 @@ public class ControllerTakeTurn implements ActionListener
 		}	
 	}
 
+	@SuppressWarnings("unchecked")
 	public void actionPerformed(ActionEvent e) 
 	{	
 		if(e.getSource() == _view.getBtnAcceptService()) 
@@ -220,7 +221,7 @@ public class ControllerTakeTurn implements ActionListener
                 _customer.addTurn(new_turn);
                 
                 JOptionPane.showMessageDialog(                               
-					  	null, "Se reservo un turno para el:" + new_turn, 
+					  	null, "Se reservo un turno para el: " + new_turn, 
 			             "Exito", JOptionPane.INFORMATION_MESSAGE);
 			} catch (Exception e1) 
 			{
