@@ -3,6 +3,12 @@ package presentacion.controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
+<<<<<<< HEAD
+=======
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+>>>>>>> master
 import java.util.List;
 import javax.swing.JOptionPane;
 import dto.ProfessionalDTO;
@@ -83,9 +89,15 @@ public class ControllerTakeTurn implements ActionListener
 	{
 		_workdays_of_selected_proffesional = _workday_model.workdaysOfSelectedProfessional(selected_professional);
 		String message =  selected_professional.getName().toString() + "trabaja los dias:";
+		HashSet<String> workdays_of_selected_proffesional_set = new HashSet<String>();
 		for(int i=0; i<_workdays_of_selected_proffesional.size(); i++)
-		{
-			message += "," + _workdays_of_selected_proffesional.get(i).getDay().toString();
+		{	
+			if(!workdays_of_selected_proffesional_set.contains( _workdays_of_selected_proffesional.get(i).getDay())) 
+			{
+				message += "," + _workdays_of_selected_proffesional.get(i).getDay().toString();
+				workdays_of_selected_proffesional_set.add(_workdays_of_selected_proffesional.get(i).getDay());
+			}
+			
 		}
 		JOptionPane.showMessageDialog(                               
 			  	null, message, 
@@ -94,7 +106,20 @@ public class ControllerTakeTurn implements ActionListener
 	
 	public void fillSchedules(TakeTurnWindow window, WorkdayDTO selected_day) throws Exception
 	{
-		
+		LocalTime start_time = LocalTime.of(Integer.parseInt(selected_day.getSince().substring(0, 2)), Integer.parseInt(selected_day.getSince().substring(2, 4)));
+		LocalTime finish_time = LocalTime.of(Integer.parseInt(selected_day.getUntil().substring(0,2)),Integer.parseInt(selected_day.getUntil().substring(2,4)) );
+		while(!start_time.equals(finish_time)) 
+		{	
+			ArrayList<String> Schedule = new ArrayList<String>();
+			Schedule.add(start_time.toString());
+			Schedule.add("-");
+			
+			start_time.plusMinutes(30);
+			
+			Schedule.add(start_time.toString());
+			
+			window.getSchedules().addItem(Schedule);
+		}	
 	}
 
 	public void actionPerformed(ActionEvent e) 
