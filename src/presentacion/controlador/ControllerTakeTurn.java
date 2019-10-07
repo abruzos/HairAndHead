@@ -3,12 +3,9 @@ package presentacion.controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
-<<<<<<< HEAD
-=======
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashSet;
->>>>>>> master
 import java.util.List;
 import javax.swing.JOptionPane;
 import dto.ProfessionalDTO;
@@ -107,7 +104,7 @@ public class ControllerTakeTurn implements ActionListener
 	public void fillSchedules(TakeTurnWindow window, WorkdayDTO selected_day) throws Exception
 	{
 		LocalTime start_time = LocalTime.of(Integer.parseInt(selected_day.getSince().substring(0, 2)), Integer.parseInt(selected_day.getSince().substring(2, 4)));
-		LocalTime finish_time = LocalTime.of(Integer.parseInt(selected_day.getUntil().substring(0,2)),Integer.parseInt(selected_day.getUntil().substring(2,4)) );
+		LocalTime finish_time = LocalTime.of(Integer.parseInt(selected_day.getUntil().substring(0,2)),Integer.parseInt(selected_day.getUntil().substring(2,4)));
 		while(!start_time.equals(finish_time)) 
 		{	
 			ArrayList<String> Schedule = new ArrayList<String>();
@@ -118,7 +115,7 @@ public class ControllerTakeTurn implements ActionListener
 			
 			Schedule.add(start_time.toString());
 			
-			window.getSchedules().addItem(Schedule);
+			window.getSchedule().addItem(Schedule);
 		}	
 	}
 

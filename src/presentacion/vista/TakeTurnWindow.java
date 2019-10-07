@@ -2,6 +2,8 @@ package presentacion.vista;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -9,7 +11,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import dto.ProfessionalDTO;
 import dto.ServiceDTO;
-import dto.WorkdayDTO;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -21,7 +22,7 @@ public class TakeTurnWindow {
 	private JButton btnTakeTurn;
 	private JComboBox<ServiceDTO> services;
 	private JComboBox<ProfessionalDTO> professionals;
-	private JComboBox<WorkdayDTO> schedules;
+	private JComboBox<ArrayList<String>> schedules;
 	
 	public TakeTurnWindow(){
 		super();
@@ -94,7 +95,7 @@ public class TakeTurnWindow {
 		professionals.setBounds(483, 193, 164, 20);
 		panel.add(professionals);
 		
-		schedules = new JComboBox<WorkdayDTO>();
+		schedules = new JComboBox<ArrayList<String>>();
 		schedules.setBounds(483, 59, 164, 20);
 		panel.add(schedules);
 	}
@@ -148,7 +149,7 @@ public class TakeTurnWindow {
 		return professionals;
 	}
 	
-	public JComboBox<WorkdayDTO> getSchedule() {
+	public JComboBox<ArrayList<String>> getSchedule() {
 		return schedules;
 	}
 }
