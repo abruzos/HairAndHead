@@ -2,9 +2,12 @@ package presentacion.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
 
 import modelo.Customer;
+import persistencia.dao.implementacion.PaymentJPA;
 import dto.CustomerDTO;
+import dto.PaymentDTO;
 import presentacion.vista.PaymentCashWindow;
 
 public class ControllerPaymentCash implements ActionListener{
@@ -18,42 +21,57 @@ public class ControllerPaymentCash implements ActionListener{
 		_customer = customer;
 		loadInformationClient();
 		_viewPaymentCash.getBtnAccept().addActionListener(Pay -> makePayment(Pay));
-		_viewPaymentCash.getBtnCancel().addActionListener(Pay -> makePayment(Pay));
+		_viewPaymentCash.getBtnCancel().addActionListener(Cancel -> close(Cancel));
 //		_viewPaymentCash.getBtnReport().addActionListener(report -> showReport(report));
 	}
 
 	private void loadInformationClient()
 	{
 		_viewPaymentCash.getTxtServiceCost().setText(Customer.CostService(_customer));
-		_viewPaymentCash.getTxtDepositedCash().setText(Customer.CurrentDebt(_customer));
+		_viewPaymentCash.getTxtCurrentDebt().setText(Customer.CurrentDebt(_customer));
+		_viewPaymentCash.getTxtTotalToPay().setText(String.valueOf(summationServiceAndDebt()));
 	}
-
+	
+	private int summationServiceAndDebt() 
+	{
+		int totalToPayment = Integer.valueOf(Customer.CostService(_customer)) + Integer.valueOf(Customer.CurrentDebt(_customer));
+		return totalToPayment;
+	}
 	// ACCION DEL BOTON PAGAR.
 	private void makePayment(ActionEvent pay)
 	{
 		int payment = Integer.valueOf(_viewPaymentCash.getTxtDepositedCash().getText());
-		int debt = Integer.valueOf(_viewPaymentCash.getTxtCurrentDebt().getText());
+//		int debt = Integer.valueOf(_viewPaymentCash.getTxtCurrentDebt().getText());
 		updatePayment(payment);
-		updateDebt(debt);
+//		updateDebt(debt);
 	}
 
 	// ACCIONES QUE REALIZA CON UN PAGO.
 	private void updatePayment(int payment)
 	{
-		//...
-	}
-
-	// ACTUALIZA LA DEUDA
-	private void updateDebt(int debt) {
-		debt = _customer.getDebt().getCost() - debt;
-		_customer.getDebt().setCost(debt);
+		PaymentDTO paymentCurrent = new PaymentDTO();
+		PaymentJPA payDAO = new PaymentJPA();
+		paymentCurrent.setState("Pagado");
+		paymentCurrent.setDateTimePay(LocalDateTime.now());
+		payDAO.update(paymentCurrent);
 	}
 	
-	// ACCION DEL BOTON REPORTE.
-	private void showReport(ActionEvent report)
+	private void close(ActionEvent cancel)
 	{
-		
+		_viewPaymentCash.cerrar();
 	}
+	
+	// ACTUALIZA LA DEUDA
+//	private void updateDebt(int debt) {
+//		debt = _customer.getDebt().getCost() - debt;
+//		_customer.getDebt().setCost(debt);
+//	}
+	
+	// ACCION DEL BOTON REPORTE.
+//	private void showReport(ActionEvent report)
+//	{
+//		
+//	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e)

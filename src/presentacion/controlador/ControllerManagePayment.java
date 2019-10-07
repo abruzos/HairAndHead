@@ -28,6 +28,7 @@ public class ControllerManagePayment implements ActionListener{
 		loadCBMwayToPay();	
 		_viewManagePay.selectPayment().addActionListener(select -> choosePaymentWindow(select));
 		_viewManagePay.getBtnReport().addActionListener(report -> showReport(report));
+		_viewManagePay.mostrarVentana();
 	}
 
 	private void loadInformationClient() {

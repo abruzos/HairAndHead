@@ -52,7 +52,7 @@ public class Customer
 		for (TurnDTO turn : getListTurns(client))
 		{
 			/** FalTa ValidaR FecHa DE TuRnos */
-			cost = cost + turn.getService().getCost();
+			//cost = cost + turn.getService().getCost();
 		}
 		return Integer.toString(cost);
 	}

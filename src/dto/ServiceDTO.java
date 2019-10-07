@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -23,8 +23,8 @@ public class ServiceDTO
 	@OneToMany (mappedBy = "_service", cascade = CascadeType.ALL,orphanRemoval = true)
 	private List<TurnDTO> _turns = new ArrayList<>();
 
-	@ManyToMany
-	private List<ProfessionalDTO> _professionals = new ArrayList<>();
+	@ManyToOne
+	private ProfessionalDTO _professionalservice;
 	
 	public ServiceDTO(String name, int duration, int cost)
 	{
@@ -80,20 +80,20 @@ public class ServiceDTO
 		t.setService(this);
 	}
 
-	public List<ProfessionalDTO> getProfessionals() 
+	public ProfessionalDTO getProfessional() 
 	{
-		return _professionals;
+		return _professionalservice;
 	}
 	
-//	public void addProfessional(ProfessionalDTO p)
-//	{
-//		this._professionals.add(p);
-//		p.setService(this);
-//	}
-//
-//	public void removeProfessional(ProfessionalDTO p)
-//	{
-//		this._professionals.remove(p);
-//		p.setService(this);
-//	}
+	public void setProfessional(ProfessionalDTO p) 
+	{
+		_professionalservice = p;
+	}
+
+	@Override
+	public String toString() {
+		return "ServiceDTO [_id=" + _id + ", _name=" + _name + ", _duration=" + _duration + ", _cost=" + _cost
+				+ ", _turns=" + _turns + ", _professionalservice=" + _professionalservice + "]";
+	}
+	
 }
