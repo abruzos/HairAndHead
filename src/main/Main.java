@@ -154,7 +154,6 @@ public class Main
 //		System.out.println("Existe el mail mundial86@mail.com en BDD = "+Customer.foundMail("mundial86@mail.com"));
 		
 		// CONTROLADOR DE SACAR TURNO
-<<<<<<< HEAD
 		TakeTurnWindow view = new TakeTurnWindow();
 		Professional professionalDAO = new Professional();
 		Service serviceDAO = new Service();
@@ -163,7 +162,6 @@ public class Main
 		Customer customerDAO = new Customer();
 		ControllerTakeTurn controller = new ControllerTakeTurn(view, professionalDAO, serviceDAO, workdayDAO, turnDAO, customerDAO);
 		controller.initialize();
-=======
 //		TakeTurnWindow view = new TakeTurnWindow();
 //		Professional professionalDAO = new Professional();
 //		Service serviceDAO = new Service();
@@ -191,6 +189,5 @@ public class Main
 //		cust_DAO.update(cust1);
 		@SuppressWarnings("unused")
 		ControllerManagePayment ControllerPay = new ControllerManagePayment(viewPay,cust1);
->>>>>>> master
 	}	
 }
