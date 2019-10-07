@@ -33,8 +33,10 @@ public class ServiceDTO
 		_cost = cost;
 	}
 	
-	public ServiceDTO() {}
-	
+	public ServiceDTO()
+	{	
+	}
+
 	public String getName()
 	{
 		return _name;
@@ -94,8 +96,7 @@ public class ServiceDTO
 
 	@Override
 	public String toString() {
-		return "ServiceDTO [_id=" + _id + ", _name=" + _name + ", _duration=" + _duration + ", _cost=" + _cost
-				+ ", _turns=" + _turns + ", _professionalservice=" + _professionalservice + "]";
+		return _name;
 	}
 	
 }
