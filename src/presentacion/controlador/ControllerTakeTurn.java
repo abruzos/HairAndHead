@@ -29,6 +29,8 @@ public class ControllerTakeTurn implements ActionListener
 	private LocalDateTime _service_day;
 	private ProfessionalDTO selected_professional;
 	private CustomerDTO _customer;
+	private LocalDate _auxiliar_date;
+	private LocalTime _auxiliar_time;
 	
 	public ControllerTakeTurn(TakeTurnWindow view, CustomerDTO customer)
 	{	
@@ -58,7 +60,7 @@ public class ControllerTakeTurn implements ActionListener
 		_view.getBtnTakeTurn().addActionListener(this);
 	}
 	
-	//Se rellena el desplegable con los servicios.
+	//Se rellena el desplegable con los servicios.z<
 	public void fillServices(TakeTurnWindow window) throws Exception
 	{	
 		ServiceJPA s = new ServiceJPA();
@@ -95,7 +97,7 @@ public class ControllerTakeTurn implements ActionListener
 	public void showDays(ProfessionalDTO selected_professional) throws Exception
 	{
 		_workdays_of_selected_proffesional = selected_professional.getWorkdays();
-		String message =  selected_professional.getName().toString() + "trabaja los dias:";
+		String message =  selected_professional.getName().toString() + "trabaja los dias: ";
 		HashSet<String> workdays_of_selected_proffesional_set = new HashSet<String>();
 		for(int i=0; i<_workdays_of_selected_proffesional.size(); i++)
 		{	
@@ -196,8 +198,8 @@ public class ControllerTakeTurn implements ActionListener
 		if(e.getSource() == _view.getBtnAcceptDay())
 		{
 			try {
-				 LocalDate localDate2 = LocalDate.parse(_view.getDay().toString());
-				 fillSchedules(workdaysOfSelectedProfessional(convertToSpanish(localDate2.getDayOfWeek().toString()), selected_professional));
+				 _auxiliar_date = LocalDate.parse(_view.getDay().toString());
+				 fillSchedules(workdaysOfSelectedProfessional(convertToSpanish(_auxiliar_date.getDayOfWeek().toString()), selected_professional));
 			} catch (Exception e1) 
 			{
 				e1.printStackTrace();
@@ -206,6 +208,10 @@ public class ControllerTakeTurn implements ActionListener
 		if(e.getSource() == _view.getBtnTakeTurn())
 		{
 			try {
+				_auxiliar_time = LocalTime.parse(((ArrayList<String>) _view.getSchedule().getSelectedItem()).get(0));
+
+				_service_day = LocalDateTime.of(_auxiliar_date, _auxiliar_time);
+				
 				TurnJPA t = new TurnJPA();
                 TurnDTO new_turn = Turn.creationOfTurn(_service_day);
                 t.create(new_turn);

@@ -153,7 +153,7 @@ public class Main
 		// CONTROLADOR DE SACAR TURNO
 		TakeTurnWindow view = new TakeTurnWindow();
 		CustomerDTO customer = new CustomerDTO();		
-		ControllerTakeTurn controller = new ControllerTakeTurn(view, customer);
+		ControllerTakeTurn controller = new ControllerTakeTurn(view, cust1);
 		controller.initialize();
 
 		
