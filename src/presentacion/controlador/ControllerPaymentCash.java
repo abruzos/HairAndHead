@@ -21,7 +21,7 @@ public class ControllerPaymentCash implements ActionListener{
 		_customer = customer;
 		loadInformationClient();
 		_viewPaymentCash.getBtnAccept().addActionListener(Pay -> makePayment(Pay));
-		_viewPaymentCash.getBtnCancel().addActionListener(Pay -> makePayment(Pay));
+		_viewPaymentCash.getBtnCancel().addActionListener(Cancel -> close(Cancel));
 //		_viewPaymentCash.getBtnReport().addActionListener(report -> showReport(report));
 	}
 
@@ -55,7 +55,12 @@ public class ControllerPaymentCash implements ActionListener{
 		paymentCurrent.setDateTimePay(LocalDateTime.now());
 		payDAO.update(paymentCurrent);
 	}
-
+	
+	private void close(ActionEvent cancel)
+	{
+		_viewPaymentCash.cerrar();
+	}
+	
 	// ACTUALIZA LA DEUDA
 //	private void updateDebt(int debt) {
 //		debt = _customer.getDebt().getCost() - debt;
