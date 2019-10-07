@@ -221,13 +221,17 @@ public class ControllerTakeTurn implements ActionListener
                 selected_professional.addTurn(new_turn);
                 _customer.addTurn(new_turn);
                 
-                ReservationReceipt r = new ReservationReceipt(new_turn);
+                JOptionPane.showMessageDialog(           
+					  	null, "Se reservo un turno para el: " + new_turn, 
+			             "Exito", JOptionPane.INFORMATION_MESSAGE);
                 
-                int dialogButton = JOptionPane.YES_NO_OPTION;
-                int dialogResult = JOptionPane.showConfirmDialog (null,  "Se reservo un turno para el:" + new_turn+" �Desea Generar un comprobante?","Reserva Exitosa",dialogButton);
-                if(dialogResult == JOptionPane.YES_OPTION){
-                  r.show();
-                }                              
+        //        ReservationReceipt r = new ReservationReceipt(new_turn);
+                
+        //        int dialogButton = JOptionPane.YES_NO_OPTION;
+        //        int dialogResult = JOptionPane.showConfirmDialog (null,  "Se reservo un turno para el:" + new_turn+" �Desea Generar un comprobante?","Reserva Exitosa",dialogButton);
+        //        if(dialogResult == JOptionPane.YES_OPTION){
+        //          r.show();
+         //       }                              
 	
 			} catch (Exception e1) 
 			{
