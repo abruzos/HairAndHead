@@ -42,6 +42,6 @@ public class Service
 	//Lista de todos los servicios ----> DESPLEGABLE SERVICIOS.
 	public List<ServiceDTO> obtainServices() throws Exception 
 	{
-		return _serviceJPA.AllServices();
+		return _service.all();
 	}
 }
