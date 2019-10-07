@@ -18,8 +18,10 @@ public class ControllerManagePayment implements ActionListener{
 	
 	private ManagePaymentWindow _viewManagePay;
 	private CustomerDTO _customer;
+	private PaymentCashWindow _paymentCash;
+	private PaymentPointsWindow _paymentPoint;
 	
-	public ControllerManagePayment(ManagePaymentWindow view, CustomerDTO customer)
+	public ControllerManagePayment(ManagePaymentWindow view, CustomerDTO customer,PaymentCashWindow view2 ,PaymentPointsWindow view3)
 	{
 		_viewManagePay = view;
 		_customer = customer;		
@@ -29,6 +31,8 @@ public class ControllerManagePayment implements ActionListener{
 		_viewManagePay.selectPayment().addActionListener(select -> choosePaymentWindow(select));
 		_viewManagePay.getBtnReport().addActionListener(report -> showReport(report));
 		_viewManagePay.mostrarVentana();
+		_paymentCash = view2; 
+		_paymentPoint = view3;
 	}
 
 	private void loadInformationClient() {
