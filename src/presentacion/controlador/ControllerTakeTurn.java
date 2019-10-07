@@ -19,6 +19,7 @@ import persistencia.dao.implementacion.ProfessionalJPA;
 import persistencia.dao.implementacion.ServiceJPA;
 import persistencia.dao.implementacion.TurnJPA;
 import presentacion.vista.TakeTurnWindow;
+import receipts.ReservationReceipt;
 
 public class ControllerTakeTurn implements ActionListener
 {	
@@ -220,9 +221,14 @@ public class ControllerTakeTurn implements ActionListener
                 selected_professional.addTurn(new_turn);
                 _customer.addTurn(new_turn);
                 
-                JOptionPane.showMessageDialog(                               
-					  	null, "Se reservo un turno para el: " + new_turn, 
-			             "Exito", JOptionPane.INFORMATION_MESSAGE);
+                ReservationReceipt r = new ReservationReceipt(new_turn);
+                
+                int dialogButton = JOptionPane.YES_NO_OPTION;
+                int dialogResult = JOptionPane.showConfirmDialog (null,  "Se reservo un turno para el:" + new_turn+" �Desea Generar un comprobante?","Reserva Exitosa",dialogButton);
+                if(dialogResult == JOptionPane.YES_OPTION){
+                  r.show();
+                }                              
+	
 			} catch (Exception e1) 
 			{
 				e1.printStackTrace();
