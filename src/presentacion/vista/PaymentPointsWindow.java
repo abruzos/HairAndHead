@@ -1,6 +1,5 @@
 package presentacion.vista;
 
-import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -17,34 +16,8 @@ public class PaymentPointsWindow
 	private JTextField txtPointsUsed;
 	private JButton btnAccept;
 	private JButton btnCancel;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					PaymentPointsWindow window = new PaymentPointsWindow();
-					window.frmPaymentPoints.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
-	public PaymentPointsWindow() {
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() 
+	
+	public PaymentPointsWindow() 
 	{
 		frmPaymentPoints = new JFrame();
 		frmPaymentPoints.setResizable(false);
@@ -63,6 +36,7 @@ public class PaymentPointsWindow
 		pnlPaymentPoints.add(lblServiceCost);
 		
 		txtServiceCost = new JTextField();
+		txtServiceCost.setEditable(false);
 		txtServiceCost.setColumns(10);
 		txtServiceCost.setBounds(189, 24, 110, 20);
 		pnlPaymentPoints.add(txtServiceCost);
@@ -83,8 +57,20 @@ public class PaymentPointsWindow
 		btnCancel = new JButton("Cancelar");
 		btnCancel.setBounds(279, 178, 99, 23);
 		pnlPaymentPoints.add(btnCancel);
+		
+		frmPaymentPoints.setVisible(false);
 	}
 	
+	public void mostrarVentana()
+	{
+		frmPaymentPoints.setVisible(true);
+	}
+	
+	public void cerrar()
+	{
+		frmPaymentPoints.dispose();
+	}
+
 	public JFrame getFrmPaymentPoints() {
 		return frmPaymentPoints;
 	}

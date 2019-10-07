@@ -1,6 +1,5 @@
 package presentacion.vista;
 
-import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -20,33 +19,8 @@ public class PaymentDebtWindow
 	private JButton btnAccept;
 	private JButton btnCancel;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					PaymentDebtWindow window = new PaymentDebtWindow();
-					window.frmPaymentDebt.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the application.
-	 */
-	public PaymentDebtWindow() {
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() 
+	public PaymentDebtWindow()
 	{
 		frmPaymentDebt = new JFrame();
 		frmPaymentDebt.setResizable(false);
@@ -73,16 +47,19 @@ public class PaymentDebtWindow
 		pnlPaymentDebt.add(lblCurrentDebt);
 		
 		txtServiceCost = new JTextField();
+		txtServiceCost.setEditable(false);
 		txtServiceCost.setColumns(10);
 		txtServiceCost.setBounds(189, 24, 110, 20);
 		pnlPaymentDebt.add(txtServiceCost);
 		
 		txtPendingDebt = new JTextField();
+		txtPendingDebt.setEditable(false);
 		txtPendingDebt.setColumns(10);
 		txtPendingDebt.setBounds(189, 61, 110, 20);
 		pnlPaymentDebt.add(txtPendingDebt);
 		
 		txtCurrentDebt = new JTextField();
+		txtCurrentDebt.setEditable(false);
 		txtCurrentDebt.setColumns(10);
 		txtCurrentDebt.setBounds(189, 102, 110, 20);
 		pnlPaymentDebt.add(txtCurrentDebt);
@@ -94,6 +71,18 @@ public class PaymentDebtWindow
 		btnCancel = new JButton("Cancelar");
 		btnCancel.setBounds(279, 178, 99, 23);
 		pnlPaymentDebt.add(btnCancel);
+		
+		frmPaymentDebt.setVisible(false);
+	}
+
+	public void mostrarVentana()
+	{
+		frmPaymentDebt.setVisible(true);
+	}
+	
+	public void cerrar()
+	{
+		frmPaymentDebt.dispose();
 	}
 
 	public JFrame getFrmPaymentDebt() {

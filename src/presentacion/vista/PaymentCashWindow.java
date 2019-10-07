@@ -1,6 +1,5 @@
 package presentacion.vista;
 
-import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -22,33 +21,7 @@ public class PaymentCashWindow
 	private JButton btnAccept;
 	private JButton btnCancel;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					PaymentCashWindow window = new PaymentCashWindow();
-					window.frmPaymentCash.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
-	public PaymentCashWindow() {
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() 
+	public PaymentCashWindow() 
 	{
 		frmPaymentCash = new JFrame();
 		frmPaymentCash.setResizable(false);
@@ -79,11 +52,13 @@ public class PaymentCashWindow
 		pnlPaymentCash.add(lblTotalToPay);
 		
 		txtServiceCost = new JTextField();
+		txtServiceCost.setEditable(false);
 		txtServiceCost.setColumns(10);
 		txtServiceCost.setBounds(189, 24, 110, 20);
 		pnlPaymentCash.add(txtServiceCost);
 		
 		txtCurrentDebt = new JTextField();
+		txtCurrentDebt.setEditable(false);
 		txtCurrentDebt.setColumns(10);
 		txtCurrentDebt.setBounds(189, 61, 110, 20);
 		pnlPaymentCash.add(txtCurrentDebt);
@@ -94,6 +69,7 @@ public class PaymentCashWindow
 		pnlPaymentCash.add(txtDepositedCash);
 				
 		txtTotalToPay = new JTextField();
+		txtTotalToPay.setEditable(false);
 		txtTotalToPay.setColumns(10);
 		txtTotalToPay.setBounds(189, 105, 110, 20);
 		pnlPaymentCash.add(txtTotalToPay);
@@ -105,6 +81,18 @@ public class PaymentCashWindow
 		btnCancel = new JButton("Cancelar");
 		btnCancel.setBounds(280, 201, 99, 23);
 		pnlPaymentCash.add(btnCancel);
+		
+		frmPaymentCash.setVisible(false);
+	}
+	
+	public void mostrarVentana()
+	{
+		frmPaymentCash.setVisible(true);
+	}
+	
+	public void cerrar()
+	{
+		frmPaymentCash.dispose();
 	}
 
 	public JFrame getFrmPaymentCash() {
