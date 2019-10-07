@@ -32,7 +32,9 @@ public class ServiceDTO
 		_duration = duration;
 		_cost = cost;
 	}
-
+	
+	public ServiceDTO() {}
+	
 	public String getName()
 	{
 		return _name;
