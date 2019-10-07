@@ -3,6 +3,7 @@ package presentacion.controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -92,7 +93,20 @@ public class ControllerTakeTurn implements ActionListener // VERSION SIN VENTANA
 	
 	public void fillSchedules(turnWindow window, WorkdayDTO selected_day) throws Exception  // FALTA DEFINIR FUNCIONAMIENTO.
 	{
-		
+		LocalTime start_time = LocalTime.of(Integer.parseInt(selected_day.getSince().substring(0, 2)), Integer.parseInt(selected_day.getSince().substring(2, 4)));
+		LocalTime finish_time = LocalTime.of(Integer.parseInt(selected_day.getUntil().substring(0,2)),Integer.parseInt(selected_day.getUntil().substring(2,4)) );
+		while(!start_time.equals(finish_time)) 
+		{	
+			ArrayList<String> Schedule = new ArrayList<String>();
+			Schedule.add(start_time.toString());
+			Schedule.add("-");
+			
+			start_time.plusMinutes(30);
+			
+			Schedule.add(start_time.toString());
+			
+			window.getSchedules().addItem(Schedule);
+		}	
 	}
 
 	public void actionPerformed(ActionEvent e) 
