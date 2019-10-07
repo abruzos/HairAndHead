@@ -2,7 +2,10 @@ package main;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import modelo.Customer;
+import modelo.Professional;
+import modelo.Service;
+import modelo.Turn;
+import modelo.Workday;
 import dto.BagDTO;
 import dto.BranchOfficeDTO;
 import dto.CustomerDTO;
@@ -14,7 +17,6 @@ import dto.PromotionDTO;
 import dto.ServiceDTO;
 import dto.TurnDTO;
 import dto.WorkdayDTO;
-import persistencia.dao.implementacion.BagJPA;
 import persistencia.dao.implementacion.BranchOfficeJPA;
 import persistencia.dao.implementacion.CustomerJPA;
 import persistencia.dao.implementacion.EmployeeJPA;
@@ -24,12 +26,12 @@ import persistencia.dao.implementacion.PromotionJPA;
 import persistencia.dao.implementacion.ServiceJPA;
 import persistencia.dao.implementacion.TurnJPA;
 import persistencia.dao.implementacion.WorkdayJPA;
-import receipts.PaymentReceipt;
-import receipts.ReservationReceipt;
+import presentacion.controlador.ControllerTakeTurn;
+import presentacion.vista.TakeTurnWindow;
 
 public class Main 
 {
-	public static void main(String[] args) 
+	public static void main(String[] args) throws Exception 
 	{
 			/*BRANCH OFFICES*/
 		BranchOfficeDTO br1 = new BranchOfficeDTO("Breikin", "Mitre 123", "San miguel", "Bs As", "Argentina");
@@ -136,5 +138,14 @@ public class Main
 //		System.out.println(Customer.getCustomerDAO().byId(1).getMail());
 //		System.out.println(Customer.getCustomerDAO().byId(2).getName());
 //		System.out.println("Existe el mail mundial86@mail.com en BDD = "+Customer.foundMail("mundial86@mail.com"));
+		
+		// CONTROLADOR DE SACAR TURNO
+		TakeTurnWindow view = new TakeTurnWindow();
+		Professional professionalDAO = new Professional();
+		Service serviceDAO = new Service();
+		Workday workdayDAO = new Workday();
+		Turn turnDAO = new Turn();
+		ControllerTakeTurn controller = new ControllerTakeTurn(view, professionalDAO, serviceDAO, workdayDAO, turnDAO);
+		controller.initialize();
 	}	
 }

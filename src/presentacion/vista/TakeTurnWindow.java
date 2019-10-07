@@ -3,9 +3,13 @@ package presentacion.vista;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import dto.ProfessionalDTO;
+import dto.ServiceDTO;
+import dto.WorkdayDTO;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -15,7 +19,10 @@ public class TakeTurnWindow {
 	private JButton btnAcceptProfessional;
 	private JButton btnAcceptSchedule;
 	private JButton btnTakeTurn;
-
+	private JComboBox<ServiceDTO> services;
+	private JComboBox<ProfessionalDTO> professionals;
+	private JComboBox<WorkdayDTO> schedules;
+	
 	public TakeTurnWindow(){
 		super();
 		initialize();
@@ -26,7 +33,7 @@ public class TakeTurnWindow {
 		frmTakeTurn = new JFrame();
 		frmTakeTurn.setTitle("Hair & Head");
 		
-		frmTakeTurn.setBounds(100, 100, 1110, 446);
+		frmTakeTurn.setBounds(100, 100, 846, 446);
 		frmTakeTurn.setAutoRequestFocus(true);
 		frmTakeTurn.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -36,29 +43,60 @@ public class TakeTurnWindow {
 		panel.setLayout(null);
 			
 		btnAcceptService = new JButton("Aceptar");
-		btnAcceptService.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		btnAcceptService.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				
 			}
 		});
-		btnAcceptService.setBounds(944, 112, 80, 38);
+		btnAcceptService.setBounds(688, 121, 80, 38);
 		panel.add(btnAcceptService);
 		
 		btnAcceptProfessional = new JButton("Aceptar");
-		btnAcceptProfessional.setBounds(944, 41, 80, 38);
+		btnAcceptProfessional.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				
+			}
+		});
+		btnAcceptProfessional.setBounds(688, 50, 80, 38);
 		panel.add(btnAcceptProfessional);
 		
 		btnAcceptSchedule = new JButton("Aceptar");
-		btnAcceptSchedule.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		btnAcceptSchedule.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				
 			}
 		});
-		btnAcceptSchedule.setBounds(944, 184, 80, 38);
+		btnAcceptSchedule.setBounds(688, 184, 80, 38);
 		panel.add(btnAcceptSchedule);
 			
 		btnTakeTurn = new JButton("Aceptar");
-		btnTakeTurn.setBounds(944, 311, 80, 38);
+		btnTakeTurn.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				
+			}
+		});
+		btnTakeTurn.setBounds(688, 278, 80, 38);
 		panel.add(btnTakeTurn);
-
+		
+		services = new JComboBox<ServiceDTO>();
+		services.setBounds(483, 130, 164, 20);
+		panel.add(services);
+		
+		professionals = new JComboBox<ProfessionalDTO>();
+		professionals.setBounds(483, 193, 164, 20);
+		panel.add(professionals);
+		
+		schedules = new JComboBox<WorkdayDTO>();
+		schedules.setBounds(483, 59, 164, 20);
+		panel.add(schedules);
 	}
 	
 	public void show() 
@@ -100,5 +138,17 @@ public class TakeTurnWindow {
 	public JButton getBtnTakeTurn() 
 	{
 		return btnTakeTurn;
+	}
+	
+	public JComboBox<ServiceDTO> getService() {
+		return services;
+	}
+	
+	public JComboBox<ProfessionalDTO> getProfessional() {
+		return professionals;
+	}
+	
+	public JComboBox<WorkdayDTO> getSchedule() {
+		return schedules;
 	}
 }

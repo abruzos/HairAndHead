@@ -1,9 +1,8 @@
-/*package presentacion.controlador;
+package presentacion.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import dto.ProfessionalDTO;
@@ -15,7 +14,7 @@ import modelo.Turn;
 import modelo.Workday;
 import presentacion.vista.TakeTurnWindow;
 
-public class ControllerTakeTurn implements ActionListener // VERSION SIN VENTANAS.
+public class ControllerTakeTurn implements ActionListener
 {	
 	private TakeTurnWindow _view;                
 	private Professional _professional_model;
@@ -42,13 +41,22 @@ public class ControllerTakeTurn implements ActionListener // VERSION SIN VENTANA
 		_professionals_with_selected_service = null;
 		_workdays_of_selected_proffesional = null;
 		
-		_service_day = LocalDateTime.of(0, 0, 0, 0, 0);
+		_service_day = LocalDateTime.of(1, 1, 1, 1, 1);
 		
 	}
 	
+	public void initialize() throws Exception                                     
+	{
+		_view.show();
+		fillServices(_view);
+	}  
+	
 	private void createListeners() 
 	{
-		this.view.getBtnTakeTurn().addActionListener(this); // FALTA CREAR BtnTakeTurn.
+		_view.getBtnAcceptService().addActionListener(this);
+		_view.getBtnAcceptProfessional().addActionListener(this);
+		_view.getBtnAcceptSchedule().addActionListener(this);
+		_view.getBtnTakeTurn().addActionListener(this);
 	}
 	
 	//Se rellena el desplegable con los servicios.
@@ -71,7 +79,7 @@ public class ControllerTakeTurn implements ActionListener // VERSION SIN VENTANA
 		}	
 	}
 	
-	public void showDays(ProfessionalDTO selected_professional) throws Exception // FALTA QUITAR DUPLICADOS // USAR SET
+	public void showDays(ProfessionalDTO selected_professional) throws Exception
 	{
 		_workdays_of_selected_proffesional = _workday_model.workdaysOfSelectedProfessional(selected_professional);
 		String message =  selected_professional.getName().toString() + "trabaja los dias:";
@@ -84,16 +92,21 @@ public class ControllerTakeTurn implements ActionListener // VERSION SIN VENTANA
 	             "Dias", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
-	public void fillSchedules(TakeTurnWindow window, WorkdayDTO selected_day) throws Exception  // FALTA DEFINIR FUNCIONAMIENTO.
+	public void fillSchedules(TakeTurnWindow window, WorkdayDTO selected_day) throws Exception
 	{
 		
 	}
 
 	public void actionPerformed(ActionEvent e) 
 	{		
-		if(e.getSource() == this.view.getBtnTakeTurn() || _service_day.getHour() != 0)
+		if(e.getSource() == _view.getBtnTakeTurn() || _service_day.getHour() != 0)
 		{
-			_turnl_model.creationOfTurn(_service_day);
+			try {
+				_turnl_model.creationOfTurn(_service_day);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 		else
 		{
@@ -102,4 +115,4 @@ public class ControllerTakeTurn implements ActionListener // VERSION SIN VENTANA
 		             "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
-}*/
+}
