@@ -109,11 +109,15 @@ public class Main
 		/* 
 		 * CREATES
 		 * */
-		br_DAO.create(br1);		emp_DAO.create(emp1);		prof_DAO.create(prof1);
+		br_DAO.create(br1);		
+		emp_DAO.create(emp1);		
+		prof_DAO.create(prof1);
 		cust_DAO.create(cust1);		
 		turn_DAO.create(turn1);
 		pay_DAO.create(pay1);
 		day_DAO.create(day1);
+		serv_DAO.create(serv1);
+		serv_DAO.create(serv2);
 //		/* 
 //		 * SETTERS 
 //		 * */
@@ -130,6 +134,7 @@ public class Main
 		emp1.addWorkday(day1);
 		prof1.addTurn(turn1);
 		prof1.addWorkday(day1);
+		prof1.addService(serv1);
 //		/* 
 //		 * UPDATES
 //		 * */
@@ -137,11 +142,6 @@ public class Main
 		br_DAO.update(br1);
 		prof_DAO.update(prof1);
 		emp_DAO.update(emp1);
-		
-		
-		serv_DAO.create(serv1);
-		serv_DAO.create(serv2);
-//		
 		serv_DAO.update(serv1);
 		serv_DAO.update(serv2);
 //		
@@ -150,27 +150,28 @@ public class Main
 //		System.out.println(Customer.getCustomerDAO().byId(2).getName());
 //		System.out.println("Existe el mail mundial86@mail.com en BDD = "+Customer.foundMail("mundial86@mail.com"));
 		
-//		// CONTROLADOR DE SACAR TURNO
-//		TakeTurnWindow view = new TakeTurnWindow();
-//		Professional professionalDAO = new Professional();
-//		Service serviceDAO = new Service();
-//		Workday workdayDAO = new Workday();
-//		Turn turnDAO = new Turn();
-//		Customer customerDAO = new Customer();		ControllerTakeTurn controller = new ControllerTakeTurn(view, professionalDAO, serviceDAO, workdayDAO, turnDAO, customerDAO);
-//		controller.initialize();
+		// CONTROLADOR DE SACAR TURNO
+		TakeTurnWindow view = new TakeTurnWindow();
+		Professional professionalDAO = new Professional();
+		Service serviceDAO = new Service();
+		Workday workdayDAO = new Workday();
+		Turn turnDAO = new Turn();
+		Customer customerDAO = new Customer();		
+		ControllerTakeTurn controller = new ControllerTakeTurn(view, professionalDAO, serviceDAO, workdayDAO, turnDAO, customerDAO);
+		controller.initialize();
 
 		
 		// VISTA DE GENTION DE PAGO.
-		ManagePaymentWindow viewPay = new ManagePaymentWindow();
+//		ManagePaymentWindow viewPay = new ManagePaymentWindow();
 		//PaymentCashWindow view2 = new PaymentCashWindow();
 		//PaymentPointsWindow view3 = new PaymentPointsWindow();
-		serv_DAO.create(serv1);
-		serv_DAO.update(serv1);
-		turn1.setService(serv1);
-		turn_DAO.update(turn1);
-		cust1.addTurn(turn1);
+//		serv_DAO.create(serv1);
+//		serv_DAO.update(serv1);
+//		turn1.setService(serv1);
+//		turn_DAO.update(turn1);
+//		cust1.addTurn(turn1);
 //		cust_DAO.update(cust1);
-		@SuppressWarnings("unused")
-		ControllerManagePayment ControllerPay = new ControllerManagePayment(viewPay,cust1);
+//		@SuppressWarnings("unused")
+//		ControllerManagePayment ControllerPay = new ControllerManagePayment(viewPay,cust1);
 	}	
 }

@@ -52,7 +52,7 @@ public class TakeTurnWindow {
 			{				
 			}
 		});
-		btnAcceptService.setBounds(444, 112, 80, 38);
+		btnAcceptService.setBounds(444, 59, 80, 38);
 		panel.add(btnAcceptService);
 		
 		btnAcceptProfessional = new JButton("Aceptar");
@@ -62,7 +62,7 @@ public class TakeTurnWindow {
 			{			
 			}
 		});
-		btnAcceptProfessional.setBounds(444, 59, 80, 38);
+		btnAcceptProfessional.setBounds(444, 112, 80, 38);
 		panel.add(btnAcceptProfessional);
 		
 		btnAcceptDay = new JButton("Aceptar");
@@ -90,15 +90,15 @@ public class TakeTurnWindow {
 		panel.add(btnTakeTurn);
 		
 		services = new JComboBox<ServiceDTO>();
-		services.setBounds(258, 121, 164, 20);
+		services.setBounds(258, 68, 164, 20);
 		panel.add(services);
 		
 		professionals = new JComboBox<ProfessionalDTO>();
-		professionals.setBounds(258, 178, 164, 20);
+		professionals.setBounds(258, 121, 164, 20);
 		panel.add(professionals);
 		
 		schedules = new JComboBox<ArrayList<String>>();
-		schedules.setBounds(258, 68, 164, 20);
+		schedules.setBounds(258, 178, 164, 20);
 		panel.add(schedules);
 		
 		calendar = new DatePicker();

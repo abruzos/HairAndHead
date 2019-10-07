@@ -8,7 +8,6 @@ import persistencia.dao.interfaz.ServiceDAO;
 public class Service 
 {
 	private ServiceDAO _service;
-	private ServiceJPA _serviceJPA;
 	
 	public ServiceDAO createServiceDAO() 
 	{

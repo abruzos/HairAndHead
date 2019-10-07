@@ -171,4 +171,9 @@ public class ProfessionalDTO extends PersonDTO
 		this._services.remove(s);
 		s.setProfessional(this);
 	}
+	
+	@Override
+	public String toString() {
+		return super.getName();
+	}
 }

@@ -2,6 +2,7 @@ package presentacion.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ import modelo.Professional;
 import modelo.Service;
 import modelo.Turn;
 import modelo.Workday;
+import persistencia.dao.implementacion.ProfessionalJPA;
 import persistencia.dao.implementacion.ServiceJPA;
 import presentacion.vista.TakeTurnWindow;
 
@@ -50,7 +52,7 @@ public class ControllerTakeTurn implements ActionListener
 		_customer_model = customer;
 		
 		_services = null;
-		_professionals_with_selected_service = null;
+		_professionals_with_selected_service = new ArrayList<ProfessionalDTO>();
 		_workdays_of_selected_proffesional = null;
 		
 		_service_day = LocalDateTime.of(1, 1, 1, 0, 0);		
@@ -84,17 +86,32 @@ public class ControllerTakeTurn implements ActionListener
 	
 	//Se rellena el desplegable con los profesionales que realizan el servicio seleccionado.
 	public void fillProfessionals(ServiceDTO selected_service) throws Exception
-	{
-		_professionals_with_selected_service = _professional_model.professionalsWithSelectedService(selected_service);
+	{	
+		ProfessionalJPA p = new ProfessionalJPA();
+		List<ProfessionalDTO> professionals = p.all();
+		
+		for(int i = 0; i<professionals.size(); i++)
+		{	
+			for(int z = 0; z<professionals.get(i).getServices().size(); z++)
+			{
+				if(professionals.get(i).getServices().get(z).getName().equals(selected_service.getName())) 
+				{	
+					System.out.println(professionals.get(i).getServices().get(z).getName());
+					System.out.println(professionals.get(i).getName());
+					_professionals_with_selected_service.add(professionals.get(i));
+				}
+			}
+		}
+		
 		for (ProfessionalDTO professional : _professionals_with_selected_service) 
 		{
 			_view.getProfessional().addItem(professional);
 		}	
 	}
-	
+		
 	public void showDays(ProfessionalDTO selected_professional) throws Exception
 	{
-		_workdays_of_selected_proffesional = _workday_model.workdaysOfSelectedProfessional(selected_professional);
+		_workdays_of_selected_proffesional = selected_professional.getWorkdays();
 		String message =  selected_professional.getName().toString() + "trabaja los dias:";
 		HashSet<String> workdays_of_selected_proffesional_set = new HashSet<String>();
 		for(int i=0; i<_workdays_of_selected_proffesional.size(); i++)
@@ -109,6 +126,35 @@ public class ControllerTakeTurn implements ActionListener
 		JOptionPane.showMessageDialog(                               
 			  	null, message, 
 	             "Dias", JOptionPane.INFORMATION_MESSAGE);
+	}
+	
+	public String convertToSpanish(String day) 
+	{
+		String dayToSpanish = null;
+		switch (day) {
+		  case "MONDAY":
+			  dayToSpanish = "Lunes";
+		    break;
+		  case "TUESDAY":
+			  dayToSpanish = "Martes";
+		    break;
+		  case "WEDNESDAY":
+			  dayToSpanish = "Miercoles";
+		    break;
+		  case "THURSDAY":
+			  dayToSpanish = "Jueves";
+		    break;
+		  case "FRIDAY":
+			  dayToSpanish = "Viernes";
+		    break;
+		  case "SATURDAY":
+			  dayToSpanish = "Sabado";
+		    break;
+		  case "SUNDAY":
+			  dayToSpanish = "Domingo";
+		    break;
+		}
+		return dayToSpanish;
 	}
 		
 	public void fillSchedules(WorkdayDTO selected_day) throws Exception
@@ -144,7 +190,7 @@ public class ControllerTakeTurn implements ActionListener
 		if(e.getSource() == _view.getBtnAcceptProfessional())
 		{
 			try {
-				selected_professional = (ProfessionalDTO)_view.getService().getSelectedItem();
+				selected_professional = (ProfessionalDTO)_view.getProfessional().getSelectedItem();
 				showDays(selected_professional);
 			} catch (Exception e1) 
 			{
@@ -154,7 +200,11 @@ public class ControllerTakeTurn implements ActionListener
 		if(e.getSource() == _view.getBtnAcceptDay())
 		{
 			try {
-	//			System.out.print(_view.getDay());
+				System.out.println(_view.getDay().toString());
+				 LocalDate localDate2 = LocalDate.parse(_view.getDay().toString());
+				 System.out.println(localDate2.getDayOfWeek().toString());
+				 System.out.println(convertToSpanish(localDate2.getDayOfWeek().toString()));
+				 
 			} catch (Exception e1) 
 			{
 				e1.printStackTrace();
