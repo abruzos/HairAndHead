@@ -2,7 +2,6 @@ package main;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-
 import modelo.Customer;
 import modelo.Professional;
 import modelo.Service;

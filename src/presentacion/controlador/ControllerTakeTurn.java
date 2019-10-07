@@ -152,7 +152,7 @@ public class ControllerTakeTurn implements ActionListener
 		if(e.getSource() == _view.getBtnAcceptDay())
 		{
 			try {
-
+	//			System.out.print(_view.getDay());
 			} catch (Exception e1) 
 			{
 				e1.printStackTrace();

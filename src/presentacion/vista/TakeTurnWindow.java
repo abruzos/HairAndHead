@@ -159,15 +159,23 @@ public class TakeTurnWindow {
 		return btnTakeTurn;
 	}
 	
-	public JComboBox<ServiceDTO> getService() {
+	public JComboBox<ServiceDTO> getService() 
+	{
 		return services;
 	}
 	
-	public JComboBox<ProfessionalDTO> getProfessional() {
+	public JComboBox<ProfessionalDTO> getProfessional() 
+	{
 		return professionals;
 	}
 	
-	public JComboBox<ArrayList<String>> getSchedule() {
+	public JComboBox<ArrayList<String>> getSchedule()
+	{
 		return schedules;
+	}
+	
+	public DatePicker getDay() 
+	{
+		return calendar;
 	}
 }
