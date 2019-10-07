@@ -95,96 +95,80 @@ public class Main
 //
 //		TurnJPA turn_DAO= new TurnJPA();
 //		/*PAYMENTS*/
-//		PaymentDTO pay1 = new PaymentDTO("Efectivo", LocalDateTime.now());
-//		PaymentJPA pay_DAO = new PaymentJPA();		
-//		PaymentDTO pay2 = new PaymentDTO("Efectivo", LocalDateTime.now());
-//		PaymentJPA pDAO2 = new PaymentJPA();
+		PaymentDTO pay1 = new PaymentDTO("Efectivo", LocalDateTime.now());
+		PaymentJPA pay_DAO = new PaymentJPA();		
+		PaymentDTO pay2 = new PaymentDTO("Efectivo", LocalDateTime.now());
+		PaymentJPA pDAO2 = new PaymentJPA();
 //		/*PROMOTIONS*/
 //		PromotionDTO prom1 = new PromotionDTO(LocalDateTime.now(), LocalDateTime.of(2019, 12, 10, 12, 30), "Vigente", true, 20, "Solo valida los dias Martes");
 //		PromotionJPA prom_DAO = new PromotionJPA();
 //		
-//		BagDTO bag1 = new BagDTO(20, LocalDate.now());
-//		DebtDTO debt1 = new DebtDTO(100, LocalDate.now());	
+		BagDTO bag1 = new BagDTO(20, LocalDate.now());
+		DebtDTO debt1 = new DebtDTO(100, LocalDate.now());	
 
 		/* 
 		 * CREATES
 		 * */
-//		br_DAO.create(br1);
-//		emp_DAO.create(emp1);
-//		prof_DAO.create(prof1);
-//		cust_DAO.create(cust1);		
-//		turn_DAO.create(turn1);
-//		pay_DAO.create(pay1);
-//		day_DAO.create(day1);
+		br_DAO.create(br1);		emp_DAO.create(emp1);		prof_DAO.create(prof1);
+		cust_DAO.create(cust1);		
+		turn_DAO.create(turn1);
+		pay_DAO.create(pay1);
+		day_DAO.create(day1);
 //		/* 
 //		 * SETTERS 
 //		 * */
-//		cust1.setBag(bag1);
-//		cust1.setDebt(debt1);
+		cust1.setBag(bag1);
+		cust1.setDebt(debt1);
 //		
 //		/* 
 //		 * ADD
 //		 * */
-//		br1.addEmployee(emp1);
-//		br1.addProfessional(prof1);
-//		cust1.addTurn(turn1);
-//		cust1.addPayment(pay1);
-//		emp1.addWorkday(day1);
-//		prof1.addTurn(turn1);
-//		prof1.addWorkday(day1);
+		br1.addEmployee(emp1);
+		br1.addProfessional(prof1);
+		cust1.addTurn(turn1);
+		cust1.addPayment(pay1);
+		emp1.addWorkday(day1);
+		prof1.addTurn(turn1);
+		prof1.addWorkday(day1);
 //		/* 
 //		 * UPDATES
 //		 * */
-//		cust_DAO.update(cust1);
-//		br_DAO.update(br1);
-//		prof_DAO.update(prof1);
-//		emp_DAO.update(emp1);
+		cust_DAO.update(cust1);
+		br_DAO.update(br1);
+		prof_DAO.update(prof1);
+		emp_DAO.update(emp1);
 		
 		
-//		serv_DAO.create(serv1);
-//		serv_DAO.create(serv2);
+		serv_DAO.create(serv1);
+		serv_DAO.create(serv2);
 //		
-//		serv_DAO.update(serv1);
-//		serv_DAO.update(serv2);
+		serv_DAO.update(serv1);
+		serv_DAO.update(serv2);
 //		
 //		System.out.println("SERVICIOOS  "+ serv_DAO.AllServices());
 //		System.out.println(Customer.getCustomerDAO().byId(1).getMail());
 //		System.out.println(Customer.getCustomerDAO().byId(2).getName());
 //		System.out.println("Existe el mail mundial86@mail.com en BDD = "+Customer.foundMail("mundial86@mail.com"));
 		
-		// CONTROLADOR DE SACAR TURNO
-		TakeTurnWindow view = new TakeTurnWindow();
-		Professional professionalDAO = new Professional();
-		Service serviceDAO = new Service();
-		Workday workdayDAO = new Workday();
-		Turn turnDAO = new Turn();
-		Customer customerDAO = new Customer();
-		ControllerTakeTurn controller = new ControllerTakeTurn(view, professionalDAO, serviceDAO, workdayDAO, turnDAO, customerDAO);
-		controller.initialize();
+//		// CONTROLADOR DE SACAR TURNO
 //		TakeTurnWindow view = new TakeTurnWindow();
 //		Professional professionalDAO = new Professional();
 //		Service serviceDAO = new Service();
 //		Workday workdayDAO = new Workday();
 //		Turn turnDAO = new Turn();
-//		ControllerTakeTurn controller = new ControllerTakeTurn(view, professionalDAO, serviceDAO, workdayDAO, turnDAO);
+//		Customer customerDAO = new Customer();		ControllerTakeTurn controller = new ControllerTakeTurn(view, professionalDAO, serviceDAO, workdayDAO, turnDAO, customerDAO);
 //		controller.initialize();
+
 		
-//		 VISTA DE GENTION DE PAGO.
+		// VISTA DE GENTION DE PAGO.
 		ManagePaymentWindow viewPay = new ManagePaymentWindow();
-		cust_DAO.create(cust1);
+		//PaymentCashWindow view2 = new PaymentCashWindow();
+		//PaymentPointsWindow view3 = new PaymentPointsWindow();
 		serv_DAO.create(serv1);
-		turn_DAO.create(turn1);
-		serv1.addTurn(turn1);
-		cust1.addTurn(turn1);
-		
-		cust_DAO.update(cust1);
 		serv_DAO.update(serv1);
+		turn1.setService(serv1);
 		turn_DAO.update(turn1);
-		
-//		turn1.setService(serv1);
-//		turn_DAO.update(turn1);
-//		cust1.addTurn(turn1);
-//		serv_DAO.update(serv1);
+		cust1.addTurn(turn1);
 //		cust_DAO.update(cust1);
 		@SuppressWarnings("unused")
 		ControllerManagePayment ControllerPay = new ControllerManagePayment(viewPay,cust1);
