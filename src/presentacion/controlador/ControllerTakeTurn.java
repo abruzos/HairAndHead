@@ -8,9 +8,13 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import javax.swing.JOptionPane;
+
+import dto.CustomerDTO;
 import dto.ProfessionalDTO;
 import dto.ServiceDTO;
+import dto.TurnDTO;
 import dto.WorkdayDTO;
+import modelo.Customer;
 import modelo.Professional;
 import modelo.Service;
 import modelo.Turn;
@@ -23,13 +27,16 @@ public class ControllerTakeTurn implements ActionListener
 	private Professional _professional_model;
 	private Service _service_model;
 	private Workday _workday_model;
-	private Turn _turnl_model;
+	private Turn _turn_model;
+	private Customer _customer_model;
 	private List<ServiceDTO> _services;
 	private List<ProfessionalDTO> _professionals_with_selected_service;
 	private List<WorkdayDTO> _workdays_of_selected_proffesional;
 	private LocalDateTime _service_day;
+	private ProfessionalDTO selected_professional;
+	private CustomerDTO customer;
 	
-	public ControllerTakeTurn(TakeTurnWindow view, Professional professional, Service service, Workday workday, Turn turn)
+	public ControllerTakeTurn(TakeTurnWindow view, Professional professional, Service service, Workday workday, Turn turn, Customer customer)
 	{	
 		_view = view;
 		
@@ -38,14 +45,14 @@ public class ControllerTakeTurn implements ActionListener
 		_professional_model = professional;
 		_service_model = service;
 		_workday_model = workday;
-		_turnl_model = turn;
+		_turn_model = turn;
+		_customer_model = customer;
 		
 		_services = null;
 		_professionals_with_selected_service = null;
 		_workdays_of_selected_proffesional = null;
 		
-		_service_day = LocalDateTime.of(1, 1, 1, 1, 1);
-		
+		_service_day = LocalDateTime.of(1, 1, 1, 0, 0);		
 	}
 	
 	public void initialize() throws Exception                                     
@@ -58,6 +65,7 @@ public class ControllerTakeTurn implements ActionListener
 	{
 		_view.getBtnAcceptService().addActionListener(this);
 		_view.getBtnAcceptProfessional().addActionListener(this);
+		_view.getBtnAcceptDay().addActionListener(this);
 		_view.getBtnAcceptSchedule().addActionListener(this);
 		_view.getBtnTakeTurn().addActionListener(this);
 	}
@@ -73,12 +81,12 @@ public class ControllerTakeTurn implements ActionListener
 	}
 	
 	//Se rellena el desplegable con los profesionales que realizan el servicio seleccionado.
-	public void fillProfessionals(TakeTurnWindow window, ServiceDTO selected_service) throws Exception
+	public void fillProfessionals(ServiceDTO selected_service) throws Exception
 	{
 		_professionals_with_selected_service = _professional_model.professionalsWithSelectedService(selected_service);
 		for (ProfessionalDTO professional : _professionals_with_selected_service) 
 		{
-			window.getProfessional().addItem(professional);
+			_view.getProfessional().addItem(professional);
 		}	
 	}
 	
@@ -100,8 +108,8 @@ public class ControllerTakeTurn implements ActionListener
 			  	null, message, 
 	             "Dias", JOptionPane.INFORMATION_MESSAGE);
 	}
-	
-	public void fillSchedules(TakeTurnWindow window, WorkdayDTO selected_day) throws Exception
+		
+	public void fillSchedules(WorkdayDTO selected_day) throws Exception
 	{
 		LocalTime start_time = LocalTime.of(Integer.parseInt(selected_day.getSince().substring(0, 2)), Integer.parseInt(selected_day.getSince().substring(2, 4)));
 		LocalTime finish_time = LocalTime.of(Integer.parseInt(selected_day.getUntil().substring(0,2)),Integer.parseInt(selected_day.getUntil().substring(2,4)));
@@ -115,18 +123,49 @@ public class ControllerTakeTurn implements ActionListener
 			
 			Schedule.add(start_time.toString());
 			
-			window.getSchedule().addItem(Schedule);
+			_view.getSchedule().addItem(Schedule);
 		}	
 	}
 
 	public void actionPerformed(ActionEvent e) 
-	{		
-		if(e.getSource() == _view.getBtnTakeTurn() || _service_day.getHour() != 0)
+	{	
+		if(e.getSource() == _view.getBtnAcceptService()) 
 		{
 			try {
-				_turnl_model.creationOfTurn(_service_day);
-			} catch (Exception e1) {
-				// TODO Auto-generated catch block
+				ServiceDTO selected_service = (ServiceDTO)_view.getService().getSelectedItem();
+				fillProfessionals(selected_service);
+			} catch (Exception e1) 
+			{
+				e1.printStackTrace();
+			}
+		}
+		if(e.getSource() == _view.getBtnAcceptProfessional())
+		{
+			try {
+				selected_professional = (ProfessionalDTO)_view.getService().getSelectedItem();
+				showDays(selected_professional);
+			} catch (Exception e1) 
+			{
+				e1.printStackTrace();
+			}
+		}
+		if(e.getSource() == _view.getBtnAcceptDay())
+		{
+			try {
+
+			} catch (Exception e1) 
+			{
+				e1.printStackTrace();
+			}
+		}
+		if(e.getSource() == _view.getBtnTakeTurn() && _service_day.getHour() != 0)
+		{
+			try {	
+				TurnDTO new_turn = _turn_model.creationOfTurn(_service_day);
+				_professional_model.addTurnProfessional(selected_professional, new_turn);
+				_customer_model.addTurnCustomer(customer, new_turn);
+			} catch (Exception e1) 
+			{
 				e1.printStackTrace();
 			}
 		}
