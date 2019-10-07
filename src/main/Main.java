@@ -152,12 +152,8 @@ public class Main
 		
 		// CONTROLADOR DE SACAR TURNO
 		TakeTurnWindow view = new TakeTurnWindow();
-		Professional professionalDAO = new Professional();
-		Service serviceDAO = new Service();
-		Workday workdayDAO = new Workday();
-		Turn turnDAO = new Turn();
-		Customer customerDAO = new Customer();		
-		ControllerTakeTurn controller = new ControllerTakeTurn(view, professionalDAO, serviceDAO, workdayDAO, turnDAO, customerDAO);
+		CustomerDTO customer = new CustomerDTO();		
+		ControllerTakeTurn controller = new ControllerTakeTurn(view, customer);
 		controller.initialize();
 
 		

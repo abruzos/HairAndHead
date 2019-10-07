@@ -9,48 +9,34 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import javax.swing.JOptionPane;
-
 import dto.CustomerDTO;
 import dto.ProfessionalDTO;
 import dto.ServiceDTO;
 import dto.TurnDTO;
 import dto.WorkdayDTO;
-import modelo.Customer;
-import modelo.Professional;
-import modelo.Service;
 import modelo.Turn;
-import modelo.Workday;
 import persistencia.dao.implementacion.ProfessionalJPA;
 import persistencia.dao.implementacion.ServiceJPA;
+import persistencia.dao.implementacion.TurnJPA;
 import presentacion.vista.TakeTurnWindow;
 
 public class ControllerTakeTurn implements ActionListener
 {	
 	private TakeTurnWindow _view;                
-	private Professional _professional_model;
-	private Service _service_model;
-	private Workday _workday_model;
-	private Turn _turn_model;
-	private Customer _customer_model;
 	private List<ServiceDTO> _services;
 	private List<ProfessionalDTO> _professionals_with_selected_service;
 	private List<WorkdayDTO> _workdays_of_selected_proffesional;
 	private LocalDateTime _service_day;
 	private ProfessionalDTO selected_professional;
-	private CustomerDTO customer;
+	private CustomerDTO _customer;
 	
-	public ControllerTakeTurn(TakeTurnWindow view, Professional professional, Service service, Workday workday, Turn turn, Customer customer)
+	public ControllerTakeTurn(TakeTurnWindow view, CustomerDTO customer)
 	{	
 		_view = view;
+		_customer = customer;
 		
 		createListeners();
-		
-		_professional_model = professional;
-		_service_model = service;
-		_workday_model = workday;
-		_turn_model = turn;
-		_customer_model = customer;
-		
+			
 		_services = null;
 		_professionals_with_selected_service = new ArrayList<ProfessionalDTO>();
 		_workdays_of_selected_proffesional = null;
@@ -69,7 +55,6 @@ public class ControllerTakeTurn implements ActionListener
 		_view.getBtnAcceptService().addActionListener(this);
 		_view.getBtnAcceptProfessional().addActionListener(this);
 		_view.getBtnAcceptDay().addActionListener(this);
-		_view.getBtnAcceptSchedule().addActionListener(this);
 		_view.getBtnTakeTurn().addActionListener(this);
 	}
 	
@@ -96,8 +81,6 @@ public class ControllerTakeTurn implements ActionListener
 			{
 				if(professionals.get(i).getServices().get(z).getName().equals(selected_service.getName())) 
 				{	
-					System.out.println(professionals.get(i).getServices().get(z).getName());
-					System.out.println(professionals.get(i).getName());
 					_professionals_with_selected_service.add(professionals.get(i));
 				}
 			}
@@ -156,18 +139,31 @@ public class ControllerTakeTurn implements ActionListener
 		}
 		return dayToSpanish;
 	}
+	
+	public WorkdayDTO workdaysOfSelectedProfessional(String day, ProfessionalDTO selected_professional)
+	{
+		WorkdayDTO workday = new WorkdayDTO();
+		for(int i = 0; i<selected_professional.getWorkdays().size(); i++) 
+		{
+			if(selected_professional.getWorkdays().get(i).getDay().equals(day)) 
+			{	
+				workday = selected_professional.getWorkdays().get(i);
+			}
+		}
+		return workday;
+	}
 		
 	public void fillSchedules(WorkdayDTO selected_day) throws Exception
 	{
-		LocalTime start_time = LocalTime.of(Integer.parseInt(selected_day.getSince().substring(0, 2)), Integer.parseInt(selected_day.getSince().substring(2, 4)));
-		LocalTime finish_time = LocalTime.of(Integer.parseInt(selected_day.getUntil().substring(0,2)),Integer.parseInt(selected_day.getUntil().substring(2,4)));
+		LocalTime start_time = LocalTime.of(Integer.parseInt(selected_day.getSince().substring(0, 2)), Integer.parseInt(selected_day.getSince().substring(3,5)));
+		LocalTime finish_time = LocalTime.of(Integer.parseInt(selected_day.getUntil().substring(0,2)),Integer.parseInt(selected_day.getUntil().substring(3,5)));
 		while(!start_time.equals(finish_time)) 
 		{	
 			ArrayList<String> Schedule = new ArrayList<String>();
 			Schedule.add(start_time.toString());
 			Schedule.add("-");
 			
-			start_time.plusMinutes(30);
+			start_time = start_time.plusMinutes(30);
 			
 			Schedule.add(start_time.toString());
 			
@@ -200,32 +196,30 @@ public class ControllerTakeTurn implements ActionListener
 		if(e.getSource() == _view.getBtnAcceptDay())
 		{
 			try {
-				System.out.println(_view.getDay().toString());
 				 LocalDate localDate2 = LocalDate.parse(_view.getDay().toString());
-				 System.out.println(localDate2.getDayOfWeek().toString());
-				 System.out.println(convertToSpanish(localDate2.getDayOfWeek().toString()));
-				 
+				 fillSchedules(workdaysOfSelectedProfessional(convertToSpanish(localDate2.getDayOfWeek().toString()), selected_professional));
 			} catch (Exception e1) 
 			{
 				e1.printStackTrace();
 			}
 		}
-		if(e.getSource() == _view.getBtnTakeTurn() && _service_day.getHour() != 0)
+		if(e.getSource() == _view.getBtnTakeTurn())
 		{
-			try {	
-				TurnDTO new_turn = _turn_model.creationOfTurn(_service_day);
-				_professional_model.addTurnProfessional(selected_professional, new_turn);
-				_customer_model.addTurnCustomer(customer, new_turn);
+			try {
+				TurnJPA t = new TurnJPA();
+                TurnDTO new_turn = Turn.creationOfTurn(_service_day);
+                t.create(new_turn);
+                
+                selected_professional.addTurn(new_turn);
+                _customer.addTurn(new_turn);
+                
+                JOptionPane.showMessageDialog(                               
+					  	null, "Se reservo un turno para el:" + new_turn, 
+			             "Exito", JOptionPane.INFORMATION_MESSAGE);
 			} catch (Exception e1) 
 			{
 				e1.printStackTrace();
 			}
-		}
-		else
-		{
-			JOptionPane.showMessageDialog(           
-				  	null, "Hay campos sin seleccionar.", 
-		             "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 }

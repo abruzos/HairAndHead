@@ -107,4 +107,9 @@ public class TurnDTO
 	{
 		_turnsPayment = turnsPayment;
 	}
+	
+	@Override
+	public String toString() {
+		return _serviceDay.toString();
+	}
 }
