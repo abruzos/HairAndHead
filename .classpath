@@ -12,7 +12,9 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry excluding="**" kind="src" output="target/classes" path="resources">
+	<classpathentry kind="src" path="resources/META-INF"/>
+	<classpathentry kind="src" path="resources/receipts"/>
+	<classpathentry excluding="**|META-INF/|receipts/" kind="src" output="target/classes" path="resources">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
