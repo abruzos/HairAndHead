@@ -24,6 +24,8 @@ public class ControllerPaymentPoints implements ActionListener{
 		loadInformationClient();
 		_viewPaymentPoints.getBtnAccept().addActionListener(Pay -> makePayment(Pay));
 		_viewPaymentPoints.getBtnCancel().addActionListener(Cancel -> close(Cancel));
+		_viewPaymentPoints.mostrarVentana();
+
 	}
 	
 	private void loadInformationClient()
