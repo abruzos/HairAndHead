@@ -72,7 +72,7 @@ public class Main
 		TurnDTO turn2 = new TurnDTO(LocalDateTime.now(), LocalDateTime.of(2019, 10, 10, 8, 00), "Vigente");
 		TurnDTO turn3 = new TurnDTO(LocalDateTime.now(), LocalDateTime.of(2019, 12, 10, 10, 00), "Vigente");
 		TurnDTO turn4 = new TurnDTO(LocalDateTime.now(), LocalDateTime.of(2019, 12, 10, 9, 00), "Vigente");
-		
+		TurnJPA turn_DAO= new TurnJPA();
 		
 //		BranchOfficeDTO b1 = new BranchOfficeDTO("Breikin", "Mitre 123", "San miguel", "Bs As", "Argentina");
 //		BranchOfficeJPA bDAO= new BranchOfficeJPA();
@@ -140,13 +140,13 @@ public class Main
 //		emp_DAO.update(emp1);
 		
 		
-		serv_DAO.create(serv1);
-		serv_DAO.create(serv2);
-		
-		serv_DAO.update(serv1);
-		serv_DAO.update(serv2);
-		
-		System.out.println("SERVICIOOS  "+ serv_DAO.AllServices());
+//		serv_DAO.create(serv1);
+//		serv_DAO.create(serv2);
+//		
+//		serv_DAO.update(serv1);
+//		serv_DAO.update(serv2);
+//		
+//		System.out.println("SERVICIOOS  "+ serv_DAO.AllServices());
 //		System.out.println(Customer.getCustomerDAO().byId(1).getMail());
 //		System.out.println(Customer.getCustomerDAO().byId(2).getName());
 //		System.out.println("Existe el mail mundial86@mail.com en BDD = "+Customer.foundMail("mundial86@mail.com"));
@@ -160,15 +160,24 @@ public class Main
 //		ControllerTakeTurn controller = new ControllerTakeTurn(view, professionalDAO, serviceDAO, workdayDAO, turnDAO);
 //		controller.initialize();
 		
-		// VISTA DE GENTION DE PAGO.
-//		ManagePaymentWindow viewPay = new ManagePaymentWindow();
-//		serv_DAO.create(serv1);
-//		serv_DAO.update(serv1);
+//		 VISTA DE GENTION DE PAGO.
+		ManagePaymentWindow viewPay = new ManagePaymentWindow();
+		cust_DAO.create(cust1);
+		serv_DAO.create(serv1);
+		turn_DAO.create(turn1);
+		serv1.addTurn(turn1);
+		cust1.addTurn(turn1);
+		
+		cust_DAO.update(cust1);
+		serv_DAO.update(serv1);
+		turn_DAO.update(turn1);
+		
 //		turn1.setService(serv1);
 //		turn_DAO.update(turn1);
 //		cust1.addTurn(turn1);
-//		//cust_DAO.update(cust1);
-//		@SuppressWarnings("unused")
-//		ControllerManagePayment ControllerPay = new ControllerManagePayment(viewPay,cust1);
+//		serv_DAO.update(serv1);
+//		cust_DAO.update(cust1);
+		@SuppressWarnings("unused")
+		ControllerManagePayment ControllerPay = new ControllerManagePayment(viewPay,cust1);
 	}	
 }
