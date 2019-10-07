@@ -113,6 +113,9 @@ public class Main
 		turn_DAO.create(turn1);
 		pay_DAO.create(pay1);
 		day_DAO.create(day1);
+		serv_DAO.create(serv1);
+		serv_DAO.create(serv2);
+		serv_DAO.create(serv3);
 		/* 
 		 * SETTERS 
 		 * */
