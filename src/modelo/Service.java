@@ -8,6 +8,7 @@ import persistencia.dao.interfaz.ServiceDAO;
 public class Service 
 {
 	private ServiceDAO _service;
+	private ServiceJPA _serviceJPA;
 	
 	public ServiceDAO createServiceDAO() 
 	{
@@ -41,6 +42,6 @@ public class Service
 	//Lista de todos los servicios ----> DESPLEGABLE SERVICIOS.
 	public List<ServiceDTO> obtainServices() throws Exception 
 	{
-		return _service.all();
+		return _serviceJPA.AllServices();
 	}
 }
