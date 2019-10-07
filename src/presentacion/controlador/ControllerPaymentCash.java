@@ -17,22 +17,22 @@ public class ControllerPaymentCash implements ActionListener{
 		_viewPaymentCash = view;
 		_customer = customer;
 		loadInformationClient();
-		_viewPaymentCash.getBtnPay().addActionListener(Pay -> makePayment(Pay));
-		_viewPaymentCash.getBtnReport().addActionListener(report -> showReport(report));
-
+		_viewPaymentCash.getBtnAccept().addActionListener(Pay -> makePayment(Pay));
+		_viewPaymentCash.getBtnCancel().addActionListener(Pay -> makePayment(Pay));
+//		_viewPaymentCash.getBtnReport().addActionListener(report -> showReport(report));
 	}
 
 	private void loadInformationClient()
 	{
-		_viewPaymentCash.getTextServiceCost().setText(Customer.CostService(_customer));
-		_viewPaymentCash.getTextCurrentDebt().setText(Customer.CurrentDebt(_customer));
+		_viewPaymentCash.getTxtServiceCost().setText(Customer.CostService(_customer));
+		_viewPaymentCash.getTxtDepositedCash().setText(Customer.CurrentDebt(_customer));
 	}
 
 	// ACCION DEL BOTON PAGAR.
 	private void makePayment(ActionEvent pay)
 	{
-		int payment = Integer.valueOf(_viewPaymentCash.getTextPaymentCash().getText());
-		int debt = Integer.valueOf(_viewPaymentCash.getTextPaymentDebt().getText());
+		int payment = Integer.valueOf(_viewPaymentCash.getTxtDepositedCash().getText());
+		int debt = Integer.valueOf(_viewPaymentCash.getTxtCurrentDebt().getText());
 		updatePayment(payment);
 		updateDebt(debt);
 	}
