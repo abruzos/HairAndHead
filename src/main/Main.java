@@ -2,6 +2,7 @@ package main;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+
 import modelo.Professional;
 import modelo.Service;
 import modelo.Turn;
@@ -26,7 +27,9 @@ import persistencia.dao.implementacion.PromotionJPA;
 import persistencia.dao.implementacion.ServiceJPA;
 import persistencia.dao.implementacion.TurnJPA;
 import persistencia.dao.implementacion.WorkdayJPA;
+import presentacion.controlador.ControllerManagePayment;
 import presentacion.controlador.ControllerTakeTurn;
+import presentacion.vista.ManagePaymentWindow;
 import presentacion.vista.TakeTurnWindow;
 
 public class Main 
@@ -118,6 +121,7 @@ public class Main
 		 * */
 		cust1.setBag(bag1);
 		cust1.setDebt(debt1);
+		
 		/* 
 		 * ADD
 		 * */
@@ -149,12 +153,23 @@ public class Main
 //		System.out.println("Existe el mail mundial86@mail.com en BDD = "+Customer.foundMail("mundial86@mail.com"));
 		
 		// CONTROLADOR DE SACAR TURNO
-		TakeTurnWindow view = new TakeTurnWindow();
-		Professional professionalDAO = new Professional();
-		Service serviceDAO = new Service();
-		Workday workdayDAO = new Workday();
-		Turn turnDAO = new Turn();
-		ControllerTakeTurn controller = new ControllerTakeTurn(view, professionalDAO, serviceDAO, workdayDAO, turnDAO);
-		controller.initialize();
+//		TakeTurnWindow view = new TakeTurnWindow();
+//		Professional professionalDAO = new Professional();
+//		Service serviceDAO = new Service();
+//		Workday workdayDAO = new Workday();
+//		Turn turnDAO = new Turn();
+//		ControllerTakeTurn controller = new ControllerTakeTurn(view, professionalDAO, serviceDAO, workdayDAO, turnDAO);
+//		controller.initialize();
+		
+		// VISTA DE GENTION DE PAGO.
+		ManagePaymentWindow viewPay = new ManagePaymentWindow();
+		serv_DAO.create(serv1);
+		serv_DAO.update(serv1);
+		turn1.setService(serv1);
+		turn_DAO.update(turn1);
+		cust1.addTurn(turn1);
+		//cust_DAO.update(cust1);
+		@SuppressWarnings("unused")
+		ControllerManagePayment ControllerPay = new ControllerManagePayment(viewPay,cust1);
 	}	
 }
